@@ -1,0 +1,22 @@
+hanayama: section+. 
+section: category, puzzles.
+category: text, newline.
+puzzles: puzzle+.
+puzzle: name, space, parenthesized, (space, note)?, newline.
+-text: ([L]; digit; punct; space)+.
+-noDigitText: ([L]; punct; space; "3R")+.
+name: text.
+-openParen: -"(".
+-closeParen: -")".
+level: "level ", digit.
+-parenthesized: openParen, puzzleData, closeParen.
+-puzzleData: ((level; year), (space; ","))*, (designer; note), (space, year)?.
+designer: upper, ([L]; ["./-"]; space)+.
+note: lower, text.
+year: digit, digit, digit, digit, (space, "or", space, -year)?.
+-digit: ["0"-"9"].
+-punct: [".,/&-'"].
+-space: " ".
+-newline: -#a+.
+-upper: ["A"-"Z"].
+-lower: ["a"-"z"].
