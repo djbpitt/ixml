@@ -10,7 +10,7 @@ name: text.
 -closeParen: -")".
 level: "level ", digit.
 -parenthesized: openParen, puzzleData, closeParen.
--puzzleData: ((level; year), (space; ","))*, (designer; note), (space, year)?.
+-puzzleData: ((level; year), (space; ","))*, noDigitText, (space, year)?.
 designer: upper, ([L]; ["./-"]; space)+.
 note: lower, text.
 year: digit, digit, digit, digit, (space, "or", space, -year)?.
