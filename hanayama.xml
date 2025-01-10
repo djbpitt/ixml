@@ -539,27 +539,37 @@
          <puzzle>
             <name>SSSP emblem shooting star</name> 
             <level>level 1</level> 
-            <basedOn>based on Diamond</basedOn>
+            <basedOn>based on 
+               <name>Diamond</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Beta capsule</name> 
             <level>level 3</level> 
-            <basedOn>based on Cage</basedOn>
+            <basedOn>based on 
+               <name>Cage</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Ultra eye</name> 
             <level>level 4</level> 
-            <basedOn>based on News</basedOn>
+            <basedOn>based on 
+               <name>News</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Ultra guard emblem</name> 
             <level>level 4</level> 
-            <basedOn>based on Cylinder</basedOn>
+            <basedOn>based on 
+               <name>Cylinder</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Marble</name> 
             <level>level 5</level> 
-            <basedOn>based on Marble</basedOn>
+            <basedOn>based on 
+               <name>Marble</name>
+            </basedOn>
          </puzzle>
       </puzzles>
    </section>
@@ -569,17 +579,23 @@
          <puzzle>
             <name>Hyrule crest</name> 
             <level>level 4</level> 
-            <basedOn>based on Heart</basedOn>
+            <basedOn>based on 
+               <name>Heart</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Triforce</name> 
             <level>level 5</level> 
-            <basedOn>based on Delta and News </basedOn>
+            <basedOn>based on 
+               <name>Delta and News </name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Master sword</name> 
             <level>level 6</level> 
-            <basedOn>based on Valve</basedOn>
+            <basedOn>based on 
+               <name>Valve</name>
+            </basedOn>
          </puzzle>
       </puzzles>
    </section>
@@ -589,22 +605,30 @@
          <puzzle>
             <name>Mickey Mouse ring</name> 
             <level>level 1</level> 
-            <basedOn>based on Loop</basedOn>
+            <basedOn>based on 
+               <name>Loop</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Mickey &amp; Minnie key</name> 
             <level>level 2</level> 
-            <basedOn>based on Key</basedOn>
+            <basedOn>based on 
+               <name>Key</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Winnie the Pooh escape</name> 
             <level>level 2</level> 
-            <basedOn>based on Horse</basedOn>
+            <basedOn>based on 
+               <name>Horse</name>
+            </basedOn>
          </puzzle>
          <puzzle>
             <name>Alice in Wonderland labyrinth</name> 
             <level>level 4</level> 
-            <basedOn>based on Laby</basedOn>
+            <basedOn>based on 
+               <name>Laby</name>
+            </basedOn>
          </puzzle>
       </puzzles>
    </section>

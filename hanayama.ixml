@@ -4,23 +4,23 @@ section: category, puzzles.
 category: text, newline.
 puzzles: puzzle+.
 puzzle: name, space, parenthesized, (space, note)?, newline.
+note: lower, text.
 
 {Components}
-name: text.
-level: "level ", digit.
+name: text. {Name of puzzle}
 -parenthesized: openParen, puzzleData, closeParen.
+-puzzleData: designerYear; levelDesigner; levelBased; yearNote; noteOnly.
 
 {puzzledata subtypes}
--designerYear: (designer, space, year).
+-designerYear: designer, space, year.
 -levelDesigner: level, space, designer.
 -levelBased: level, space, basedOn.
 -yearNote: year, space, note.
 -noteOnly: note.
--puzzleData: designerYear; levelDesigner; levelBased; yearNote; noteOnly.
+level: "level ", digit.
 designer: upper, noDigitText.
-basedOn: "based on ", -name. 
+basedOn: "based on ", name. 
 
-note: lower, text.
 
 {Compound building blocks}
 -text: ([L]; digit; punct; space)+.
