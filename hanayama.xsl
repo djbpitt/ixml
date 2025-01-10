@@ -30,9 +30,10 @@
           }
           th,
           td {
-            padding: 2px 3px;
+            padding: 3px 4px;
           }
-          .name {
+          .name,
+          .level {
             font-weight: bold;
           }</style>
       </head>
@@ -43,8 +44,8 @@
         <!-- Merge sections 1–6 in single table -->
         <table>
           <tr>
-            <th>Level</th>
             <th>Name</th>
+            <th>Level</th>
             <th>Designer</th>
             <th>Year</th>
           </tr>
@@ -61,18 +62,7 @@
   <!-- ================================================================== -->
   <xsl:template match="puzzle" mode="huzzle">
     <tr>
-      <td>
-        <xsl:apply-templates select="ancestor::section/category"/>
-      </td>
-      <td>
-        <xsl:apply-templates select="name"/>
-      </td>
-      <td>
-        <xsl:apply-templates select="designer"/>
-      </td>
-      <td>
-        <xsl:apply-templates select="year"/>
-      </td>
+      <xsl:apply-templates select="name, ancestor::section/category, designer, year" mode="cell"/>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
@@ -83,25 +73,86 @@
     <h2>
       <xsl:apply-templates select="category"/>
     </h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Level</th>
+        <th>Designer</th>
+      </tr>
+      <xsl:apply-templates select="puzzles/puzzle" mode="chess"/>
+    </table>
+  </xsl:template>
+  <xsl:template match="puzzle" mode="chess">
+    <tr>
+      <xsl:apply-templates select="name, level, designer" mode="cell"/>
+    </tr>
   </xsl:template>
   <!-- ================================================================== -->
-  <!-- Ultraman, Zelda, Disney, Other (sections 8+)                       -->
+  <!-- Ultraman, Zelda, Disney (sections 8–10)                            -->
   <!-- ================================================================== -->
-  <xsl:template match="section[position() gt 7]">
+  <xsl:template match="section[position() = (8, 9, 10)]">
     <hr/>
     <h2>
       <xsl:apply-templates select="category"/>
     </h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Level</th>
+        <th>Note</th>
+      </tr>
+      <xsl:apply-templates select="puzzles/puzzle" mode="misc"/>
+    </table>
+  </xsl:template>
+  <xsl:template match="puzzle" mode="misc">
+    <tr>
+      <xsl:apply-templates select="name, level, basedOn, note, noteOnly" mode="cell"/>
+    </tr>
+  </xsl:template>
+  <!-- ================================================================== -->
+  <!-- Other (section 11)                                                 -->
+  <!-- ================================================================== -->
+  <xsl:template match="section[11]">
+    <hr/>
+    <h2>
+      <xsl:apply-templates select="category"/>
+    </h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Note</th>
+      </tr>
+      <xsl:apply-templates select="puzzles/puzzle" mode="other"/>
+    </table>
+  </xsl:template>
+  <xsl:template match="puzzle" mode="other">
+    <tr>
+      <xsl:apply-templates select="name, basedOn, note, noteOnly" mode="cell"/>
+    </tr>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Cell contents                                                      -->
   <!-- ================================================================== -->
-  <xsl:template match="name">
-    <span class="name">
+  <xsl:template match="name" mode="cell">
+    <td class="name">
+      <xsl:apply-templates/>
+    </td>
+  </xsl:template>
+  <xsl:template match="category | designer | year | level | basedOn | note | noteOnly" mode="cell">
+    <td>
+      <xsl:apply-templates/>
+    </td>
+  </xsl:template>
+  <xsl:template match="level/text()">
+    <!-- Upper-case "level" in level-specific column entries -->
+    <xsl:value-of select="concat(upper-case(substring(., 1, 1)), substring(., 2))"/>
+  </xsl:template>
+  <!-- ================================================================== -->
+  <!-- Inline                                                             -->
+  <!-- ================================================================== -->
+  <xsl:template match="name | level">
+    <span class="{name()}">
       <xsl:apply-templates/>
     </span>
   </xsl:template>
-  <!--  <xsl:template match="designer | year">
-    <xsl:value-of select="(., 'NA')[1]"/>
-  </xsl:template>-->
 </xsl:stylesheet>

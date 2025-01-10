@@ -2,7 +2,9 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" exclude-inline-prefixes="#all"
   xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0" name="hanayama-pipeline">
   <p:input port="source" primary="true" content-types="text/plain" href="hanayama.txt"/>
-  <p:output port="result"/>
+  <p:output port="result" primary="true" sequence="true">
+    <p:empty/>
+  </p:output>
   <p:invisible-xml name="hanayama-ixml">
     <p:with-input port="source" pipe="source@hanayama-pipeline"/>
     <p:with-input port="grammar">
@@ -12,4 +14,6 @@
   <p:xslt>
     <p:with-input port="stylesheet" href="hanayama.xsl"/>
   </p:xslt>
+  <p:store href="hanayama.xhtml"/>
+  <p:sink/>
 </p:declare-step>
