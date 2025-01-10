@@ -9,7 +9,7 @@
   <xsl:output method="xhtml" html-version="5" omit-xml-declaration="no" include-content-type="no"
     indent="yes"/>
   <!-- ================================================================== -->
-  <!-- Templates                                                          -->
+  <!-- Main template                                                      -->
   <!-- ================================================================== -->
   <xsl:template match="/">
     <html>
@@ -41,7 +41,9 @@
         <h1>Hanayama puzzle inventory</h1>
         <hr/>
         <h2>Huzzles</h2>
-        <!-- Merge sections 1–6 in single table -->
+        <!-- ============================================================ -->
+        <!-- Merge sections 1–6 in single table                           -->
+        <!-- ============================================================ -->
         <table>
           <tr>
             <th>Name</th>
@@ -52,6 +54,9 @@
           <xsl:apply-templates select="hanayama/section[position() le 6]/descendant::puzzle"
             mode="huzzle"/>
         </table>
+        <!-- ============================================================ -->        
+        <!-- Each other section (7–11) is separate, so use template       -->
+        <!-- ============================================================ -->
         <xsl:apply-templates select="hanayama/section[7]"/>
         <xsl:apply-templates select="hanayama/section[position() gt 7]"/>
       </body>
@@ -89,6 +94,7 @@
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Ultraman, Zelda, Disney (sections 8–10)                            -->
+  <!-- basedOn, note, and noteOnly are mutually exclusive note fields     -->
   <!-- ================================================================== -->
   <xsl:template match="section[position() = (8, 9, 10)]">
     <hr/>
@@ -111,6 +117,7 @@
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Other (section 11)                                                 -->
+  <!-- basedOn, note, and noteOnly are mutually exclusive note fields     -->
   <!-- ================================================================== -->
   <xsl:template match="section[11]">
     <hr/>
@@ -144,7 +151,9 @@
     </td>
   </xsl:template>
   <xsl:template match="level/text()">
-    <!-- Upper-case "level" in level-specific column entries -->
+    <!-- ================================================================ -->
+    <!-- Upper-case "level" in level-specific column entries              -->
+    <!-- ================================================================ -->
     <xsl:value-of select="concat(upper-case(substring(., 1, 1)), substring(., 2))"/>
   </xsl:template>
   <!-- ================================================================== -->
