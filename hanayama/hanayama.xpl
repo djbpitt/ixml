@@ -6,7 +6,6 @@
     <p:empty/>
   </p:output>
   <p:invisible-xml name="hanayama-ixml">
-    <p:with-input port="source" pipe="source@hanayama-pipeline"/>
     <p:with-input port="grammar">
       <p:document href="hanayama.ixml" content-type="text/plain"/>
     </p:with-input>
