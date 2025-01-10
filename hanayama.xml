@@ -646,7 +646,9 @@
             <note>a 3R type nut and bolt puzzle, other manufacturer made it since then</note>
          </puzzle>
          <puzzle>
-            <name>Lucky Puzzle</name> a seven metal pieces tangram</puzzle>
+            <name>Lucky Puzzle</name> 
+            <noteOnly>a seven metal pieces tangram</noteOnly>
+         </puzzle>
          <puzzle>
             <name>Oskar</name> 
             <designer>Oskar van Deventer</designer> 

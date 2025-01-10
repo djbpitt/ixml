@@ -16,7 +16,7 @@ name: text. {Name of puzzle}
 -levelDesigner: level, space, designer.
 -levelBased: level, space, (basedOn; mixOf).
 -yearNote: year, space, (level, space)?, note.
--noteOnly: (lower; space)+.
+noteOnly: (lower; space)+.
 level: "level ", digit, -","?.
 designer: upper, noDigitText.
 basedOn: "based on ", name. 
