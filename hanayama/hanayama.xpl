@@ -5,7 +5,7 @@
   <p:output port="result" primary="true" sequence="true">
     <p:empty/>
   </p:output>
-  <p:invisible-xml name="hanayama-ixml">
+  <p:invisible-xml>
     <p:with-input port="grammar">
       <p:document href="hanayama.ixml" content-type="text/plain"/>
     </p:with-input>
@@ -14,5 +14,4 @@
     <p:with-input port="stylesheet" href="hanayama.xsl"/>
   </p:xslt>
   <p:store href="hanayama.xhtml"/>
-  <!--<p:sink/>-->
 </p:declare-step>
