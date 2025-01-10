@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<hanayama xmlns:ixml="http://invisiblexml.org/NS" ixml:state="ambiguous">
+<hanayama xmlns:ixml='http://invisiblexml.org/NS' ixml:state='ambiguous'>
    <section>
       <category>Level 1</category>
       <puzzles>
@@ -28,7 +27,9 @@
             <name>Key</name> 
             <designer>Nobuyuki Yoshigahara</designer> 
             <year>1983</year> 
-            <note>improved with Key II</note>
+            <note>improved with 
+               <name>Key II</name>
+            </note>
          </puzzle>
          <puzzle>
             <name>Loop/Pisces in gold</name> 
@@ -107,7 +108,9 @@
             <name>Key II</name> 
             <designer>Tomoya Otake / Kyoo Wong</designer> 
             <year>2006</year> 
-            <note>improvement of Key</note>
+            <note>improvement of 
+               <name>Key</name>
+            </note>
          </puzzle>
          <puzzle>
             <name>Keyring</name> 
@@ -464,7 +467,9 @@
             <name>Key III/Phoenix in gold</name> 
             <designer>Oskar van Deventer</designer> 
             <year>2024</year> 
-            <note>improvement of Oskar</note>
+            <note>improvement of 
+               <name>Oskar</name>
+            </note>
          </puzzle>
          <puzzle>
             <name>News</name> 
@@ -641,19 +646,23 @@
             <note>a 3R type nut and bolt puzzle, other manufacturer made it since then</note>
          </puzzle>
          <puzzle>
-            <name>Lucky Puzzle</name> 
-            <note>a seven metal pieces tangram</note>
-         </puzzle>
+            <name>Lucky Puzzle</name> a seven metal pieces tangram</puzzle>
          <puzzle>
             <name>Oskar</name> 
             <designer>Oskar van Deventer</designer> 
             <year>1987</year> 
-            <note>reedited and improved with Key III</note>
+            <note>reedited and improved with 
+               <name>Key III</name>
+            </note>
          </puzzle>
          <puzzle>
             <name>Chris Ramsay X Hanayama</name> 
             <year>2019</year> 
-            <note>level 2, a mix of ABC and Laby</note>
+            <note>
+               <level>level 2</level> a mix of 
+               <name>ABC</name> and 
+               <name>Laby</name>
+            </note>
          </puzzle>
       </puzzles>
    </section>
