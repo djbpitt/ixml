@@ -14,5 +14,5 @@
     <p:with-input port="stylesheet" href="hanayama.xsl"/>
   </p:xslt>
   <p:store href="hanayama.xhtml"/>
-  <p:sink/>
+  <!--<p:sink/>-->
 </p:declare-step>
