@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="#all" version="3.0">
   <!-- ================================================================== -->
@@ -8,6 +8,10 @@
   <!-- ================================================================== -->
   <xsl:output method="xhtml" html-version="5" omit-xml-declaration="no" include-content-type="no"
     indent="yes"/>
+  <!-- ================================================================== -->
+  <!-- Global variables                                                   -->
+  <!-- ================================================================== -->
+  <xsl:variable name="yearRegex" as="xs:string" select="'\d{4}|NA'"/>
   <!-- ================================================================== -->
   <!-- Main template                                                      -->
   <!-- ================================================================== -->
@@ -54,7 +58,7 @@
           <xsl:apply-templates select="hanayama/section[position() le 6]/descendant::puzzle"
             mode="huzzle"/>
         </table>
-        <!-- ============================================================ -->        
+        <!-- ============================================================ -->
         <!-- Each other section (7–11) is separate, so use template       -->
         <!-- ============================================================ -->
         <xsl:apply-templates select="hanayama/section[7]"/>
@@ -64,11 +68,22 @@
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Mode huzzle (sections 1–6)                                         -->
+  <!-- puzzleData is always (designer year), with no note                 -->
   <!-- ================================================================== -->
   <xsl:template match="puzzle" mode="huzzle">
     <tr>
-      <xsl:apply-templates select="name, ancestor::section/category, designer, year" mode="cell"/>
+      <xsl:apply-templates select="name, ancestor::section/category" mode="cell"/>
+      <xsl:apply-templates select="puzzleData" mode="huzzle"/>
     </tr>
+  </xsl:template>
+  <xsl:template match="puzzleData" mode="huzzle">
+    <xsl:variable name="huzzleRegex" as="xs:string" select="concat('^(.+) (', $yearRegex, ')$')"/>
+    <xsl:variable name="parts" select="analyze-string(., $huzzleRegex)"/>
+    <xsl:for-each select="$parts/fn:match/fn:group">
+      <td>
+        <xsl:value-of select="."/>
+      </td>
+    </xsl:for-each>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Chess (section 7)                                                  -->
