@@ -4,38 +4,20 @@ section: category, puzzles.
 category: text, newline.
 puzzles: puzzle+.
 puzzle: name, space, parenthesized, (space, note)?, newline.
-note: (level, space)?, (improve; mixOf); text.
 
 {Components}
 name: text. {Name of puzzle}
 -parenthesized: openParen, puzzleData, closeParen.
--puzzleData: designerYear; levelDesigner; levelBased; yearNote; levelBased; noteOnly.
-
-{puzzledata subtypes}
--designerYear: designer, space, year.
--levelDesigner: level, space, designer.
--levelBased: level, space, (basedOn; mixOf).
--yearNote: year, space, (level, space)?, note.
-noteOnly: (lower; space)+.
-level: "level ", digit, -","?.
-designer: upper, noDigitText.
-basedOn: "based on ", name. 
-
--mixOf: "a mix of ", name, " and ", name.
--improve: ("reedited and "?, "improved with "; "improvement of "), name.
-
+puzzleData: text.
+note: text.
 
 {Compound building blocks}
 -text: ([L]; digit; punct; space)+.
--noDigitText: ([L]; punct; space; "3R")+.
-year: "NA"; digit, digit, digit, digit, (space, "or", space, -year)?. {NA: year not available?}
 
 {Characters and character classes}
 -digit: ["0"-"9"].
--punct: [".,/&-'"].
+-punct: [".,/&-'"]. {must exclude parentheses}
 -space: " ".
--newline: -#a+.
--upper: ["A"-"Z"].
--lower: ["a"-"z"].
+-newline: (-#d?, -#a)+.
 -openParen: -"(".
 -closeParen: -")".
