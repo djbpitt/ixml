@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions"
+  xmlns:djb="http://www.obdurodon.org" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="#all" version="3.0">
   <!-- ================================================================== -->
@@ -8,6 +9,18 @@
   <!-- ================================================================== -->
   <xsl:output method="xhtml" html-version="5" omit-xml-declaration="no" include-content-type="no"
     indent="yes"/>
+  <!-- ================================================================== -->
+  <!-- Functions                                                          -->
+  <!-- ================================================================== -->
+  <xsl:function name="djb:puzzleDataToStrings" as="xs:string+">
+    <xsl:param name="djb:data" as="xs:string"/>
+    <xsl:param name="djb:regex" as="xs:string"/>
+    <xsl:sequence select="fn:analyze-string($djb:data, $djb:regex)/fn:match/fn:group ! string()"/>
+  </xsl:function>
+  <xsl:function name="djb:initialCap" as="xs:string">
+    <xsl:param name="djb:data" as="xs:string"/>
+    <xsl:value-of select="concat(upper-case(substring($djb:data, 1, 1)), substring($djb:data, 2))"/>
+  </xsl:function>
   <!-- ================================================================== -->
   <!-- Global variables                                                   -->
   <!-- ================================================================== -->
@@ -36,8 +49,8 @@
           td {
             padding: 3px 4px;
           }
-          .name,
-          .level {
+          td.name,
+          td.category {
             font-weight: bold;
           }</style>
       </head>
@@ -73,20 +86,17 @@
   <xsl:template match="puzzle" mode="huzzle">
     <tr>
       <xsl:apply-templates select="name, ancestor::section/category" mode="cell"/>
-      <xsl:apply-templates select="puzzleData" mode="huzzle"/>
+      <xsl:variable name="huzzleRegex" as="xs:string" select="concat('^(.+) (', $yearRegex, ')$')"/>
+      <xsl:for-each select="djb:puzzleDataToStrings(puzzleData, $huzzleRegex)">
+        <td>
+          <xsl:value-of select="."/>
+        </td>
+      </xsl:for-each>
     </tr>
-  </xsl:template>
-  <xsl:template match="puzzleData" mode="huzzle">
-    <xsl:variable name="huzzleRegex" as="xs:string" select="concat('^(.+) (', $yearRegex, ')$')"/>
-    <xsl:variable name="parts" select="analyze-string(., $huzzleRegex)"/>
-    <xsl:for-each select="$parts/fn:match/fn:group">
-      <td>
-        <xsl:value-of select="."/>
-      </td>
-    </xsl:for-each>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Chess (section 7)                                                  -->
+  <!-- puzzleData is always (level designer), with no year or note        -->
   <!-- ================================================================== -->
   <xsl:template match="section[7]">
     <hr/>
@@ -103,13 +113,26 @@
     </table>
   </xsl:template>
   <xsl:template match="puzzle" mode="chess">
+    <xsl:variable name="chessRegex" as="xs:string" select="'^(level \d) (.+)$'"/>
     <tr>
-      <xsl:apply-templates select="name, level, designer" mode="cell"/>
+      <xsl:apply-templates select="name" mode="cell"/>
+      <xsl:for-each select="djb:puzzleDataToStrings(puzzleData, $chessRegex)">
+        <td>
+          <xsl:if test="position() eq 1">
+            <xsl:attribute name="class" select="'category'"/>
+          </xsl:if>
+          <xsl:value-of select="
+              if (position() eq 1) then
+                djb:initialCap(.)
+              else
+                ."/>
+        </td>
+      </xsl:for-each>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Ultraman, Zelda, Disney (sections 8–10)                            -->
-  <!-- basedOn, note, and noteOnly are mutually exclusive note fields     -->
+  <!-- puzzleData is always (level "based on" name)                       -->
   <!-- ================================================================== -->
   <xsl:template match="section[position() = (8, 9, 10)]">
     <hr/>
@@ -126,13 +149,26 @@
     </table>
   </xsl:template>
   <xsl:template match="puzzle" mode="misc">
+    <xsl:variable name="miscRegex" as="xs:string" select="'(.+) (based on .+)'"/>
     <tr>
-      <xsl:apply-templates select="name, level, basedOn, note, noteOnly" mode="cell"/>
+      <xsl:apply-templates select="name" mode="cell"/>
+      <xsl:for-each select="djb:puzzleDataToStrings(puzzleData, $miscRegex)">
+        <td>
+          <xsl:if test="position() eq 1">
+            <xsl:attribute name="class" select="'category'"/>
+          </xsl:if>
+          <xsl:value-of select="
+              if (position() eq 1) then
+                djb:initialCap(.)
+              else
+                ."/>
+        </td>
+      </xsl:for-each>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Other (section 11)                                                 -->
-  <!-- basedOn, note, and noteOnly are mutually exclusive note fields     -->
+  <!-- contains name puzzleData note?; merge the last two into one cell   -->
   <!-- ================================================================== -->
   <xsl:template match="section[11]">
     <hr/>
@@ -149,34 +185,18 @@
   </xsl:template>
   <xsl:template match="puzzle" mode="other">
     <tr>
-      <xsl:apply-templates select="name, basedOn, note, noteOnly" mode="cell"/>
+      <xsl:apply-templates select="name" mode="cell"/>
+      <td>
+        <xsl:value-of select="string-join((puzzleData, note), ' ')"/>
+      </td>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Cell contents                                                      -->
   <!-- ================================================================== -->
-  <xsl:template match="name" mode="cell">
-    <td class="name">
+  <xsl:template match="name | category" mode="cell">
+    <td class="{name()}">
       <xsl:apply-templates/>
     </td>
-  </xsl:template>
-  <xsl:template match="category | designer | year | level | basedOn | note | noteOnly" mode="cell">
-    <td>
-      <xsl:apply-templates/>
-    </td>
-  </xsl:template>
-  <xsl:template match="level/text()">
-    <!-- ================================================================ -->
-    <!-- Upper-case "level" in level-specific column entries              -->
-    <!-- ================================================================ -->
-    <xsl:value-of select="concat(upper-case(substring(., 1, 1)), substring(., 2))"/>
-  </xsl:template>
-  <!-- ================================================================== -->
-  <!-- Inline                                                             -->
-  <!-- ================================================================== -->
-  <xsl:template match="name | level">
-    <span class="{name()}">
-      <xsl:apply-templates/>
-    </span>
   </xsl:template>
 </xsl:stylesheet>
