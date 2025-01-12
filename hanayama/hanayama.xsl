@@ -12,12 +12,18 @@
   <!-- ================================================================== -->
   <!-- Functions                                                          -->
   <!-- ================================================================== -->
-  <xsl:function name="djb:puzzleDataToStrings" as="xs:string+">
+  <xsl:function name="djb:splitPuzzleData" as="element(fn:group)+">
+    <!-- ================================================================ -->
+    <!-- Extract parts of <puzzleData> element, e.g., designer, year      -->
+    <!-- ================================================================ -->
     <xsl:param name="djb:data" as="xs:string"/>
     <xsl:param name="djb:regex" as="xs:string"/>
-    <xsl:sequence select="fn:analyze-string($djb:data, $djb:regex)/fn:match/fn:group ! string()"/>
+    <xsl:sequence select="fn:analyze-string($djb:data, $djb:regex)/fn:match/fn:group"/>
   </xsl:function>
   <xsl:function name="djb:initialCap" as="xs:string">
+    <!-- ================================================================ -->
+    <!-- Uppercase first letter of string                                 -->
+    <!-- ================================================================ -->
     <xsl:param name="djb:data" as="xs:string"/>
     <xsl:value-of select="concat(upper-case(substring($djb:data, 1, 1)), substring($djb:data, 2))"/>
   </xsl:function>
@@ -81,17 +87,14 @@
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Mode huzzle (sections 1–6)                                         -->
+  <!-- Insert level (originally section head) as cell                     -->
   <!-- puzzleData is always (designer year), with no note                 -->
   <!-- ================================================================== -->
   <xsl:template match="puzzle" mode="huzzle">
     <tr>
       <xsl:apply-templates select="name, ancestor::section/category" mode="cell"/>
       <xsl:variable name="huzzleRegex" as="xs:string" select="concat('^(.+) (', $yearRegex, ')$')"/>
-      <xsl:for-each select="djb:puzzleDataToStrings(puzzleData, $huzzleRegex)">
-        <td>
-          <xsl:value-of select="."/>
-        </td>
-      </xsl:for-each>
+      <xsl:apply-templates select="djb:splitPuzzleData(puzzleData, $huzzleRegex)" mode="cell"/>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
@@ -116,25 +119,14 @@
     <xsl:variable name="chessRegex" as="xs:string" select="'^(level \d) (.+)$'"/>
     <tr>
       <xsl:apply-templates select="name" mode="cell"/>
-      <xsl:for-each select="djb:puzzleDataToStrings(puzzleData, $chessRegex)">
-        <td>
-          <xsl:if test="position() eq 1">
-            <xsl:attribute name="class" select="'category'"/>
-          </xsl:if>
-          <xsl:value-of select="
-              if (position() eq 1) then
-                djb:initialCap(.)
-              else
-                ."/>
-        </td>
-      </xsl:for-each>
+      <xsl:apply-templates select="djb:splitPuzzleData(puzzleData, $chessRegex)" mode="cell"/>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
   <!-- Ultraman, Zelda, Disney (sections 8–10)                            -->
   <!-- puzzleData is always (level "based on" name)                       -->
   <!-- ================================================================== -->
-  <xsl:template match="section[position() = (8, 9, 10)]">
+  <xsl:template match="section[position() = (8 to 10)]">
     <hr/>
     <h2>
       <xsl:apply-templates select="category"/>
@@ -152,18 +144,7 @@
     <xsl:variable name="miscRegex" as="xs:string" select="'(.+) (based on .+)'"/>
     <tr>
       <xsl:apply-templates select="name" mode="cell"/>
-      <xsl:for-each select="djb:puzzleDataToStrings(puzzleData, $miscRegex)">
-        <td>
-          <xsl:if test="position() eq 1">
-            <xsl:attribute name="class" select="'category'"/>
-          </xsl:if>
-          <xsl:value-of select="
-              if (position() eq 1) then
-                djb:initialCap(.)
-              else
-                ."/>
-        </td>
-      </xsl:for-each>
+      <xsl:apply-templates select="djb:splitPuzzleData(puzzleData, $miscRegex)" mode="cell"/>
     </tr>
   </xsl:template>
   <!-- ================================================================== -->
@@ -197,6 +178,19 @@
   <xsl:template match="name | category" mode="cell">
     <td class="{name()}">
       <xsl:apply-templates/>
+    </td>
+  </xsl:template>
+  <xsl:template match="fn:group[starts-with(., 'level ')]" mode="cell">
+    <!-- ================================================================ -->
+    <!-- Levels get @class value of category and title casing             -->
+    <!-- ================================================================ -->
+    <td class="category">
+      <xsl:value-of select="djb:initialCap(.)"/>
+    </td>
+  </xsl:template>
+  <xsl:template match="fn:group" mode="cell">
+    <td>
+      <xsl:value-of select="."/>
     </td>
   </xsl:template>
 </xsl:stylesheet>
