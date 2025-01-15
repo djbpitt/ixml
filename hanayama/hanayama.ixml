@@ -7,7 +7,8 @@ puzzle: name, space, parenthesized, (space, note)?, newline.
 
 {Components}
 name: text. {Name of puzzle}
--parenthesized: openParen, puzzleData, closeParen.
+{Remove whitespace before closing parenthesis; creates ambiguity}
+-parenthesized: openParen, puzzleData, -" "*, closeParen.
 puzzleData: text.
 note: text.
 
