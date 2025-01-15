@@ -10,7 +10,7 @@
       <p:document href="hanayama.ixml" content-type="text/plain"/>
     </p:with-input>
   </p:invisible-xml>
-  <p:validate-with-relax-ng assert-valid="{true()}">
+  <p:validate-with-relax-ng>
     <p:with-input port="schema">
       <p:document href="hanayama.rnc" content-type="text/plain"/>
     </p:with-input>
