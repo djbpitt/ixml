@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hanayama>
+<hanayama ixml:state="ambiguous"
+          xmlns:ixml="http://invisiblexml.org/NS">
    <section>
       <category>Level 1</category>
       <puzzles>
@@ -470,7 +471,7 @@
          </puzzle>
          <puzzle>
             <name>Triforce</name>
-            <puzzleData>level 5 based on Delta and News </puzzleData>
+            <puzzleData>level 5 based on Delta and News</puzzleData>
          </puzzle>
          <puzzle>
             <name>Master sword</name>

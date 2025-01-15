@@ -15,6 +15,9 @@
       <p:document href="hanayama.rnc" content-type="text/plain"/>
     </p:with-input>
   </p:validate-with-relax-ng>
+  <p:validate-with-schematron>
+    <p:with-input port="schema" href="hanayama.sch"/>
+  </p:validate-with-schematron>
   <p:store href="hanayama.xml" serialization="map{'indent': true()}"/>
   <p:xslt>
     <p:with-input port="stylesheet" href="hanayama.xsl"/>
