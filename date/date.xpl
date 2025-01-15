@@ -9,4 +9,7 @@
         </p:with-input>
         <!--<p:with-input port="grammar" href="date.ixml"/>-->
     </p:invisible-xml>
+    <p:validate-with-schematron>
+        <p:with-input port="schema" href="date.sch"/>
+    </p:validate-with-schematron>
 </p:declare-step>
