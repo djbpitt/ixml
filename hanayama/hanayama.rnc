@@ -1,5 +1,7 @@
+namespace ixml="http://invisiblexml.org/NS"
 start = hanayama
-hanayama = element hanayama { section+ }
+hanayama = element hanayama { ixml-state?, section+ }
+ixml-state = attribute ixml:state {text}
 section = element section { category, puzzles }
 category = element category { text }
 puzzles = element puzzles { puzzle+ }
