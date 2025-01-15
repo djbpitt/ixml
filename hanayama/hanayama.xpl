@@ -10,6 +10,11 @@
       <p:document href="hanayama.ixml" content-type="text/plain"/>
     </p:with-input>
   </p:invisible-xml>
+  <p:validate-with-relax-ng assert-valid="{true()}">
+    <p:with-input port="schema">
+      <p:document href="hanayama.rnc" content-type="text/plain"/>
+    </p:with-input>
+  </p:validate-with-relax-ng>
   <p:store href="hanayama.xml" serialization="map{'indent': true()}"/>
   <p:xslt>
     <p:with-input port="stylesheet" href="hanayama.xsl"/>
