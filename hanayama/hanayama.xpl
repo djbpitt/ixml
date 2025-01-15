@@ -10,6 +10,7 @@
       <p:document href="hanayama.ixml" content-type="text/plain"/>
     </p:with-input>
   </p:invisible-xml>
+  <p:store href="hanayama.xml" serialization="map{'indent': true()}"/>
   <p:xslt>
     <p:with-input port="stylesheet" href="hanayama.xsl"/>
   </p:xslt>

@@ -1,0 +1,9 @@
+start = hanayama
+hanayama = element hanayama { section+ }
+section = element section { category, puzzles }
+category = element category { text }
+puzzles = element puzzles { puzzle+ }
+puzzle = element puzzle { name, puzzleData, note? }
+name = element name { text }
+puzzleData = element puzzleData { text }
+note = element note { text }

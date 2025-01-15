@@ -1,45 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <hanayama>
    <section>
       <category>Level 1</category>
       <puzzles>
          <puzzle>
-            <name>ABC</name> 
+            <name>ABC</name>
             <puzzleData>Nobuyuki Yoshigahara 1983</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Bike</name> 
-            <puzzleData>John R. Lynn 1994</puzzleData> 
+            <name>Bike</name>
+            <puzzleData>John R. Lynn 1994</puzzleData>
             <note>first patent in 1898</note>
          </puzzle>
          <puzzle>
-            <name>Diamond/Crux in gold</name> 
+            <name>Diamond/Crux in gold</name>
             <puzzleData>Scott Elliott 2016</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Flag</name> 
+            <name>Flag</name>
             <puzzleData>Nobuyuki Yoshigahara 1994</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Key</name> 
-            <puzzleData>Nobuyuki Yoshigahara 1983</puzzleData> 
+            <name>Key</name>
+            <puzzleData>Nobuyuki Yoshigahara 1983</puzzleData>
             <note>improved with Key II</note>
          </puzzle>
          <puzzle>
-            <name>Loop/Pisces in gold</name> 
+            <name>Loop/Pisces in gold</name>
             <puzzleData>Vesa Timonen 2007</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Love</name> 
+            <name>Love</name>
             <puzzleData>Scott Elliott 2020</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Seabream/Trout/Tai</name> 
-            <puzzleData>Akio Yamamoto 1999</puzzleData> 
+            <name>Seabream/Trout/Tai</name>
+            <puzzleData>Akio Yamamoto 1999</puzzleData>
             <note>part of the marine serie</note>
          </puzzle>
          <puzzle>
-            <name>Shark/Fin</name> 
-            <puzzleData>Akio Yamamoto 1999</puzzleData> 
+            <name>Shark/Fin</name>
+            <puzzleData>Akio Yamamoto 1999</puzzleData>
             <note>part of the marine serie</note>
          </puzzle>
       </puzzles>
@@ -48,66 +49,66 @@
       <category>Level 2</category>
       <puzzles>
          <puzzle>
-            <name>A&amp;A</name> 
+            <name>A&amp;A</name>
             <puzzleData>Vesa Timonen 2023</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Box</name> 
+            <name>Box</name>
             <puzzleData>Akira Yuta 2012</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Claw/Crab</name> 
-            <puzzleData>Akio Yamamoto 1998</puzzleData> 
+            <name>Claw/Crab</name>
+            <puzzleData>Akio Yamamoto 1998</puzzleData>
             <note>part of the marine serie</note>
          </puzzle>
          <puzzle>
-            <name>Cricket</name> 
+            <name>Cricket</name>
             <puzzleData>James Dalgety from his collection 2002</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Disk</name> 
+            <name>Disk</name>
             <puzzleData>Oskar van Deventer 2001</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Dot</name> 
+            <name>Dot</name>
             <puzzleData>Akio Yamamoto 2017</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Harmony/Virgo in black</name> 
+            <name>Harmony/Virgo in black</name>
             <puzzleData>Dmitry Revnitskiy/Kirill Grebnev 2012</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Hook</name> 
+            <name>Hook</name>
             <puzzleData>Vesa Timonen 2009</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Horse</name> 
+            <name>Horse</name>
             <puzzleData>Nobuyuki Yoshigahara 1984</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Key II</name> 
-            <puzzleData>Tomoya Otake / Kyoo Wong 2006</puzzleData> 
+            <name>Key II</name>
+            <puzzleData>Tomoya Otake / Kyoo Wong 2006</puzzleData>
             <note>improvement of Key</note>
          </puzzle>
          <puzzle>
-            <name>Keyring</name> 
+            <name>Keyring</name>
             <puzzleData>Oskar van Deventer 2001</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Medal</name> 
+            <name>Medal</name>
             <puzzleData>James Dalgety 2009</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Plate</name> 
+            <name>Plate</name>
             <puzzleData>Jerry Slocum 2005</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Snow</name> 
+            <name>Snow</name>
             <puzzleData>Kyoo Wong 2020</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Starfish/Penta</name> 
-            <puzzleData>Akio Yamamoto 1999</puzzleData> 
+            <name>Starfish/Penta</name>
+            <puzzleData>Akio Yamamoto 1999</puzzleData>
             <note>part of the marine serie</note>
          </puzzle>
       </puzzles>
@@ -116,78 +117,78 @@
       <category>Level 3</category>
       <puzzles>
          <puzzle>
-            <name>Arrows</name> 
+            <name>Arrows</name>
             <puzzleData>Andrei Ivanov 2018</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Cage</name> 
+            <name>Cage</name>
             <puzzleData>Nobuyuki Yoshigahara 1997</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Cross</name> 
+            <name>Cross</name>
             <puzzleData>Edi Nagata 2022</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Delta</name> 
+            <name>Delta</name>
             <puzzleData>Kyoo Wong 2013</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Dice</name> 
+            <name>Dice</name>
             <puzzleData>Timothy Collins 2021</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Dolce</name> 
+            <name>Dolce</name>
             <puzzleData>Akio Yamamoto 2001</puzzleData>
          </puzzle>
          <puzzle>
-            <name>G&amp;G</name> 
+            <name>G&amp;G</name>
             <puzzleData>Jin-Hoo Ahn 2013</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Galaxy</name> 
+            <name>Galaxy</name>
             <puzzleData>Bram Cohen 2014</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Hashtag/Shift/Centaurus in black/Capricorn in gold</name> 
+            <name>Hashtag/Shift/Centaurus in black/Capricorn in gold</name>
             <puzzleData>Yoshiyuki Kotani/Kirill Grebnev 2017</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Hex</name> 
+            <name>Hex</name>
             <puzzleData>Masui Ohno 2023</puzzleData>
          </puzzle>
          <puzzle>
-            <name>O'Gear</name> 
+            <name>O'Gear</name>
             <puzzleData>Oskar van Deventer 2002</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Reef/Coral</name> 
-            <puzzleData>Akio Yamamoto 1999 or 2000</puzzleData> 
+            <name>Reef/Coral</name>
+            <puzzleData>Akio Yamamoto 1999 or 2000</puzzleData>
             <note>part of the marine serie</note>
          </puzzle>
          <puzzle>
-            <name>S&amp;S</name> 
+            <name>S&amp;S</name>
             <puzzleData>Nobuyuki Yoshigahara 1984</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Seahorse/Tails</name> 
-            <puzzleData>Akio Yamamoto 1999 or 2000</puzzleData> 
+            <name>Seahorse/Tails</name>
+            <puzzleData>Akio Yamamoto 1999 or 2000</puzzleData>
             <note>part of the marine serie</note>
          </puzzle>
          <puzzle>
-            <name>Slider</name> 
+            <name>Slider</name>
             <puzzleData>Vesa Timonen 2019</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Star</name> 
+            <name>Star</name>
             <puzzleData>Nobuyuki Yoshigahara 1983</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Violin</name> 
-            <puzzleData>Joseph L. Little 2003</puzzleData> 
+            <name>Violin</name>
+            <puzzleData>Joseph L. Little 2003</puzzleData>
             <note>first patent in 1965</note>
          </puzzle>
          <puzzle>
-            <name>W-U</name> 
+            <name>W-U</name>
             <puzzleData>Nobuyuki Yoshigahara 1995</puzzleData>
          </puzzle>
       </puzzles>
@@ -196,79 +197,79 @@
       <category>Level 4</category>
       <puzzles>
          <puzzle>
-            <name>Baroq</name> 
+            <name>Baroq</name>
             <puzzleData>Akio Yamamoto 2003</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Cake</name> 
+            <name>Cake</name>
             <puzzleData>Bram Cohen 2016</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Coaster</name> 
+            <name>Coaster</name>
             <puzzleData>Serhiy Grabarchuk 2006</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Coil</name> 
+            <name>Coil</name>
             <puzzleData>Edi Nagata 2011</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Cuby</name> 
+            <name>Cuby</name>
             <puzzleData>Oskar van Deventer NA</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Cylinder/Taurus in gold</name> 
+            <name>Cylinder/Taurus in gold</name>
             <puzzleData>Vesa Timonen 2013</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Dial</name> 
+            <name>Dial</name>
             <puzzleData>Vesa Timonen 2016</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Donuts/Andromeda in gold</name> 
+            <name>Donuts/Andromeda in gold</name>
             <puzzleData>Vesa Timonen 2011</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Heart</name> 
+            <name>Heart</name>
             <puzzleData>NA 2001</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Hexagon</name> 
+            <name>Hexagon</name>
             <puzzleData>Mine Uyematsu 2015</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Keyhole</name> 
+            <name>Keyhole</name>
             <puzzleData>Vesa Timonen 2014</puzzleData>
          </puzzle>
          <puzzle>
-            <name>L'œuf</name> 
+            <name>L'œuf</name>
             <puzzleData>Oskar van Deventer 2004</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Möbius</name> 
+            <name>Möbius</name>
             <puzzleData>Oskar van Deventer 2015</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Planet</name> 
+            <name>Planet</name>
             <puzzleData>Masumi Ohno 2022</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Ring</name> 
+            <name>Ring</name>
             <puzzleData>Nobuyuki Yoshigahara 2000</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Twist</name> 
+            <name>Twist</name>
             <puzzleData>Oskar van Deventer 2013</puzzleData>
          </puzzle>
          <puzzle>
-            <name>U&amp;U</name> 
+            <name>U&amp;U</name>
             <puzzleData>Kyoo Wong 2014</puzzleData>
          </puzzle>
          <puzzle>
-            <name>UFO</name> 
+            <name>UFO</name>
             <puzzleData>Vesa Timonen 2019</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Valve</name> 
+            <name>Valve</name>
             <puzzleData>Vesa Timonen 2021</puzzleData>
          </puzzle>
       </puzzles>
@@ -277,80 +278,80 @@
       <category>Level 5</category>
       <puzzles>
          <puzzle>
-            <name>Amour</name> 
+            <name>Amour</name>
             <puzzleData>Akio Yamamoto 1991</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Cyclone</name> 
+            <name>Cyclone</name>
             <puzzleData>Kyoo Wong 2020</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Devil</name> 
+            <name>Devil</name>
             <puzzleData>Nobuyuki Yoshigahara 1994</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Duet</name> 
+            <name>Duet</name>
             <puzzleData>Oskar van Deventer 2005</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Elk</name> 
+            <name>Elk</name>
             <puzzleData>Nobuyuki Yoshigahara 1986</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Equa</name> 
+            <name>Equa</name>
             <puzzleData>Oskar van Deventer 2008</puzzleData>
          </puzzle>
          <puzzle>
-            <name>H&amp;H</name> 
+            <name>H&amp;H</name>
             <puzzleData>Oskar van Deventer 2010</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Helix</name> 
-            <puzzleData>NA 2009</puzzleData> 
+            <name>Helix</name>
+            <puzzleData>NA 2009</puzzleData>
             <note>created in 1990</note>
          </puzzle>
          <puzzle>
-            <name>Laby</name> 
+            <name>Laby</name>
             <puzzleData>Nobuyuki Yoshigahara 1997</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Marble/Leo in gold</name> 
+            <name>Marble/Leo in gold</name>
             <puzzleData>Bram Cohen/Oskar van Deventer 2009</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Medallion</name> 
+            <name>Medallion</name>
             <puzzleData>Oskar van Deventer 2011</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Padlock/Cancer in gold</name> 
+            <name>Padlock/Cancer in gold</name>
             <puzzleData>Jin-Hoo Ahn 2016</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Radix</name> 
+            <name>Radix</name>
             <puzzleData>Akio Yamamoto 2005</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Rattle</name> 
+            <name>Rattle</name>
             <puzzleData>Bram Cohen 2010</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Ring II</name> 
+            <name>Ring II</name>
             <puzzleData>Jose Grant 2004</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Ripple/Delphinus with black</name> 
+            <name>Ripple/Delphinus with black</name>
             <puzzleData>Kyoo Wong 2024</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Spiral</name> 
+            <name>Spiral</name>
             <puzzleData>Kennet Walker 2003</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Square</name> 
+            <name>Square</name>
             <puzzleData>Vesa Timonen 2010</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Tube</name> 
+            <name>Tube</name>
             <puzzleData>Vesa Timonen 2022</puzzleData>
          </puzzle>
       </puzzles>
@@ -359,49 +360,49 @@
       <category>Level 6</category>
       <puzzles>
          <puzzle>
-            <name>Chain</name> 
+            <name>Chain</name>
             <puzzleData>Oskar van Deventer 2002</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Enigma</name> 
-            <puzzleData>Eldon Vaughn 2004</puzzleData> 
+            <name>Enigma</name>
+            <puzzleData>Eldon Vaughn 2004</puzzleData>
             <note>first patent in 1975</note>
          </puzzle>
          <puzzle>
-            <name>Hourglass</name> 
+            <name>Hourglass</name>
             <puzzleData>Jin-Hoo Ahn 2018</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Infinity/Hercules in black/Scorpius in gold</name> 
+            <name>Infinity/Hercules in black/Scorpius in gold</name>
             <puzzleData>Vesa Timonen 2016</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Key III/Phoenix in gold</name> 
-            <puzzleData>Oskar van Deventer 2024</puzzleData> 
+            <name>Key III/Phoenix in gold</name>
+            <puzzleData>Oskar van Deventer 2024</puzzleData>
             <note>improvement of Oskar</note>
          </puzzle>
          <puzzle>
-            <name>News</name> 
+            <name>News</name>
             <puzzleData>Nobuyuki Yoshigahara 2003</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Nutcase</name> 
+            <name>Nutcase</name>
             <puzzleData>Oskar van Deventer 2007</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Quartet/Pyxis in gold</name> 
+            <name>Quartet/Pyxis in gold</name>
             <puzzleData>Mine Uyematsu 2007</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Rotor</name> 
+            <name>Rotor</name>
             <puzzleData>Kyoo Wong 2019</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Trinity</name> 
+            <name>Trinity</name>
             <puzzleData>Kyoo Wong 2017</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Vortex/Orion in black/Sagittarius in gold</name> 
+            <name>Vortex/Orion in black/Sagittarius in gold</name>
             <puzzleData>Akio Yamamoto 2008</puzzleData>
          </puzzle>
       </puzzles>
@@ -410,27 +411,27 @@
       <category>Chess pieces serie in chrome color, also exist in black or altogether in a gold set</category>
       <puzzles>
          <puzzle>
-            <name>Pawn</name> 
+            <name>Pawn</name>
             <puzzleData>level 1 Marcel Gillen</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Rook</name> 
+            <name>Rook</name>
             <puzzleData>level 1 Marcel Gillen</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Knight</name> 
+            <name>Knight</name>
             <puzzleData>level 2 Marcel Gillen</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Bishop</name> 
+            <name>Bishop</name>
             <puzzleData>level 2 Marcel Gillen</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Queen</name> 
+            <name>Queen</name>
             <puzzleData>level 3 Marcel Gillen</puzzleData>
          </puzzle>
          <puzzle>
-            <name>King</name> 
+            <name>King</name>
             <puzzleData>level 3 Marcel Gillen</puzzleData>
          </puzzle>
       </puzzles>
@@ -439,23 +440,23 @@
       <category>Ultraman serie</category>
       <puzzles>
          <puzzle>
-            <name>SSSP emblem shooting star</name> 
+            <name>SSSP emblem shooting star</name>
             <puzzleData>level 1 based on Diamond</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Beta capsule</name> 
+            <name>Beta capsule</name>
             <puzzleData>level 3 based on Cage</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Ultra eye</name> 
+            <name>Ultra eye</name>
             <puzzleData>level 4 based on News</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Ultra guard emblem</name> 
+            <name>Ultra guard emblem</name>
             <puzzleData>level 4 based on Cylinder</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Marble</name> 
+            <name>Marble</name>
             <puzzleData>level 5 based on Marble</puzzleData>
          </puzzle>
       </puzzles>
@@ -464,15 +465,15 @@
       <category>The Legend of Zelda serie</category>
       <puzzles>
          <puzzle>
-            <name>Hyrule crest</name> 
+            <name>Hyrule crest</name>
             <puzzleData>level 4 based on Heart</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Triforce</name> 
+            <name>Triforce</name>
             <puzzleData>level 5 based on Delta and News </puzzleData>
          </puzzle>
          <puzzle>
-            <name>Master sword</name> 
+            <name>Master sword</name>
             <puzzleData>level 6 based on Valve</puzzleData>
          </puzzle>
       </puzzles>
@@ -481,19 +482,19 @@
       <category>Disney serie, colors vary according to the reedition</category>
       <puzzles>
          <puzzle>
-            <name>Mickey Mouse ring</name> 
+            <name>Mickey Mouse ring</name>
             <puzzleData>level 1 based on Loop</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Mickey &amp; Minnie key</name> 
+            <name>Mickey &amp; Minnie key</name>
             <puzzleData>level 2 based on Key</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Winnie the Pooh escape</name> 
+            <name>Winnie the Pooh escape</name>
             <puzzleData>level 2 based on Horse</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Alice in Wonderland labyrinth</name> 
+            <name>Alice in Wonderland labyrinth</name>
             <puzzleData>level 4 based on Laby</puzzleData>
          </puzzle>
       </puzzles>
@@ -502,20 +503,20 @@
       <category>Other</category>
       <puzzles>
          <puzzle>
-            <name>Nut</name> 
+            <name>Nut</name>
             <puzzleData>1987 a 3R type nut and bolt puzzle, other manufacturer made it since then</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Lucky Puzzle</name> 
+            <name>Lucky Puzzle</name>
             <puzzleData>a seven metal pieces tangram</puzzleData>
          </puzzle>
          <puzzle>
-            <name>Oskar</name> 
-            <puzzleData>Oskar van Deventer 1987</puzzleData> 
+            <name>Oskar</name>
+            <puzzleData>Oskar van Deventer 1987</puzzleData>
             <note>reedited and improved with Key III</note>
          </puzzle>
          <puzzle>
-            <name>Chris Ramsay X Hanayama</name> 
+            <name>Chris Ramsay X Hanayama</name>
             <puzzleData>2019 level 2, a mix of ABC and Laby</puzzleData>
          </puzzle>
       </puzzles>
