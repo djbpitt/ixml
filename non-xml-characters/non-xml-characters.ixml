@@ -1,0 +1,8 @@
+doc : leading-space*, line+, last-line.
+-line: leading-space*, char+, newline.
+-last-line: char+.
+-char : [L]; [P]; space; illegal-0001. 
+-illegal-0001 : -#0001, +"\u0001".
+-leading-space: -" ".
+-space: " "+, +" ".
+-newline: -#a, +" ".
