@@ -1,8 +1,10 @@
-doc : leading-space*, line+, last-line.
--line: leading-space*, char+, newline.
--last-line: char+.
--char : [L]; [P]; space; illegal-0001. 
+doc : line+, last-line. {Last line has no newline}
+-line: leading-space?, (word, space)+, word, newline.
+-last-line: leading-space?, (word, space)*, word. {might end in single word}
+-word: char+.
+-char : [L]; [P]; illegal-0001. 
 -illegal-0001 : -#0001, +"\u0001".
--leading-space: -" ".
+-leading-space: -" "+.
 -space: " "+, +" ".
 -newline: -#a, +" ".
+{Parsing string as word + space removes ambiguities}
