@@ -1,0 +1,25 @@
+{Structure}
+hanayama: section+. 
+section: category, puzzles.
+category: text, newline.
+puzzles: puzzle++newline, newline. 
+puzzle: name, space, parenthesized, (space, note)?.
+
+{Components}
+name: text. {Name of puzzle}
+{Remove whitespace before closing parenthesis; creates ambiguity}
+-parenthesized: openParen, puzzleData, -" "*, closeParen.
+puzzleData: text.
+note: text.
+
+{Compound building blocks}
+-textunit: ([L];digit; punct)+.
+-text: textunit++space.
+
+{Characters and character classes}
+-digit: ["0"-"9"].
+-punct: [".,/&-'"]. {must exclude parentheses}
+-space: " ".
+-newline: (-#d?, -#a)+.
+-openParen: -"(".
+-closeParen: -")".
