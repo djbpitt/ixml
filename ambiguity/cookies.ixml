@@ -1,0 +1,11 @@
+letter: salutation, body, valediction, signature.
+salutation: ([L];[P]; space)+, newline+.
+body: p+.
+p: ([L]; [P]; space; [N])+, newline+.
+{The following is ambiguous}
+{valediction: ([L]; [P]; space)+, newline*.}
+{The following is correct}
+valediction: ([L]; [P]; space)+, newline+.
+signature: ([L]; [P]; space)+, newline+.
+-newline: -#a.
+-space: " ".
