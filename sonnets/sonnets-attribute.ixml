@@ -1,0 +1,8 @@
+sonnets: sonnet+.
+sonnet: @number, newline, lines, newline+.
+lines: line++newline.
+line: text.
+number: ["IVXLC"]+.
+-text: ([L]; [P]; space)+.
+-newline: -#a.
+-space: " ".
