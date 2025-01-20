@@ -1,0 +1,19 @@
+blithedale: header, body, footer.
+
+{header consists of text lines through first splat line}
+header: text-line+, splat-line+.
+
+{body has no splat lines}
+body: text-line+.
+
+{footer begins with splat line and continues with text and splat lines}
+footer: splat-line, (text-line; splat-line)+.
+
+{splat-lines begin with asterisks; text-lines have no asterisks}
+-text-line: ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"])+, newlines.
+-splat-line: "*", ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"];"*")+, newlines.
+-body-end-line: "End of Project Gutenberg's", ~[#a]+, newlines.
+
+{inkless characters}
+-newlines: (#d?, #a)+.
+-space: " ".
