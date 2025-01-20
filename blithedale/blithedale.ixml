@@ -4,7 +4,14 @@ blithedale: header, body, footer.
 header: text-line+, splat-line+.
 
 {body has no splat lines}
-body: text-line+.
+body: front, chapter+.
+
+front: text-line+.
+chapter: chapter-header, chapter-body.
+chapter-header: roman, ".", space+, chapter-label.
+roman: ["IVX"]+.
+chapter-label: ~[#a;#d]+, newlines.
+chapter-body: text-line+.
 
 {footer begins with splat line and continues with text and splat lines}
 footer: splat-line, (text-line; splat-line)+.
