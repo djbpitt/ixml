@@ -12,7 +12,6 @@ footer: splat-line, (text-line; splat-line)+.
 {splat-lines begin with asterisks; text-lines have no asterisks}
 -text-line: ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"])+, newlines.
 -splat-line: "*", ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"];"*")+, newlines.
--body-end-line: "End of Project Gutenberg's", ~[#a]+, newlines.
 
 {inkless characters}
 -newlines: (#d?, #a)+.
