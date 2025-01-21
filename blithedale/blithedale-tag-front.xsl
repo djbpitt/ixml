@@ -32,6 +32,9 @@
         </xsl:copy>
     </xsl:template>
     <xsl:template match="chapter-label">
+        <!-- ============================================================ -->
+        <!-- Title case in-body title here since we have the function     -->
+        <!-- ============================================================ -->
         <xsl:copy>
             <xsl:value-of select="djb:title-case(.)"/>
         </xsl:copy>
