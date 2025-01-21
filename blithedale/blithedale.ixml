@@ -8,21 +8,23 @@ body: front, chapter+.
 
 front: text-line+.
 chapter: chapter-header, chapter-body.
-chapter-header: roman, ".", space+, chapter-label.
+chapter-header: roman, (-".", space+), chapter-label.
 roman: ["IVX"]+.
 chapter-label: ~[#a;#d]+, newlines.
+
 chapter-body: text-line+.
-paragraph: (no-lf-text-line)+, newline.
+paragraphs: paragraph++blank-lines.
+paragraph: no-lf-text-line++newline.
 
 {footer begins with splat line and continues with text and splat lines}
 footer: splat-line, (text-line; splat-line)+.
 
 {splat-lines begin with asterisks; text-lines have no asterisks}
--no-lf-text-line: ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"])+, newline.
 -text-line: ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"])+, newlines.
 -splat-line: "*", ([L];["0"-"9"];space;[".,""':;-[]#?()!/%@$"];"*")+, newlines.
 
 {inkless characters}
 -newline: (#d?, #a).
+-blank-line: (#d?, #a), (#d?, #a). {Two newlines}
 -newlines: (#d?, #a)+.
 -space: " ".
