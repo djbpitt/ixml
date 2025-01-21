@@ -3,6 +3,9 @@
     xmlns:c="http://www.w3.org/ns/xproc-step" version="3.0">
     <p:input port="source" primary="true" content-types="text/plain" href="blithedale.txt"/>
     <p:output port="result" primary="true" sequence="false" serialization="map {'indent': true()}"/>
+    <p:if test="starts-with(., '&#xfeff;')">
+        <p:text-replace pattern="&#xfeff;" replacement=""/>
+    </p:if>
     <p:invisible-xml>
         <p:with-input port="grammar">
             <p:document href="blithedale.ixml" content-type="text/plain"/>
