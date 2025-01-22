@@ -65,10 +65,15 @@
     </p:validate-with-schematron>
     <!-- ================================================================ -->
     <!-- Tag title, author, and table of contents                         -->
-    <!-- Add @id values to chapter titles in body and toc for linking     -->
     <!-- ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-front.xsl"/>
+    </p:xslt>
+    <!-- ================================================================ -->
+    <!-- Add @id values to chapter titles in body and toc for linking     -->
+    <!-- ================================================================ -->
+    <p:xslt>
+        <p:with-input port="stylesheet" href="blithedale-add-section-ids.xsl"/>
     </p:xslt>
     <p:identity/>
     <!--    <p:validate-with-relax-ng>

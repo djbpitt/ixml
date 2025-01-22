@@ -47,9 +47,7 @@
             .[
             starts-with(., 'Produced by') or
             starts-with(., 'Table of') or
-            . eq 'by']">
-        <xsl:message select="'Deleting: ', ."/>
-    </xsl:template>
+            . eq 'by']"/>
     <!-- ================================================================ -->
     <!-- Tag author and title                                             -->
     <!-- ================================================================ -->
@@ -63,11 +61,11 @@
             <xsl:value-of select="."/>
         </author>
     </xsl:template>
+    <!-- ================================================================ -->
+    <!-- What’s left is the toc                                           -->
+    <!-- NB: Low priority                                                 -->
+    <!-- ================================================================ -->
     <xsl:template match=".[string-length(normalize-space(.)) gt 0]" priority="-1" mode="atomic">
-        <!-- ============================================================ -->
-        <!-- What’s left is the toc                                       -->
-        <!-- NB: Low priority                                             -->
-        <!-- ============================================================ -->
         <contents>
             <xsl:for-each select="tokenize(., '\n') ! normalize-space(.)">
                 <chapter>
