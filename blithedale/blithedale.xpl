@@ -71,10 +71,20 @@
     </p:xslt>
     <!-- ================================================================ -->
     <!-- Add @id values to chapter titles in body and toc for linking     -->
+    <!--                                                                  -->
+    <!-- Use either the xslt step or the add-attribute one (not both)     -->
     <!-- ================================================================ -->
-    <p:xslt>
+    <!--<p:xslt>
         <p:with-input port="stylesheet" href="blithedale-add-section-ids.xsl"/>
-    </p:xslt>
+    </p:xslt>-->
+    <p:viewport match="contents/chapter">
+        <p:add-attribute attribute-name="id"
+            attribute-value="{concat('toc-', p:iteration-position())}"/>
+    </p:viewport>
+    <p:viewport match="body/chapter">
+        <p:add-attribute attribute-name="id"
+            attribute-value="{concat('body-', p:iteration-position())}"/>
+    </p:viewport>
     <p:identity/>
     <!--    <p:validate-with-relax-ng>
         <p:with-input port="schema">
