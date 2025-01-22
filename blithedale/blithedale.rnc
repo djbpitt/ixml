@@ -1,0 +1,21 @@
+start = blithedale
+blithedale = element blithedale { front, chapters }
+front = element front { title, author, contents }
+title = element title { text }
+author = element author { text }
+# toc
+contents = element contents { toc-chapter+ }
+toc-chapter = element chapter { roman, chapter-label }
+chapter-label = element chapter-label { text }
+# body
+chapters = element chapters { body-chapter+ }
+body-chapter = element chapter { id, chapter-header, chapter-body }
+id = attribute id { xsd:ID }
+chapter-header = element chapter-header { roman, chapter-label }
+roman = element roman { text }
+chapter-body = element chapter-body { p+ }
+p =
+  element p {
+    mixed { q* }
+  }
+q = element q { text }

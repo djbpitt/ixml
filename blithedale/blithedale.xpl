@@ -3,7 +3,8 @@
     xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:ex="extensions" version="3.0">
     <p:input port="source" primary="true" content-types="text/plain" href="blithedale-with-bom.txt"/>
-    <p:output port="result" primary="true" sequence="true" serialization="map{'indent':'true'}"/>
+    <p:output port="result" primary="true" sequence="true" />
+    <!-- serialization="map{'indent':'true'}" -->
     <!-- ================================================================ -->
     <!-- Apply specified XPath expression to source and return plain text -->
     <!--                                                                  -->
@@ -85,15 +86,18 @@
         <p:add-attribute attribute-name="id"
             attribute-value="{concat('body-', p:iteration-position())}"/>
     </p:viewport>
-    <p:identity/>
+    <!-- ================================================================ -->
+    <!-- Clean up high-level markup                                       -->
+    <!-- ================================================================ -->
+    <p:xslt>
+        <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
+    </p:xslt>
+    
     <!--    <p:validate-with-relax-ng>
         <p:with-input port="schema">
             <p:document href="hanayama.rnc" content-type="text/plain"/>
         </p:with-input>
     </p:validate-with-relax-ng>-->
-    <!--    <p:validate-with-schematron>
-        <p:with-input port="schema" href="hanayama.sch"/>
-    </p:validate-with-schematron>-->
     <!--    <p:store href="hanayama.xml" serialization="map{'indent': true()}"/>-->
     <!--    <p:xslt>
         <p:with-input port="stylesheet" href="hanayama.xsl"/>

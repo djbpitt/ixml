@@ -71,9 +71,9 @@
                 <chapter>
                     <xsl:analyze-string select="." regex="{$chapter-title-regex}">
                         <xsl:matching-substring>
-                            <number>
+                            <roman>
                                 <xsl:value-of select="regex-group(1)"/>
-                            </number>
+                            </roman>
                             <chapter-label>
                                 <xsl:value-of select="regex-group(2) => djb:title-case()"/>
                             </chapter-label>
