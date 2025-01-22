@@ -1,0 +1,3 @@
+doc: line++newline, newline?. 
+line: ~[#d;#a]+. 
+-newline: -#d?, #a.
