@@ -5,7 +5,7 @@ title = element title { text }
 author = element author { text }
 # toc
 contents = element contents { toc-chapter+ }
-toc-chapter = element chapter { roman, chapter-label }
+toc-chapter = element chapter { id, roman, chapter-label }
 chapter-label = element chapter-label { text }
 # body
 chapters = element chapters { body-chapter+ }
