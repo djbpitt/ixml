@@ -5,14 +5,14 @@
     <p:input port="source" primary="true" content-types="text/plain" href="blithedale-with-bom.txt"/>
     <p:output port="result" primary="true" sequence="true"/>
     <!-- serialization="map{'indent':'true'}" -->
-    <!-- ================================================================ -->
-    <!-- Apply specified XPath expression to source and return plain text -->
-    <!--                                                                  -->
-    <!-- Must convert explicitly to plain text because returns as         -->
-    <!-- application/json otherwise                                       -->
-    <!-- See https://github.com/xproc/3.0-specification/issues/1134       -->
-    <!-- Apply specified XPath expression to source and return plain text -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Apply specified XPath expression to source and return plain text
+                                                                         
+         Must convert explicitly to plain text because returns as        
+         application/json otherwise                                      
+         See https://github.com/xproc/3.0-specification/issues/1134      
+         Apply specified XPath expression to source and return plain text
+         ================================================================ -->
     <p:declare-step type="ex:xpath">
         <p:input port="source" sequence="true"/>
         <p:output port="result"/>
@@ -28,53 +28,53 @@
             </p:with-input>
         </p:identity>
     </p:declare-step>
-    <!-- ================================================================ -->
-    <!-- Remove Unicode BOM if present                                    -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Remove Unicode BOM if present
+         ================================================================ -->
     <p:if test="starts-with(., '&#xfeff;')" name="bom-removal">
         <ex:xpath expr="substring(., 2)"/>
     </p:if>
-    <!-- ================================================================ -->
-    <!-- Add high-level structural markup                                 -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Add high-level structural markup
+         ================================================================ -->
     <p:invisible-xml>
         <p:with-input port="grammar">
             <p:document href="blithedale.ixml" content-type="text/plain"/>
         </p:with-input>
     </p:invisible-xml>
-    <!-- ================================================================ -->
-    <!-- Remove header and footer, which are Gutenberg metadata           -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Remove header and footer, which are Gutenberg metadata
+         ================================================================ -->
     <p:delete match="//header|//footer"/>
-    <!-- ================================================================ -->
-    <!-- Tag paragraphs, normalize space in chapter headings in body      -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Tag paragraphs, normalize space in chapter headings in body
+         ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-paragraphs.xsl"/>
     </p:xslt>
-    <!-- ================================================================ -->
-    <!-- Tag quotes and delete empty paragraphs                           -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Tag quotes and delete empty paragraphs
+         ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-quotes.xsl"/>
     </p:xslt>
-    <!-- ================================================================ -->
-    <!-- Verify that no quotation marks remain inside paragraphs          -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Verify that no quotation marks remain inside paragraphs
+         ================================================================ -->
     <p:validate-with-schematron>
         <p:with-input port="schema" href="blithedale-check-quotes.sch"/>
     </p:validate-with-schematron>
-    <!-- ================================================================ -->
-    <!-- Tag title, author, and table of contents                         -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Tag title, author, and table of contents
+         ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-front.xsl"/>
     </p:xslt>
-    <!-- ================================================================ -->
-    <!-- Add @id values to chapter titles in body and toc for linking     -->
-    <!--                                                                  -->
-    <!-- Use either the xslt step or the add-attribute one (not both)     -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Add @id values to chapter titles in body and toc for linking
+
+         Use either the xslt step or the add-attribute one (not both)
+         ================================================================ -->
     <!--<p:xslt>
         <p:with-input port="stylesheet" href="blithedale-add-section-ids.xsl"/>
     </p:xslt>-->
@@ -86,15 +86,15 @@
         <p:add-attribute attribute-name="id"
             attribute-value="{concat('body-', p:iteration-position())}"/>
     </p:viewport>
-    <!-- ================================================================ -->
-    <!-- Clean up high-level markup                                       -->
-    <!-- ================================================================ -->
+    <!-- ================================================================
+         Clean up high-level markup
+         ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
     </p:xslt>
-    <!-- ================================================================ -->
-    <!-- Verify that xml matches intended schame                          -->
-    <!-- ================================================================ -->
+    <!-- ================================================================\
+         Verify that xml matches intended schame
+         ================================================================ -->
     <p:validate-with-relax-ng>
         <p:with-input port="schema">
             <p:document href="blithedale.rnc" content-type="text/plain"/>
