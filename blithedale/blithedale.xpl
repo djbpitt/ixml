@@ -92,8 +92,8 @@
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
     </p:xslt>
-    <!-- ================================================================\
-         Verify that xml matches intended schame
+    <!-- ================================================================
+         Verify that xml matches intended schema
          ================================================================ -->
     <p:validate-with-relax-ng>
         <p:with-input port="schema">
@@ -101,7 +101,7 @@
         </p:with-input>
     </p:validate-with-relax-ng>
     <!-- TODO
-         Create and storeHTML output with TOC linking and CSS
+         Create and store HTML output with TOC linking and CSS
          Create CSS
          Create and store SVG output                                      -->
 </p:declare-step>
