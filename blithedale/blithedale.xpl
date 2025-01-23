@@ -100,9 +100,8 @@
             <p:document href="blithedale.rnc" content-type="text/plain"/>
         </p:with-input>
     </p:validate-with-relax-ng>
-    <!--    <p:store href="hanayama.xml" serialization="map{'indent': true()}"/>-->
-    <!--    <p:xslt>
-        <p:with-input port="stylesheet" href="hanayama.xsl"/>
-    </p:xslt>-->
-    <!--    <p:store href="hanayama.xhtml"/>-->
+    <!-- TODO
+         Create and storeHTML output with TOC linking and CSS
+         Create CSS
+         Create and store SVG output                                      -->
 </p:declare-step>
