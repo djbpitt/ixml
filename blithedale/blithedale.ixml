@@ -13,8 +13,6 @@ roman: ["IVX"]+.
 chapter-label: ~[#a;#d]+, newlines.
 
 chapter-body: text-line+.
-paragraphs: paragraph++blank-lines.
-paragraph: no-lf-text-line++newline.
 
 {footer begins with splat line and continues with text and splat lines}
 footer: splat-line, (text-line; splat-line)+.
@@ -25,6 +23,5 @@ footer: splat-line, (text-line; splat-line)+.
 
 {inkless characters}
 -newline: (#d?, #a).
--blank-line: (#d?, #a), (#d?, #a). {Two newlines}
 -newlines: (#d?, #a)+.
 -space: " ".
