@@ -1,0 +1,12 @@
+blithedale: header, newlines, body, newlines, footer, newlines.
+
+header: text-line++newlines, newlines, splat-line.
+body: text-line++newlines.
+footer: splat-line, newlines, (text-line;splat-line)++newlines.
+
+splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]:;,.-'""*"];space)+.
+text-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]:;,.-'"""];space)+.
+
+{inkless characters}
+-newlines: (#d?, #a)+.
+-space: " ".
