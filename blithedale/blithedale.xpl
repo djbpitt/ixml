@@ -2,37 +2,18 @@
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" exclude-inline-prefixes="#all"
     xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:ex="extensions" version="3.0">
-    <p:input port="source" primary="true" content-types="text/plain" href="blithedale-with-bom.txt"/>
+    <p:input port="source" primary="true" content-types="text/plain" href="blithedale-with-bom.txt" sequence="false"/>
     <p:output port="result" primary="true" sequence="true"/>
     <!-- serialization="map{'indent':'true'}" -->
-    <!-- ================================================================
-         Apply specified XPath expression to source and return plain text
-                                                                         
-         Must convert explicitly to plain text because returns as        
-         application/json otherwise                                      
-         See https://github.com/xproc/3.0-specification/issues/1134      
-         Apply specified XPath expression to source and return plain text
-         ================================================================ -->
-    <p:declare-step type="ex:xpath">
-        <p:input port="source" sequence="true"/>
-        <p:output port="result"/>
-        <p:option name="expr" required="true" as="xs:string"/>
-        <p:xquery>
-            <p:with-input port="query">
-                <p:inline content-type="text/plain">{$expr}</p:inline>
-            </p:with-input>
-        </p:xquery>
-        <p:identity>
-            <p:with-input>
-                <p:inline content-type="text/plain">{.}</p:inline>
-            </p:with-input>
-        </p:identity>
-    </p:declare-step>
     <!-- ================================================================
          Remove Unicode BOM if present
          ================================================================ -->
     <p:if test="starts-with(., '&#xfeff;')" name="bom-removal">
-        <ex:xpath expr="substring(., 2)"/>
+        <p:xquery>
+            <p:with-input port="query">
+                <p:inline content-type="text/plain">text{{substring(.,2)}}</p:inline>
+            </p:with-input>
+        </p:xquery>
     </p:if>
     <!-- ================================================================
          Add high-level structural markup
