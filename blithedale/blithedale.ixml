@@ -2,13 +2,19 @@ blithedale: header, front, toc, text, footer, newlines.
 
 header: text-line++newlines, newlines, splat-line, newlines.
 
-front: text-line++newlines, newlines.
-text: text-line++newlines, newlines.
+front: text-line++newlines, newlines. {title, author}
 toc: toc-line++(-#d?, #a), newlines.
+text: text-line++newlines, newlines. {main text}
 
 footer: splat-line, newlines, (footer-line;splat-line)++newlines.
 
-{splat-line starts with * and may contain others; text-line does not contain *}
+{
+    splat-line starts with * and may contain others; 
+    text-line starts with non-space and does not contain *
+    toc-line starts with spaces, then roman numeral, etc.
+    footer-line line text-line, except may begin with space
+    toc-title has no lower-case letters
+}
 -splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]:;,.-'""*"];space)+.
 -text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]:;,.-'"""];space)+.
 -text-line-initial: ["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]:;,.-'"""].
@@ -20,3 +26,11 @@ toc-title: (["A"-"Z"];["-',"];space)+.
 {inkless characters}
 -newlines: (-#d?, #a)+.
 -space: " ".
+
+{
+    To tag:
+        chapters
+        title lines of chapters
+        chapter bodies
+        paragraphs within chapter bodies
+}
