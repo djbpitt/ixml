@@ -1,0 +1,12 @@
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  light = true
+
+[merge]
+  conflictstyle = zdiff3
