@@ -5,17 +5,19 @@ paragraphs: paragraph++(newline, newline+). { two or more newlines between parag
 paragraph: text-line++(newline). { exactly one newline between lines }
 }
 
-header: -text-line++(newline+), newline+, -splat-line, newline+.
+header: text-line++(newline+), newline+, -splat-line, newline+.
 
 text: 
-    text-line++(newline+), newline+, 
-    toc-line++(newline), newline+, 
+    front, 
+    toc,
     text-line++(newline+), newline+.
 
-{front:  paragraphs, newline+. {title, author}
+{front:  paragraphs, newline+. {title, author}}
 
-toc: toc-line++(-#d?, #a), newline+.
+front: text-line++(newline+), newline+.
+toc: text-line, newline+, toc-line++(newline), newline+.
 
+{
 chapters: chapter+, end-line, newline+.
 chapter: chapter-title, chapter-body, newline+.
 chapter-title: roman, -". ", toc-title, newline+.
@@ -24,7 +26,7 @@ chapter-body: paragraph++(newline+).
 }
 
 
-footer: -splat-line, newline+, (-footer-line;-splat-line)++(newline+).
+footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
 
 {
     splat-line starts with * and may contain others; 
@@ -39,7 +41,7 @@ splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'""*"];space)+.
 text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
 -text-line-initial: ["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""].
 toc-line: -space+,roman, -".  ", toc-title.
--footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/@%$!?#[]():;,.-'"""];space)+.
+footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/@%$!?#[]():;,.-'"""];space)+.
 roman: ["IVX"]+.
 toc-title: (["A"-"Z"];["-',"];space)+.
 end-line-text: -"End of Project Gutenberg's The Blithedale Romance, by Nathaniel Hawthorne".
