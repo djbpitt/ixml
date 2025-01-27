@@ -10,7 +10,7 @@ text: chapter+, end-line, newline+.
 chapter: triple-newline, chapter-title, chapter-body, newline+.
 chapter-title: roman, -". ", toc-title, newline+.
 chapter-body: paragraph++(-#d?, -#a, -#d?, -#a).
-paragraph: text-line++(#d?, #a).
+paragraph: text-line++(newline), newline*.
 -end-line: -end-line-text, newline+.
 
 
@@ -29,7 +29,7 @@ footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
 -text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
 -text-line-initial: ["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""].
 toc-line: -space+,roman, -".  ", toc-title.
--footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
+-footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/@%$!?#[]():;,.-'"""];space)+.
 roman: ["IVX"]+.
 toc-title: (["A"-"Z"];["-',"];space)+.
 end-line-text: -"End of Project Gutenberg's The Blithedale Romance, by Nathaniel Hawthorne".
