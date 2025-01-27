@@ -24,7 +24,7 @@ chapter-body: paragraph++(newline+).
 }
 
 
-footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
+footer: -splat-line, newline+, (-footer-line;-splat-line)++(newline+).
 
 {
     splat-line starts with * and may contain others; 
