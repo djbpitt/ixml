@@ -1,20 +1,20 @@
-blithedale: header, front, toc, text, footer, newlines.
+blithedale: header, front, toc, text, footer, newline+.
 
-header: text-line++newlines, newlines, splat-line, newlines.
+header: text-line++(newline+), newline+, splat-line, newline+.
 
-front: text-line++newlines, newlines. {title, author}
-toc: toc-line++(-#d?, #a), newlines.
+front: text-line++(newline+), newline+. {title, author}
+toc: toc-line++(-#d?, #a), newline+.
 
 {text contains chapters}
-text: chapter+, end-line, newlines.
-chapter: chapter-title, chapter-body, newlines.
-chapter-title: roman, -". ", toc-title, newlines.
+text: chapter+, end-line, newline+.
+chapter: triple-newline, chapter-title, chapter-body, newline+.
+chapter-title: roman, -". ", toc-title, newline+.
 chapter-body: paragraph++(-#d?, -#a, -#d?, -#a).
 paragraph: text-line++(#d?, #a).
--end-line: -end-line-text, newlines.
+-end-line: -end-line-text, newline+.
 
 
-footer: splat-line, newlines, (footer-line;splat-line)++newlines.
+footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
 
 {
     splat-line starts with * and may contain others; 
@@ -35,7 +35,8 @@ toc-title: (["A"-"Z"];["-',"];space)+.
 end-line-text: -"End of Project Gutenberg's The Blithedale Romance, by Nathaniel Hawthorne".
 
 {inkless characters}
--newlines: +#a, (-#d?, -#a)+.
+-newline: -#d?, -#a.
+-triple-newline: newline, newline, newline.
 -space: " ".
 
 {
