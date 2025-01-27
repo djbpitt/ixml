@@ -35,8 +35,8 @@ footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
     chapter-title-line begins with roman and has no lower-case letters
     end-line-text is unique
 }
--splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'""*"];space)+.
--text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
+splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'""*"];space)+.
+text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
 -text-line-initial: ["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""].
 toc-line: -space+,roman, -".  ", toc-title.
 -footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/@%$!?#[]():;,.-'"""];space)+.
