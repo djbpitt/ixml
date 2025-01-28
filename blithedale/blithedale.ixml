@@ -1,26 +1,29 @@
 blithedale: header, text, footer, newline+.
 
-{
-paragraphs: paragraph++(newline, newline+). { two or more newlines between paragraph}
+paragraphs: paragraph++(newline, newline, newline?). { two or three newlines between paragraph}
 paragraph: text-line++(newline). { exactly one newline between lines }
-}
 
 header: text-line++(newline+), newline+, -splat-line, newline+.
 
 text: front, toc, body, newline+.
 
 front: text-line++(newline+), newline+.
-toc: text-line, newline+, toc-line++(newline), newline+.
-body:text-line++(newline+). 
+toc: text-line, newline+, toc-line++(newline).
+toc-line: -space+,roman, -".  ", toc-title.
+toc-title: (["A"-"Z"];["-',"];space)+.
 
-{
-chapters: chapter+, end-line, newline+.
-chapter: chapter-title, chapter-body, newline+.
-chapter-title: roman, -". ", toc-title, newline+.
-chapter-body: paragraph++(newline+).
--end-line: -end-line-text, newline+.
-}
+body: chapter+, newline+, end-line, newline.
 
+chapter: chapter-title-line, chapter-body.
+chapter-body: paragraph++(newline, newline, newline?), subsection?.
+
+chapter-title-line: 
+    newline, newline, newline, newline?, 
+    roman, -". ", toc-title,
+    newline, newline.
+subsection: newline, newline, newline, newline, subsection-title-line, newline, newline, paragraphs. 
+
+subsection-title-line: (["A"-"Z"];["-,'"];space)+.
 
 footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
 
@@ -33,15 +36,13 @@ footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
     chapter-title-line begins with roman and has no lower-case letters
     end-line-text is unique
 }
-splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'""*"];space)+.
-text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
+-splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'""*"];space)+.
+-text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
 -text-line-initial: ["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""].
-toc-line: -space+,roman, -".  ", toc-title.
+end-line: text-line.
 footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/@%$!?#[]():;,.-'"""];space)+.
 roman: ["IVX"]+.
-toc-title: (["A"-"Z"];["-',"];space)+.
-end-line-text: -"End of Project Gutenberg's The Blithedale Romance, by Nathaniel Hawthorne".
 
 {inkless characters}
-newline: -#d?, -#a.
+-newline: -#d?, -#a.
 -space: " ".
