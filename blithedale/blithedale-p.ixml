@@ -1,0 +1,27 @@
+novel: chapter+.
+chapter: chapterbegin, paragraph+, subsection*, newline*.
+
+{ chapters begin with a roman numeral, a dot, a space, and an upper-case title }
+
+-chapterbegin: chaptertitle, newline.
+chaptertitle: roman, -". ", uppercasetitle.
+roman: ["IVXLCM"]+.
+
+{ an upper-case title may include spaces and a few punctuation marks }
+
+uppercasetitle: (uppercase; " "; punctuation)+, -#a.
+-uppercase: ["A"-"Z"].
+-punctuation: [",.;:""'-()"].
+
+{ a subtitle may not begin with a roman numeral followed by a dot 
+    but is otherwise the same }
+
+subsection: subtitle, newline, paragraph+.
+subtitle: ["ABDEFGHJKNOPQRSTUWYZ"], -uppercasetitle;
+              ["IVXLCM"]+, (~["."]; ".", ~[" "]), -uppercasetitle.
+
+{ a line of text contains a lowercase letter somewhere }
+
+paragraph: line+, -newline+. 
+-line: (uppercase; " "; punctuation)*, ["a"-"z"], ~[#d;#a]*, newline.
+-newline: -#d?, -#a.
