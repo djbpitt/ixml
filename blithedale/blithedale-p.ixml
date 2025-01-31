@@ -1,6 +1,6 @@
 blithedale: header, front, toc, novel, footer.
 
-header: paragraph+, splat-line, newline+.
+header: -paragraph+, splat-line, newline+.
 
 front: paragraph+.
 
@@ -14,7 +14,7 @@ footer: splat-line, ~[]+.
 
 { chapters begin with a roman numeral, a dot, a space, and an upper-case title }
 
--chapterbegin: chaptertitle, newline.
+chapterbegin: chaptertitle, newline.
 chaptertitle: roman, -". ", uppercasetitle.
 roman: ["IVX"]+.
 
@@ -28,12 +28,14 @@ uppercasetitle: (uppercase; " "; punctuation)+, newline.
     but is otherwise the same }
 
 subsection: subtitle, newline, paragraph+.
-subtitle: ["ABDEFGHJKNOPQRSTUWYZ"], -uppercasetitle;
-              ["IVXLCM"]+, (~["."]; ".", ~[" "]), -uppercasetitle.
+subtitle: ["ABDEFGHJKNOPQRSTUWYZ"], -uppercasetitle.
 
-{ a line of text contains a lowercase letter somewhere }
+{
+  a line of text contains a lowercase letter somewhere and doesn’t begin with a splat
+  a splat-line begins with a splat and has any content 
+}
 
-paragraph: line+, -newline+. 
--line: (["A"-"Z"]; ["a"-"z"]; ["""("]), (uppercase; " "; punctuation)*, ["a"-"z"], ~[#d;#a]*, newline.
--splat-line: "*", ~[#d;#a]+, newline.
+paragraph: -line+, newline+. 
+line: (["A"-"Z"]; ["a"-"z"]; ["""("]), (uppercase; " "; punctuation)*, ["a"-"z"], ~[#d;#a]*, newline, +" ".
+splat-line: "*", ~[#d;#a]+, newline.
 -newline: -#d?, -#a.
