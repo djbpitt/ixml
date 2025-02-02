@@ -9,11 +9,12 @@ puzzle: name, space, parenthesized, (space, note)?, newline.
 name: text. {Name of puzzle}
 {Remove whitespace before closing parenthesis; creates ambiguity}
 -parenthesized: openParen, puzzleData, -" "*, closeParen.
-puzzleData: text.
+puzzleData: text, non-space-text.
 note: text.
 
 {Compound building blocks}
 -text: ([L]; digit; punct; space)+.
+-non-space-text: ([L]; digit; punct).
 
 {Characters and character classes}
 -digit: ["0"-"9"].

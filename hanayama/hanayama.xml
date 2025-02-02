@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<hanayama ixml:state="ambiguous"
-          xmlns:ixml="http://invisiblexml.org/NS">
+<hanayama>
    <section>
       <category>Level 1</category>
       <puzzles>
