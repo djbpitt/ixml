@@ -1,0 +1,40 @@
+blithedale: 
+  header, newline+, 
+  front, newline+, 
+  toc, newline+,
+  chapters, newline+.
+
+header: paragraphs, -newline+, splat-line.
+front: paragraphs.
+
+toc: toc-header, newline+, toc-line++newline.
+toc-header: -paragraph. { match paragraph but tag as toc-header, only inside toc }
+toc-line: -" "+, roman, -".  ", title-text.
+title-text: uppercase-letter, (uppercase-letter; space; punctuation)+.
+roman: ["IVX"]+.
+
+{
+  between paragraphs: remove multiple newlines and put just one back
+  within paragraphs: replace single newline between lines with space
+}
+-paragraphs: paragraph++(newline, newline+, +#a).
+paragraph: line++(newline, +" ").
+
+chapters: chapter++(newline, newline+).
+chapter: chapter-header, newline, newline, chapter-body.
+chapter-header: roman, -". ", title-text.
+chapter-body: paragraphs, (newline+, subsection)?.
+subsection: subsection-header, newline, newline, subsection-body.
+subsection-header: title-text.
+subsection-body: paragraphs.
+
+{line must contain lowercase letter, cannot contain splat}
+-line: (uppercase-letter; digit; space; punctuation)*, ["a"-"z"], ~["*";#d;#a]*.
+-uppercase-letter: ["A"-"Z"].
+-lowercase-letter: ["a"-"z"].
+splat-line: splat, ~[#d; #a]+.
+-punctuation: ["""()#.,;:?!-[]'"].
+-digit: ["0"-"9"].
+-splat: "*".
+-newline: -#d?, -#a. {remove; we put one back where needed}
+-space: " ".
