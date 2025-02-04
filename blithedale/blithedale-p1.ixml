@@ -1,0 +1,31 @@
+blithedale: 
+  header, newline+, 
+  front, newline+, 
+  toc, newline+.
+
+header: paragraphs, -newline+, splat-line.
+front: paragraphs.
+
+toc: toc-header, newline+, toc-line++newline.
+toc-header: -paragraph. { match paragraph but tag as toc-header, only inside toc }
+toc-line: -" "+, roman, -".  ", toc-text.
+toc-text: uppercase-letter, (uppercase-letter; space; punctuation)+.
+roman: ["IVX"]+.
+
+{
+  between paragraphs: remove multiple newlines and put just one back
+  within paragraphs: remove newlines between lines and replace with space
+}
+-paragraphs: paragraph++(newline, newline+, +#a).
+paragraph: line++(newline, +" ").
+
+{line must contain lowercase letter, cannot contain splat}
+-line: (uppercase-letter; digit; space; punctuation)*, ["a"-"z"], ~["*";#d;#a]*.
+-uppercase-letter: ["A"-"Z"].
+-lowercase-letter: ["a"-"z"].
+splat-line: splat, ~[#d; #a]+.
+-punctuation: ["""()#.,;:?!-[]'"].
+-digit: ["0"-"9"].
+-splat: "*".
+-newline: -#d?, -#a. {remove; we put one back where needed}
+-space: " ".
