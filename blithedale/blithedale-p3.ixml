@@ -2,7 +2,8 @@ blithedale:
   header, newline+, 
   front, newline+, 
   toc, newline+,
-  chapters, newline+.
+  body,
+  footer.
 
 header: paragraphs, -newline+, splat-line.
 front: paragraphs.
@@ -13,26 +14,34 @@ toc-line: -" "+, roman, -".  ", title-text.
 title-text: uppercase-letter, (uppercase-letter; space; punctuation)+.
 roman: ["IVX"]+.
 
+footer: line, newline, newline, splat-line, ~[]+.
+
 {
   between paragraphs: remove multiple newlines and put just one back
   within paragraphs: replace single newline between lines with space
 }
--paragraphs: paragraph++(newline, newline+, +#a).
-paragraph: line++(newline, +" ").
+-paragraphs: paragraph++(-newline, -newline+).
+paragraph: line++(-newline, +" ").
 
-chapters: chapter++(newline, newline+).
-chapter: chapter-header, newline, newline, chapter-body.
+body: chapter+.
+chapter: chapter-header, newline, newline, chapter-body, newline, newline+.
 chapter-header: roman, -". ", title-text.
-chapter-body: paragraphs, (newline+, subsection)?.
-subsection: subsection-header, newline, newline, subsection-body.
+chapter-body: paragraphs, (subsection, paragraphs)?.
+subsection:
+  newline, newline, newline, newline,
+  subsection-header, 
+  newline, newline, 
+  subsection-body, 
+  newline, newline, newline.
 subsection-header: title-text.
-subsection-body: paragraphs.
+subsection-body: 
+  paragraph++(newline, newline). {exactly one blank line between}
 
 {line must contain lowercase letter, cannot contain splat}
 -line: (uppercase-letter; digit; space; punctuation)*, ["a"-"z"], ~["*";#d;#a]*.
 -uppercase-letter: ["A"-"Z"].
 -lowercase-letter: ["a"-"z"].
-splat-line: splat, ~[#d; #a]+.
+-splat-line: splat, ~[#d; #a]+.
 -punctuation: ["""()#.,;:?!-[]'"].
 -digit: ["0"-"9"].
 -splat: "*".
