@@ -3,12 +3,10 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="#all"
     version="3.0">
-    <xsl:function name="djb:title-case" as="xs:string">
-        <xsl:param name="input" as="xs:string"/>
-        <xsl:value-of select="
-                tokenize($input)
-                ! concat(substring(., 1, 1), lower-case(substring(., 2)))"/>
-    </xsl:function>
+    <!-- ================================================================
+         Include functions
+         ================================================================ -->
+    <xsl:include href="blithedale-lib.xsl"/>
     <!-- ================================================================
          Templates
          ================================================================ -->
@@ -48,5 +46,14 @@
         <chapter id="toc-chapter-{roman}">
             <xsl:value-of select="djb:title-case(title-text)"/>
         </chapter>
+    </xsl:template>
+    <!-- ================================================================
+         Title-case chapter titles in body
+         ================================================================ -->
+    <xsl:template match="title-text">
+        <xsl:copy>
+            <xsl:copy-of select="@*"/>
+            <xsl:value-of select="djb:title-case(.)"/>
+        </xsl:copy>
     </xsl:template>
 </xsl:stylesheet>
