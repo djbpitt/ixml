@@ -1,65 +1,54 @@
-blithedale: header, text, footer, newline+.
+{ ambiguous; usable only with Markup Blitz }
+blithedale: 
+  header, 
+  front, 
+  toc,
+  body,
+  footer.
 
-{== header ==}
-header: text-line++(newline+), newline+, splat-line, newline+.
+header: paragraphs, newline+, splat-line, newline+.
+front: paragraphs, newline+.
 
-{== text: all text to keep: front, table of contents, body ==}
-text: front, toc, body, newline+.
-
-{== front: title, author, and clutter to be removed later ==}
-front: text-line++(newline+), newline+.
-
-{== table of contents ==
-    toc-line starts with spaces, then roman numeral, etc.
-        no other line starts with spaces except in footer
-    toc-title has no lower-case letters
-}
-toc: text-line, newline+, toc-line++(newline).
-toc-line: -space+,roman, -".  ", toc-title.
-toc-title: (["A"-"Z"];["-',"];space)+.
-
-{== body: chapters ==}
-{TODO: move end-line into footer for easier removal}
-body: chapter+, newline+, end-line, newline.
-
-{== chapters: chapter-title-line, paragraphs, optional subsection at end
-    chapter-title-line begins with roman and has no lower-case letters
-      newline fussiness around chapter-title-line because:
-        1. exactly three or four leading plus exactly two trailing identifies context
-        2. subsection title appears in same newline environment, but no leading roman
-}
-chapter: chapter-title-line, chapter-body.
-chapter-body: paragraphs, subsection?.
-chapter-title-line: 
-    newline, newline, newline, newline?, 
-    roman, -". ", toc-title,
-    newline, newline.
-    
-{== subsection at end of chapter has title and newline environment ==}
-subsection: 
-    newline, newline, newline, newline, 
-    subsection-title-line, 
-    newline, newline, 
-    paragraphs. 
-subsection-title-line: (["A"-"Z"];["-,'"];space)+.
-
-{== footer-line like text-line, except may begin with space ==}
-footer: splat-line, newline+, (footer-line;splat-line)++(newline+).
--footer-line: (["A"-"Z"];["a"-"z"];["0"-"9"];["/@%$!?#[]():;,.-'"""];space)+.
-
-{== paragraph, line, and roman patterns ==
-    end-line-text tagged specially for subsequent removal (TODO: remove here?)
-    text-line starts with non-space and does not contain * 
-    splat-line starts with * and may contain others; demarcates header and footer 
-}
--paragraphs: paragraph++(newline, newline, newline?). { two or three newlines between paragraphs}
-paragraph: text-line++(newline). { exactly one newline between lines within paragraph }
--text-line: text-line-initial, (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""];space)+.
--text-line-initial: ["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'"""].
--splat-line: "*", (["A"-"Z"];["a"-"z"];["0"-"9"];["/!?#[]():;,.-'""*"];space)+.
-end-line: text-line.
+toc: toc-header, newline+, toc-line++newline, newline+.
+toc-header: -paragraph. { match paragraph but tag as toc-header, only inside toc }
+toc-line: -" "+, roman, -".  ", title-text.
+title-text: uppercase-letter, (uppercase-letter; space; punctuation)+.
 roman: ["IVX"]+.
 
-{inkless characters}
--newline: -#d?, -#a.
+-paragraphs: paragraph++(newline, newline+).
+paragraph: line++(newline, +" ").
+-newline: -#d?, -#a. {remove; we put one back where needed}
+
+{ line must contain lowercase letter, cannot contain splat }
+-line: (uppercase-letter; digit; space; punctuation)*, ["a"-"z"], ~["*";#d;#a]*.
+-uppercase-letter: ["A"-"Z"].
+-lowercase-letter: ["a"-"z"].
+-splat-line: splat, ~[#d; #a]+.
+-punctuation: ["""()#.,;:?!-[]'"].
+-digit: ["0"-"9"].
+-splat: "*".
 -space: " ".
+
+body: chapter+.
+chapter: chapter-header, newline, newline, chapter-body, newline, newline+.
+chapter-header: roman, -". ", title-text.
+chapter-body: (paragraphs; subsection)+.
+
+footer: line, newline, newline, splat-line, ~[]+.
+
+{
+  between paragraphs: remove multiple newlines and put just one back
+  within paragraphs: replace single newline between lines with space
+}
+
+subsection:
+  newline, newline, newline, newline,
+  subsection-header, 
+  newline, newline, 
+  subsection-body, 
+  newline, newline, newline.
+subsection-header: title-text.
+subsection-body: 
+  paragraphs.
+
+
