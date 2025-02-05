@@ -2,7 +2,7 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2"
   xmlns:sqf="http://www.schematron-quickfix.com/validator/process">
   <sch:pattern>
-    <sch:rule context="p">
+    <sch:rule context="paragraph">
       <sch:assert test="count(string-to-codepoints(.)[. eq string-to-codepoints('&quot;')]) eq 0"
         >There should be no quotation mark characters.</sch:assert>
     </sch:rule>

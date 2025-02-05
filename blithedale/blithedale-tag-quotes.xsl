@@ -3,27 +3,24 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="#all"
     version="3.0">
-    <!-- ================================================================ -->
-    <!-- Global variables                                                 -->
-    <!-- ================================================================ -->
-    <xsl:variable name="quotation-regex" as="xs:string">(")(.+?)(")</xsl:variable>
-    <!-- ================================================================ -->
-    <!-- Templates                                                        -->
-    <!-- ================================================================ -->    
+    <!-- ================================================================
+         Global variables for regex matching
+         Cannot autotag inner quotes because of apostrophes
+         ================================================================ -->
+    <xsl:variable name="quotation-regex" as="xs:string">"(.+?)"</xsl:variable>
+    <!-- ================================================================
+         Templates
+         ================================================================ -->
     <xsl:mode on-no-match="shallow-copy"/>
-    <!-- ================================================================ -->
-    <!-- Delete empty paragraphs                                          -->
-    <!-- ================================================================ -->
-    <xsl:template match="p[empty(node())]"/>    
-    <xsl:template match="p">
-        <!-- ============================================================ -->
-        <!-- Tag quotes                                                   -->
-        <!-- ============================================================ -->
+    <xsl:template match="paragraph">
+        <!-- ============================================================
+             Tag quotes
+             ============================================================ -->
         <xsl:copy>
             <xsl:analyze-string select="." regex="{$quotation-regex}" flags="s">
                 <xsl:matching-substring>
                     <q>
-                        <xsl:value-of select="regex-group(2) => normalize-space()"/>
+                        <xsl:value-of select="regex-group(1)"/>
                     </q>
                 </xsl:matching-substring>
                 <xsl:non-matching-substring>
