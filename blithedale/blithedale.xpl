@@ -32,7 +32,7 @@
     <!-- ================================================================
          Remove header and footer, which are Gutenberg metadata
          ================================================================ -->
-    <p:delete match="//header|//footer"/>
+    <p:delete match="header|footer"/>
     <!-- ================================================================
          Tag outer quotes
          Cannot tag inner quotes because of apostraphes
@@ -53,35 +53,28 @@
         <p:with-input port="stylesheet" href="blithedale-tag-front.xsl"/>
     </p:xslt>
     <!-- ================================================================
-         Add @id values to chapter titles in body and toc for linking
-
-         Use either the xslt step or the add-attribute one (not both)
+         Add @id values to chapter titles in body and remove roman
          ================================================================ -->
-    <!--<p:xslt>
-        <p:with-input port="stylesheet" href="blithedale-add-section-ids.xsl"/>
-    </p:xslt>-->
-    <!--<p:viewport match="contents/chapter">
-        <p:add-attribute attribute-name="id"
-            attribute-value="{concat('toc-', p:iteration-position())}"/>
-    </p:viewport>
     <p:viewport match="body/chapter">
         <p:add-attribute attribute-name="id"
-            attribute-value="{concat('body-', p:iteration-position())}"/>
-    </p:viewport>-->
+            attribute-value="{concat('body-chapter-', format-integer(p:iteration-position(), 'I'))}"
+        />
+    </p:viewport>
+    <p:delete match="roman"/>
     <!-- ================================================================
-         Clean up high-level markup
+         Remove @ixml:status
          ================================================================ -->
-    <!--<p:xslt>
+    <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
-    </p:xslt>-->
+    </p:xslt>
     <!-- ================================================================
          Verify that xml matches intended schema
          ================================================================ -->
-    <!--<p:validate-with-relax-ng>
+    <p:validate-with-relax-ng>
         <p:with-input port="schema">
             <p:document href="blithedale.rnc" content-type="text/plain"/>
         </p:with-input>
-    </p:validate-with-relax-ng>-->
+    </p:validate-with-relax-ng>
     <!-- TODO
          Create and store HTML output with TOC linking and CSS
          Create CSS

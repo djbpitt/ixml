@@ -1,21 +1,34 @@
 start = blithedale
-blithedale = element blithedale { front, chapters }
-front = element front { title, author, contents }
+blithedale = element blithedale { front, contents, body }
+# ===
+# front contains title and author
+# ===
+front = element front { title, author }
 title = element title { text }
 author = element author { text }
-# toc
-contents = element contents { toc-chapter+ }
-toc-chapter = element chapter { id, roman, chapter-label }
-chapter-label = element chapter-label { text }
-# body
-chapters = element chapters { body-chapter+ }
-body-chapter = element chapter { id, chapter-header, chapter-body }
+# ===
+# contents contains header and chapter lines
+# ===
+contents = element contents { header, toc-chapters }
+header = element header { text }
+toc-chapters = element chapters { toc-chapter+ }
+toc-chapter = element chapter { id, text }
+# ===
+# body contains chapters, which have @id, header and body
+# ===
+body = element body { chapter+ }
+chapter = element chapter { id, chapter-header, chapter-body }
 id = attribute id { xsd:ID }
-chapter-header = element chapter-header { roman, chapter-label }
-roman = element roman { text }
-chapter-body = element chapter-body { p+ }
-p =
-  element p {
+# ===
+#
+chapter-header = element chapter-header { title-text }
+title-text = element title-text { text }
+chapter-body = element chapter-body { (paragraph | subsection)+ }
+paragraph =
+  element paragraph {
     mixed { q* }
   }
 q = element q { text }
+subsection = element subsection { subsection-header, subsection-body }
+subsection-header = element subsection-header { title-text }
+subsection-body = element subsection-body { paragraph+ }

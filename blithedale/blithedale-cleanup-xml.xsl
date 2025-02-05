@@ -12,13 +12,4 @@
             <xsl:apply-templates select="node() | @* except @ixml:*"/>
         </xsl:copy>
     </xsl:template>
-    <!-- ================================================================ -->
-    <!-- Remove <body> (only child of root) and wrap all chapters         -->
-    <!-- ================================================================ -->
-    <xsl:template match="body">
-        <xsl:apply-templates select="front"/>
-        <chapters>
-            <xsl:apply-templates select="chapter"/>
-        </chapters>
-    </xsl:template>
 </xsl:stylesheet>
