@@ -8,9 +8,11 @@
     <p:input port="source" primary="true" content-types="text/plain"
         href="https://www.gutenberg.org/files/2081/2081.txt" sequence="false"/>
     <!-- ================================================================
-         Don’t pretty-print; xmllint implementation is better
+         No pipeline output; use <p:store> instead
          ================================================================ -->
-    <p:output port="result" primary="true" sequence="true"/>
+    <p:output port="result" primary="true" sequence="true">
+        <p:empty/>
+    </p:output>
     <!-- ================================================================
          Remove Unicode BOM if present
          ================================================================ -->
@@ -48,13 +50,16 @@
     </p:validate-with-schematron>
     <!-- ================================================================
          Tag title, author, and table of contents
+         Also convert body chapter-titles to title case
          ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-front.xsl"/>
     </p:xslt>
     <!-- ================================================================
          Add @id values to chapter titles in body and remove roman
-         ================================================================ -->
+         This is one way to add an attribute to a sequence of elements;
+           <p:label-elements> would also work
+         ============================================================== -->
     <p:viewport match="body/chapter">
         <p:add-attribute attribute-name="id"
             attribute-value="{concat('body-chapter-', format-integer(p:iteration-position(), 'I'))}"
@@ -75,8 +80,19 @@
             <p:document href="blithedale.rnc" content-type="text/plain"/>
         </p:with-input>
     </p:validate-with-relax-ng>
+    <!-- ================================================================
+         Create and save reading view
+         ================================================================ -->
+    <p:xslt>
+        <p:with-input port="stylesheet" href="blithedale-to-reading-view.xsl"/>
+    </p:xslt>
+    <p:store href="blithedale.xhtml" serialization="map {
+        'method':'xhtml', 
+        'html-version':5, 
+        'omit-xml-declaration':false(), 
+        'include-content-type':false(), 
+        'indent':true()}"/>
     <!-- TODO
-         Create and store HTML output with TOC linking and CSS
-         Create CSS
+         In XML: Create typographic apostrophes and dashes 
          Create and store SVG output                                      -->
 </p:declare-step>

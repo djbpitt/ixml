@@ -1,0 +1,19 @@
+:root {
+  background-color: #f4eee2;
+  color: black;
+  line-height: 1.2em;
+  font-family: cambria, "palatino linotype", times, serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Verdana, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", "Verdana Ref", sans-serif;
+  color: #351408;
+  line-height: 1.4em;
+  page-break-after: avoid;
+  position: relative;
+  /* otherwise IE cuts off top of H1 with increased line-height */
+}
