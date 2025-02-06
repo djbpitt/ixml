@@ -94,9 +94,5 @@
         'indent':true()}"/>
     <!-- TODO
          Subsection!
-         In XML: 
-            Create typographic apostrophes (open apostrophe may being quote, i.e., not after space)
-            Create typographic dashes 
-            Capitalize second part of hyphenated title
          Create and store SVG output                                      -->
 </p:declare-step>
