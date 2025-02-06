@@ -5,6 +5,7 @@
     <!-- ================================================================
          Fetch remote plain-text input
          ================================================================ -->
+    <p:option name="debug" as="xs:boolean" static="true" select="false()"/>
     <p:input port="source" primary="true" content-types="text/plain"
         href="https://www.gutenberg.org/files/2081/2081.txt" sequence="false"/>
     <!-- ================================================================
@@ -81,6 +82,10 @@
         </p:with-input>
     </p:validate-with-relax-ng>
     <!-- ================================================================
+         Save XML (only during debug)
+         ================================================================ -->
+    <p:store use-when="$debug" href="blithedale.xml"/>
+    <!-- ================================================================
          Create and save reading view
          ================================================================ -->
     <p:xslt>
@@ -92,6 +97,9 @@
         'omit-xml-declaration':false(), 
         'include-content-type':false(), 
         'indent':true()}"/>
+    <!-- ================================================================
+         Create and graph of speech ~ narration
+         ================================================================ -->
     <!-- TODO
          Subsection!
          Create and store SVG output                                      -->
