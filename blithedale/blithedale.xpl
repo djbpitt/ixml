@@ -93,8 +93,7 @@
     <!-- ================================================================
          Save XML (only during debug)
          ================================================================ -->
-    <p:store use-when="$debug" href="blithedale.xml"/>
-    <p:identity use-when="$debug" message="Saved final XML (debug only)"/>
+    <p:store use-when="$debug" href="blithedale.xml" message="Saved final XML (debug only)"/>
     <!-- ================================================================
          Create and save reading view
          ================================================================ -->
