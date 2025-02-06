@@ -17,25 +17,28 @@
     <!-- ================================================================
          Remove Unicode BOM if present
          ================================================================ -->
-    <p:if test="starts-with(., '&#xfeff;')" name="bom-removal">
+    <p:if test="starts-with(., '&#xfeff;') or starts-with(., '$#xfffe')" name="bom-removal">
         <p:xquery>
             <p:with-input port="query">
                 <p:inline content-type="text/plain">text{{substring(.,2)}}</p:inline>
             </p:with-input>
         </p:xquery>
+        <p:identity use-when="$debug" message="BOM found and removed"/>
     </p:if>
     <!-- ================================================================
-         Add high-level structural markup
+         Add structural markup with ixml
          ================================================================ -->
     <p:invisible-xml>
         <p:with-input port="grammar">
             <p:document href="blithedale.ixml" content-type="text/plain"/>
         </p:with-input>
     </p:invisible-xml>
+    <p:identity use-when="$debug" message="Added markup with ixml"/>
     <!-- ================================================================
          Remove header and footer, which are Gutenberg metadata
          ================================================================ -->
     <p:delete match="header|footer"/>
+    <p:identity use-when="$debug" message="Deleted Gutenburg boilerplate, front and back"/>
     <!-- ================================================================
          Tag outer quotes
          Cannot tag inner quotes because of apostraphes
@@ -43,12 +46,14 @@
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-quotes.xsl"/>
     </p:xslt>
+    <p:identity use-when="$debug" message="Tagged quotations"/>
     <!-- ================================================================
          Verify that no double quotation marks remain inside paragraphs
          ================================================================ -->
     <p:validate-with-schematron>
         <p:with-input port="schema" href="blithedale-check-quotes.sch"/>
     </p:validate-with-schematron>
+    <p:identity use-when="$debug" message="Verified no stray quotation marks"/>
     <!-- ================================================================
          Tag title, author, and table of contents
          Also convert body chapter-titles to title case
@@ -56,6 +61,7 @@
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-front.xsl"/>
     </p:xslt>
+    <p:identity use-when="$debug" message="Tagged front matter and toc, fixed title case"/>
     <!-- ================================================================
          Add @id values to chapter titles in body and remove roman
          This is one way to add an attribute to a sequence of elements;
@@ -67,12 +73,14 @@
         />
     </p:viewport>
     <p:delete match="roman"/>
+    <p:identity use-when="$debug" message="Added @id to body chapters, removed Roman numerals"/>
     <!-- ================================================================
-         Remove @ixml:status, create typographic dashes and quotation marks
+         Remove @ixml:status, create typographic dashes and single quotes
          ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
     </p:xslt>
+    <p:identity use-when="$debug" message="Removed @ixml:status, fix dashes and single quotes"/>
     <!-- ================================================================
          Verify that xml matches intended schema
          ================================================================ -->
@@ -81,10 +89,12 @@
             <p:document href="blithedale.rnc" content-type="text/plain"/>
         </p:with-input>
     </p:validate-with-relax-ng>
+    <p:identity use-when="$debug" message="Verified final xml against schema"/>
     <!-- ================================================================
          Save XML (only during debug)
          ================================================================ -->
     <p:store use-when="$debug" href="blithedale.xml"/>
+    <p:identity use-when="$debug" message="Saved final XML (debug only)"/>
     <!-- ================================================================
          Create and save reading view
          ================================================================ -->
@@ -97,6 +107,7 @@
         'omit-xml-declaration':false(), 
         'include-content-type':false(), 
         'indent':true()}"/>
+    <p:identity use-when="$debug" message="Saved xhtml reading view"/>
     <!-- ================================================================
          Create and graph of speech ~ narration
          ================================================================ -->
