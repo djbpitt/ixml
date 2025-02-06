@@ -12,4 +12,11 @@
             <xsl:apply-templates select="node() | @* except @ixml:*"/>
         </xsl:copy>
     </xsl:template>
+    <xsl:template match="text()">
+        <xsl:value-of select='
+                replace(., "(^| )&apos;", "$1‘") (: apostrophe initial or after space :) =>
+                replace("--", "—") (: double hyphen with dasy  :) =>
+                translate("&apos;", "’") (: remaining apostrophe with right typographic:)
+                '/>
+    </xsl:template>
 </xsl:stylesheet>

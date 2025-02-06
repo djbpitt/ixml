@@ -58,7 +58,7 @@
     <!-- ================================================================
          Add @id values to chapter titles in body and remove roman
          This is one way to add an attribute to a sequence of elements;
-           <p:label-elements> would also work
+           <p:label-elements> would also work (or with xslt)
          ============================================================== -->
     <p:viewport match="body/chapter">
         <p:add-attribute attribute-name="id"
@@ -67,7 +67,7 @@
     </p:viewport>
     <p:delete match="roman"/>
     <!-- ================================================================
-         Remove @ixml:status
+         Remove @ixml:status, create typographic dashes and quotation marks
          ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
@@ -93,6 +93,10 @@
         'include-content-type':false(), 
         'indent':true()}"/>
     <!-- TODO
-         In XML: Create typographic apostrophes and dashes 
+         Subsection!
+         In XML: 
+            Create typographic apostrophes (open apostrophe may being quote, i.e., not after space)
+            Create typographic dashes 
+            Capitalize second part of hyphenated title
          Create and store SVG output                                      -->
 </p:declare-step>
