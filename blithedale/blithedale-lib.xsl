@@ -11,8 +11,43 @@
        ================================================================== -->
   <xsl:function name="djb:title-case" as="xs:string">
     <xsl:param name="input" as="xs:string"/>
+    <xsl:variable name="parts" as="xs:string+">
+      <xsl:analyze-string select="$input" regex="[- ]">
+        <xsl:matching-substring>
+          <xsl:value-of select="."/>
+        </xsl:matching-substring>
+        <xsl:non-matching-substring>
+          <xsl:value-of select="djb:title-case-token(.)"/>
+        </xsl:non-matching-substring>
+      </xsl:analyze-string>
+    </xsl:variable>
+    <xsl:value-of select="string-join($parts) => djb:upper-case-first()"/>
+  </xsl:function>
+  <!-- ==================================================================
+       djb:title-case-token : lower-case single word token if function word,
+       otherwise title-case
+       ================================================================== -->
+  <xsl:function name="djb:title-case-token" as="xs:string">
+    <xsl:param name="input" as="xs:string"/>
+    <xsl:variable name="function-words" as="xs:string+" select="
+        'A',
+        'AND',
+        'FROM',
+        'OF',
+        'THE',
+        'TO'"/>
     <xsl:value-of select="
-        tokenize($input)
-        ! concat(substring(., 1, 1), lower-case(substring(., 2)))"/>
+        if ($input = $function-words) then
+          lower-case($input)
+        else
+          concat(substring($input, 1, 1), lower-case(substring($input, 2)))
+        "/>
+  </xsl:function>
+  <!-- ==================================================================
+       djb:upper-case-first : upper-case first character in string
+       ================================================================== -->
+  <xsl:function name="djb:upper-case-first" as="xs:string">
+    <xsl:param name="input" as="xs:string"/>
+    <xsl:value-of select="concat(upper-case(substring($input, 1, 1)), substring($input, 2))"/>
   </xsl:function>
 </xsl:stylesheet>

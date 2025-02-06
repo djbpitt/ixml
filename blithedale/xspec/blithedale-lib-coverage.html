@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Test Coverage Report for /Users/djb/repos/ixml/blithedale/blithedale-lib.xsl</title>
+      <style type="text/css">
+/****************************************************************************/
+/*  File:       test-report-colors-blackwhite.css                           */
+/* ------------------------------------------------------------------------ */
+
+/*
+Colors used, other than white:
+	#171717 gray 90%
+	#262626 gray 85%
+	#454545 gray 70%
+	#e6e6e6 gray 10%
+	#f0f0f0 gray  5%
+*/
+
+/* text and background colours */
+body {
+	background-color: white;
+	color: #171717;
+}
+
+h1 {
+}
+
+h2 {
+}
+
+a:link {
+	color: #171717;
+	background: transparent;
+}
+
+a:visited {
+	color: #454545;
+	background: transparent;
+}
+
+a:hover {
+	color: #f0f0f0;
+	background: #171717;
+}
+
+a:active {
+	color: #171717;
+	background: white;
+}
+
+.same {
+}
+
+.inner-diff {
+	/* No change in color */
+	font-weight: bold;
+}
+
+.diff {
+	color: white;
+	background-color: #171717;
+	/* Underline is visible in Windows high-contrast mode,
+	 * where the white-on-black effect here is no different
+	 * from the surrounding text. */
+	text-decoration: underline;
+	text-decoration-color: #171717;
+}
+
+/*
+ * Whitespace notation in diffs in test result report,
+ * not literal whitespace characters in code coverage report.
+ * There are two possibilities:
+ *
+ * 1. Not in relevant part of diff: dark against light background */
+td > pre > .whitespace {
+	font-style: italic;
+	color: #171717;
+}
+
+/* 2. In relevant part of diff: override color
+ * and instead use light against dark background */
+.diff.whitespace {
+	color: #e6e6e6;
+}
+
+.ellipsis {
+	color: #454545;
+}
+
+.xmlns.trivial {
+	color: #454545;
+	font-style: italic;
+}
+
+div > table > tbody > tr > th:first-child {
+	color: #454545;
+}
+
+/* 'failed: n' part of Contents */
+table > thead > tr > th:nth-child(4) {
+	color: white;
+	background-color: #171717;
+	padding: 2px;
+	/* Underline is visible in Windows high-contrast mode,
+	 * where the white-on-black effect here is no different
+	 * from the surrounding text. */
+	text-decoration: underline;
+	text-decoration-color: #171717;
+}
+
+.xspec tbody td {
+	color: #262626;
+}
+
+.successful {
+}
+
+.pending {
+	color: #454545;
+}
+
+/* body makes this selector more specific than the one in test-report.css  */
+body *:target {
+	box-shadow: -0.5rem 0 0 0 #e6e6e6;
+}
+
+/* code coverage report styles */
+.ignored,
+.comment,
+pre.xspecCoverage > .whitespace {
+	color: #454545;
+	background: white;
+}
+
+.unknown {
+	color: #454545;
+	background: white;
+}
+
+.hit {
+}
+
+.missed {
+	color: white;
+	background-color: #171717;
+	/* Underline is visible in Windows high-contrast mode,
+	 * where the white-on-black effect here is no different
+	 * from the surrounding text. */
+	text-decoration: underline;
+	text-decoration-color: #171717;
+}
+
+/****************************************************************************/
+/*  File:       test-report-base.css                                        */
+/*  Author:     Jeni Tennison                                               */
+/*  Tags:                                                                   */
+/*    Copyright (c) 2008, 2010 Jeni Tennison (see end of file.)             */
+/* ------------------------------------------------------------------------ */
+
+/* test */
+
+/* box model */
+
+body {
+	margin-right: 5%;
+	margin-left: 5%;
+}
+
+h1 {
+	padding: 0.3em 0.5em 0.3em 0.5em;
+	position: relative;
+}
+
+h2 {
+	padding: 0.1em 0.5em 0.2em 0.5em;
+}
+
+h3 {
+	padding-left: 0.6em;
+}
+
+h4 {
+	padding-left: 0.8em;
+}
+
+p,
+table {
+	margin-left: 5%;
+}
+
+tr td,
+td p {
+	margin-left: 0%;
+}
+
+td {
+	padding-right: 5%;
+}
+
+img {
+	position: relative;
+}
+
+pre {
+	padding-left: 5%;
+	margin-left: 5%;
+}
+
+/* fonts */
+body,
+table {
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: sans-serif;
+}
+
+h1 {
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 120%;
+	font-weight: normal;
+}
+
+h4 {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+	font-weight: bold;
+}
+
+pre,
+code {
+	font-family: monospace;
+}
+
+/* this is to make Navigator fill the entire line */
+h1,
+h2 {
+	border: 1px solid white;
+	width: auto;
+}
+
+body {
+	border: 0px none black;
+}
+
+img,
+a:link img,
+a:visited img,
+a:hover img,
+a:active img {
+	border: 0px none white;
+	background: transparent;
+}
+
+a:link {
+	border: 0px none white;
+}
+
+a:visited {
+	border: 0px none white;
+}
+
+a:active {
+	border: 0px none white;
+}
+
+a:hover {
+	border: 0px none white;
+}
+
+/* code coverage report styles */
+.ignored,
+.comment,
+pre.xspecCoverage > .whitespace {
+	font-style: italic;
+}
+
+.unknown {
+	font-style: italic;
+	font-weight: bold;
+}
+
+.hit {
+}
+
+.missed {
+}
+
+/* text */
+td {
+	vertical-align: top;
+}
+
+h1 {
+	text-transform: uppercase;
+}
+
+a {
+	text-decoration: none;
+}
+
+body > h2:first-of-type {
+	background: inherit;
+	font-size: 1.7em;
+	margin-bottom: 0;
+}
+
+table {
+	width: 95%;
+}
+
+th {
+	text-align: left;
+}
+
+th.totals {
+	text-align: center;
+	font-weight: normal;
+}
+
+div > table > tbody > tr > th:first-child {
+	font-weight: bold;
+}
+
+.xspec tbody th {
+	font-weight: normal;
+	border-top: 1px #666 solid;
+}
+
+.xspec tbody th .elapsed {
+	float: right;
+	font-weight: initial;
+}
+
+.successful td:first-child:before,
+body > table:first-of-type tr.successful th:first-child:before {
+	margin-right: 5px;
+
+	/* optimized version of ../../graphics/success12.png */
+	content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAABcUlEQVR42m1SPUsDQRB9661BIoEQDBqJnRhE1BD8CP4AgwhWEbQIKIhi6Q/QwspCtBBs/CBG1Fb9AWK0iBosLCQgYmGQEFARRUguezfuLeZygsWbmZ037zEMyxZ2W0IgHBIoIjPoF6q2QQYIWVlPcxmS3mYt4vFpjmEpd4pNaJ9vRvS9ILa57Aw2ejUYBtVcTdsZPnc7Qk0juNQ3QC/o55JkhnAO19wDnjAmIkkcZBMwBVmci1uEoR5Od4K73o94eAuZpx3kX+9U35TgVjAqVWdmZUWOhldQrnwhnduEELD7dVYhdMJY9zom+/ZAgqOnNY7OQAynt0sol3TFSyiRWklUCKXyN8Jt40gM7SPo68VDIY1c/ly5KlBtJaU+vlmEpyGArmBMkiZOrpdV3yFQ4PJBkmBkCqTO5jE3fITixyOei/dy0L5aVSjY7Jo/w10sqnFmn9VU+e+ZhW7BvGAzq/4O2UiBMCBJRv9/DyHDFQFTPwI/IlPYPLYnAAAAAElFTkSuQmCC");
+}
+
+.failed td:first-child:before,
+body > table:first-of-type tr.failed th:first-child:before {
+	margin-right: 5px;
+
+	/* optimized version of ../../graphics/fail12.png */
+	content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAjVBMVEWDKBSQLBadMBidMBiSLBWSLRaLKhWCKBOZLheHKRT//////v3ivLPgt67dsafhraLfqJvcopXQl4vNkoTKjH3RbljKaVO8aVaxYlCsUDylUDusOh+wNxu0OBu4ORy7OhzAOx3EPB2rNRqnNBqjMhifMRidMBeaLxeXLhaULRaRLBaOKxWLKhWIKRSFKBRkN75PAAAACnRSTlP7+c3Hx8TIwicknixbQAAAAIZJREFUeNoNwsEKgkAUBdD77jzSXKhDuEpyURBE//8h0SratQuKRK3QsdccjqTjDgLEV9VpPSEyYHPjVtFb9LYQKNYPrVk7fOyAfdMUWRnX9VHFLO9GJB4ClR8wxyIQYmGveZmGu1BUJFjm5fHtShDM8xVZFZ4nXtQVjDxd4hbPytGRPLf8A/K/MGOep8atAAAAAElFTkSuQmCC");
+}
+
+.pending td:first-child:before,
+body > table:first-of-type tr.pending th:first-child:before {
+	margin-right: 5px;
+
+	/* optimized version of ../../graphics/pending12.png */
+	content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAt1BMVEVgYGBZWVldXV1gYGBjY2NmZmZnZ2dnZ2diYmJfX19dXV1hYWFZWVlYWFhiYmJeXl5YWFhoaGj6+vr39/fz8/Py8vLv7+/p6enk5OR9fX18fHx7e3t6enp5eXl4eHh3d3d2dnZ1dXV0dHRzc3NycnJxcXFwcHBvb29ubm5tbW1sbGxra2tqamppaWloaGhnZ2dmZmZlZWVkZGRjY2NiYmJhYWFfX19eXl5dXV1cXFxbW1taWlpZWVl0CTiLAAAAEnRSTlP++/75/P7Nx8fHyMTBwygmIycZZx20AAAAdElEQVR42jWKvQ4BURSEzzdzED+NQiFRaCWi4f1rhcor2EZl2RDdcq+YyUzyZYb5c0MUn3PIaPUKKk4aBgsqfHPRVpLl0nuFbbkKoe7te5ftw0jue4OJFIeOn4KZsNN26SB28Z9OHi+RJUTePL0263LMY5sfIzMU3HCY7dEAAAAASUVORK5CYII=");
+}
+
+.xspecResult {
+	width: 95%;
+	table-layout: fixed;
+}
+
+.xspecResult td,
+.xspecResult th {
+	width: 50%;
+}
+
+.xspecResult pre {
+	margin-left: 0;
+	padding: 0.5em;
+	overflow: auto;
+	border: 1px #999 dotted;
+}
+
+span.scenario-totals {
+	float: right;
+	text-align: right;
+}
+
+/* highlight the link target */
+*:target {
+	box-shadow: -0.5rem 0 0 0 #fc511d;
+}
+
+/* hint button */
+.xTestReport {
+	display: grid;
+	grid-template-areas:
+		"title title"
+		"table hint";
+	grid-template-columns: 1fr 1em;
+}
+.xTestReportTitle {
+	grid-area: title;
+}
+.xTestReportHint {
+	grid-area: hint;
+}
+.xspecResult {
+	grid-area: table;
+}
+
+/* ------------------------------------------------------------------------ */
+/*  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS COMMENT.               */
+/*                                                                          */
+/*  Copyright (c) 2008, 2010 Jeni Tennison                                  */
+/*                                                                          */
+/*  The contents of this file are subject to the MIT License (see the URI   */
+/*  http://www.opensource.org/licenses/mit-license.php for details).        */
+/*                                                                          */
+/*  Permission is hereby granted, free of charge, to any person obtaining   */
+/*  a copy of this software and associated documentation files (the         */
+/*  "Software"), to deal in the Software without restriction, including     */
+/*  without limitation the rights to use, copy, modify, merge, publish,     */
+/*  distribute, sublicense, and/or sell copies of the Software, and to      */
+/*  permit persons to whom the Software is furnished to do so, subject to   */
+/*  the following conditions:                                               */
+/*                                                                          */
+/*  The above copyright notice and this permission notice shall be          */
+/*  included in all copies or substantial portions of the Software.         */
+/*                                                                          */
+/*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,         */
+/*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF      */
+/*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  */
+/*  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY    */
+/*  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,    */
+/*  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE       */
+/*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                  */
+/* ------------------------------------------------------------------------ */
+</style>
+   </head>
+   <body>
+      <h1>Test Coverage Report</h1>
+      <p>Stylesheet:  <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl">/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl</a></p>
+      <h2>module: /Users/djb/repos/ixml/blithedale/blithedale-lib.xsl; 54 lines</h2>
+      <pre class="xspecCoverage">01: <span class="ignored">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+02: <span class="ignored">&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"</span>
+03: <span class="ignored">  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"</span>
+04: <span class="ignored">  xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="xs math"</span>
+05: <span class="ignored">  version="3.0"&gt;</span>
+06: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
+07: <span class="comment">       Functions</span>
+08: <span class="comment">       ================================================================== --&gt;</span>
+09: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
+10: <span class="comment">       djb:title-case : convert uppercase title to titlecase</span>
+11: <span class="comment">       ================================================================== --&gt;</span>
+12: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:title-case" as="xs:string"&gt;</span>
+13: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
+14: <span class="whitespace">    </span><span class="hit">&lt;xsl:variable name="parts" as="xs:string+"&gt;</span>
+15: <span class="whitespace">      </span><span class="hit">&lt;xsl:analyze-string select="$input" regex="[- ]"&gt;</span>
+16: <span class="whitespace">        </span><span class="hit">&lt;xsl:matching-substring&gt;</span>
+17: <span class="whitespace">          </span><span class="hit">&lt;xsl:value-of select="."/&gt;</span>
+18: <span class="whitespace">        </span><span class="hit">&lt;/xsl:matching-substring&gt;</span>
+19: <span class="whitespace">        </span><span class="hit">&lt;xsl:non-matching-substring&gt;</span>
+20: <span class="whitespace">          </span><span class="hit">&lt;xsl:value-of select="djb:title-case-token(.)"/&gt;</span>
+21: <span class="whitespace">        </span><span class="hit">&lt;/xsl:non-matching-substring&gt;</span>
+22: <span class="whitespace">      </span><span class="hit">&lt;/xsl:analyze-string&gt;</span>
+23: <span class="whitespace">    </span><span class="hit">&lt;/xsl:variable&gt;</span>
+24: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="string-join($parts) =&gt; djb:upper-case-first()"/&gt;</span>
+25: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+26: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
+27: <span class="comment">       djb:title-case-token : lower-case single word token if function word,</span>
+28: <span class="comment">       otherwise title-case</span>
+29: <span class="comment">       ================================================================== --&gt;</span>
+30: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:title-case-token" as="xs:string"&gt;</span>
+31: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
+32: <span class="whitespace">    </span><span class="hit">&lt;xsl:variable name="function-words" as="xs:string+" select="</span>
+33: <span class="hit">        'A',</span>
+34: <span class="hit">        'AND',</span>
+35: <span class="hit">        'FROM',</span>
+36: <span class="hit">        'OF',</span>
+37: <span class="hit">        'THE',</span>
+38: <span class="hit">        'TO'"/&gt;</span>
+39: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="</span>
+40: <span class="hit">        if ($input = $function-words) then</span>
+41: <span class="hit">          lower-case($input)</span>
+42: <span class="hit">        else</span>
+43: <span class="hit">          concat(substring($input, 1, 1), lower-case(substring($input, 2)))</span>
+44: <span class="hit">        "/&gt;</span>
+45: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+46: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
+47: <span class="comment">       djb:upper-case-first : upper-case first character in string</span>
+48: <span class="comment">       ================================================================== --&gt;</span>
+49: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:upper-case-first" as="xs:string"&gt;</span>
+50: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
+51: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="concat(upper-case(substring($input, 1, 1)), substring($input, 2))"/&gt;</span>
+52: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+53: <span class="ignored">&lt;/xsl:stylesheet&gt;</span>
+54: </pre>
+   </body>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:djb="http://www.obdurodon.org"
+  stylesheet="blithedale-lib.xsl">
+  <x:scenario label="Scenarios for testing function title-case">
+    <x:call function="djb:title-case"/>
+    <x:scenario label="with title that includes initial and non-initial function words">
+      <x:call>
+        <x:param name="input" select="'THE MAN FROM UNCLE'"/>
+      </x:call>
+      <x:expect label="Initial upper-case, but lower-case inside" select="'The Man from Uncle'"/>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Scenarios for testing function title-case-token">
+    <x:call function="djb:title-case-token"/>
+    <x:scenario label="with multi-character function word">
+      <x:call>
+        <x:param name="input" select="'FROM'"/>
+      </x:call>
+      <x:expect label="Should be all lower-case" select="'from'"/>
+    </x:scenario>
+    <x:scenario label="with single-character function word">
+      <x:call>
+        <x:param name="input" select="'A'"/>
+      </x:call>
+      <x:expect label="Should be lower-case" select="'a'"/>
+    </x:scenario>
+    <x:scenario label="with non-function word">
+      <x:call>
+        <x:param name="input" select="'BLITHEDALE'"/>
+      </x:call>
+      <x:expect label="Should be title-case" select="'Blithedale'"/>
+    </x:scenario>
+  </x:scenario>
+
+  <x:scenario label="Scenarios for testing function upper-case-first">
+    <x:call function="djb:upper-case-first"/>
+    <x:scenario label="with lower-case first">
+      <x:call>
+        <x:param name="input" select="'a test string'"/>
+      </x:call>
+      <x:expect label="Should have upper-case initial" select="'A test string'"/>
+    </x:scenario>
+    <x:scenario label="with upper-case first">
+      <x:call>
+        <x:param name="input" select="'A test string'"/>
+      </x:call>
+      <x:expect label="Should have upper-case initial" select="'A test string'"/>
+    </x:scenario>
+    <x:scenario label="with single one-character lower-case token">
+      <x:call>
+        <x:param name="input" select="'a'"/>
+      </x:call>
+      <x:expect label="Should have single upper-case character" select="'A'"/>
+    </x:scenario>
+  </x:scenario>
+</x:description>
