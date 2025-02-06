@@ -50,4 +50,11 @@
     <xsl:param name="input" as="xs:string"/>
     <xsl:value-of select="concat(upper-case(substring($input, 1, 1)), substring($input, 2))"/>
   </xsl:function>
+  <!-- ==================================================================
+       djb:explore-string : explode string into sequence of single characters
+       ================================================================== -->
+  <xsl:function name="djb:explode-string" as="xs:string+">
+    <xsl:param name="input" as="xs:string"/>
+    <xsl:sequence select="string-to-codepoints($input) ! codepoints-to-string(.)"/>
+  </xsl:function>
 </xsl:stylesheet>

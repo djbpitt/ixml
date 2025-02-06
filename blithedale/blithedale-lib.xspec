@@ -54,4 +54,15 @@
       <x:expect label="Should have single upper-case character" select="'A'"/>
     </x:scenario>
   </x:scenario>
+
+  <x:scenario label="Scenarios for testing function explode-string">
+    <x:call function="djb:explode-string"/>
+    <x:scenario label="with sample string">
+      <x:call>
+        <x:param name="input" select="'Input string'"/>
+      </x:call>
+      <x:expect label="Should be sequence of single characters"
+        select="'I', 'n', 'p', 'u', 't', ' ', 's', 't', 'r', 'i', 'n', 'g'"/>
+    </x:scenario>
+  </x:scenario>
 </x:description>
