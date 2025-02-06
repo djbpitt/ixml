@@ -453,7 +453,7 @@ span.scenario-totals {
    <body>
       <h1>Test Coverage Report</h1>
       <p>Stylesheet:  <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl">/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl</a></p>
-      <h2>module: /Users/djb/repos/ixml/blithedale/blithedale-lib.xsl; 54 lines</h2>
+      <h2>module: /Users/djb/repos/ixml/blithedale/blithedale-lib.xsl; 61 lines</h2>
       <pre class="xspecCoverage">01: <span class="ignored">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 02: <span class="ignored">&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"</span>
 03: <span class="ignored">  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"</span>
@@ -506,7 +506,14 @@ span.scenario-totals {
 50: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
 51: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="concat(upper-case(substring($input, 1, 1)), substring($input, 2))"/&gt;</span>
 52: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
-53: <span class="ignored">&lt;/xsl:stylesheet&gt;</span>
-54: </pre>
+53: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
+54: <span class="comment">       djb:explore-string : explode string into sequence of single characters</span>
+55: <span class="comment">       ================================================================== --&gt;</span>
+56: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:explode-string" as="xs:string+"&gt;</span>
+57: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
+58: <span class="whitespace">    </span><span class="hit">&lt;xsl:sequence select="string-to-codepoints($input) ! codepoints-to-string(.)"/&gt;</span>
+59: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+60: <span class="ignored">&lt;/xsl:stylesheet&gt;</span>
+61: </pre>
    </body>
 </html>

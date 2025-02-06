@@ -2,7 +2,7 @@
 <report xmlns="http://www.jenitennison.com/xslt/xspec"
         xspec="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xspec"
         stylesheet="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl"
-        date="2025-02-06T12:15:19.944564-05:00">
+        date="2025-02-06T12:28:43.609835-05:00">
    <scenario id="scenario1"
              xspec="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xspec">
       <label>Scenarios for testing function title-case</label>
@@ -132,6 +132,30 @@
          <test id="scenario3-scenario3-expect1" successful="true">
             <label>Should have single upper-case character</label>
             <expect select="'A'"/>
+         </test>
+      </scenario>
+   </scenario>
+   <scenario id="scenario4"
+             xspec="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xspec">
+      <label>Scenarios for testing function explode-string</label>
+      <input-wrap xmlns="">
+         <x:call xmlns:djb="http://www.obdurodon.org"
+                 xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                 function="djb:explode-string"/>
+      </input-wrap>
+      <scenario id="scenario4-scenario1"
+                xspec="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xspec">
+         <label>with sample string</label>
+         <input-wrap xmlns="">
+            <x:call xmlns:djb="http://www.obdurodon.org"
+                    xmlns:x="http://www.jenitennison.com/xslt/xspec">
+               <x:param name="input" select="'Input string'"/>
+            </x:call>
+         </input-wrap>
+         <result select="'I',&#xA;'n',&#xA;'p',&#xA;'u',&#xA;'t',&#xA;' ',&#xA;'s',&#xA;'t',&#xA;'r',&#xA;'i',&#xA;'n',&#xA;'g'"/>
+         <test id="scenario4-scenario1-expect1" successful="true">
+            <label>Should be sequence of single characters</label>
+            <expect select="'I',&#xA;'n',&#xA;'p',&#xA;'u',&#xA;'t',&#xA;' ',&#xA;'s',&#xA;'t',&#xA;'r',&#xA;'i',&#xA;'n',&#xA;'g'"/>
          </test>
       </scenario>
    </scenario>
