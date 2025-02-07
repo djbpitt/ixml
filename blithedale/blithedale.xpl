@@ -56,7 +56,7 @@
     <p:identity use-when="$debug" message="Verified no stray quotation marks"/>
     <!-- ================================================================ -->
     <!--  Tag title, author, and table of contents                        -->
-    <!--  Also convert body chapter-titles to title case                  -->
+    <!--  Convert body chapter-titles to title case                       -->
     <!-- ================================================================ -->
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-tag-front.xsl"/>
@@ -116,6 +116,5 @@
     <!-- Create and graph of speech ~ narration                           -->
     <!-- ================================================================ -->
     <!-- TODO
-         Subsection!
          Create and store SVG output                                      -->
 </p:declare-step>

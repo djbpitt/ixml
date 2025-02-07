@@ -70,6 +70,9 @@
       <xsl:apply-templates/>
     </main>
   </xsl:template>
+  <!-- ==================================================================
+       Chapter
+       ================================================================== -->
   <xsl:template match="chapter">
     <section id="{@id}">
       <xsl:apply-templates/>
@@ -82,6 +85,22 @@
       <xsl:apply-templates/>
     </h2>
   </xsl:template>
+  <!-- ==================================================================
+       Subsection
+       ================================================================== -->
+  <xsl:template match="subsection">
+    <section class="subsection">
+      <xsl:apply-templates/>
+    </section>
+  </xsl:template>
+  <xsl:template match="subsection-header">
+    <h3>
+      <xsl:apply-templates/>
+    </h3>
+  </xsl:template>
+  <!-- ==================================================================
+       Paragraph and quote
+       ================================================================== -->
   <xsl:template match="paragraph">
     <p>
       <xsl:apply-templates/>

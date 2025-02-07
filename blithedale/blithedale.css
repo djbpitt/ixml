@@ -17,3 +17,10 @@ h6 {
   position: relative;
   /* otherwise IE cuts off top of H1 with increased line-height */
 }
+main > section {
+    border-top: 1px gray solid;
+    margin-top: 2em;
+}
+.subsection {
+    margin-left: 2em;
+}
