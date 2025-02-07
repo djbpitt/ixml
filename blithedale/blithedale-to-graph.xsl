@@ -13,16 +13,36 @@
             map:for-each($chapter-word-counts, function ($k, $v) {
                 $v
             }) => sum()"/>
+    <xsl:variable name="beiges" as="xs:string+" select="'#fff0db', '#faf0e6'"/>
     <xsl:template match="/">
         <!--<xsl:message select="serialize($chapter-word-counts, map {'method': 'json', 'indent': true()})"/>-->
-        <svg viewBox="10 -1000 {$total-word-count - 10} 1000">
+        <svg viewBox="-10 -310 1020 320">
             <!-- x axis -->
-            <line x1="0" y1="0" x2="{$total-word-count}" y2="0" stroke="black" stroke-width="2"
-                stroke-linecap="butt"/>
-            <!-- y axis and vertical lines at chapter boundaries -->
+            <line x1="0" y1="0" x2="1000" y2="0" stroke="black" stroke-width="1"
+                stroke-linecap="square"/>
+            <!-- y axis and vertical lines at chapter boundaries as percentages -->
+            <line x1="0" y1="0" x2="0" y2="-300" stroke="black" stroke-width="1"
+                stroke-linecap="square"/>
             <xsl:for-each select="map:keys($chapter-word-counts)">
-                <xsl:variable name="x-pos" as="xs:integer" select="(1 to .) ! $chapter-word-counts(.) => sum()"/>
-                <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="1000" stroke="black" stroke-width="10"/>
+                <xsl:variable name="current-x" as="xs:double"
+                    select="((1 to current()) ! $chapter-word-counts(.) => sum()) * 1000 div $total-word-count"/>
+                <xsl:variable name="previous-x" as="xs:double"
+                    select="((1 to current() - 1) ! $chapter-word-counts(.) => sum()) * 1000 div $total-word-count"/>
+                <xsl:variable name="chapter-word-count" as="xs:integer"
+                    select="$chapter-word-counts(current())"/>
+                <xsl:variable name="chapter-word-count-percentage" as="xs:string"
+                    select="($chapter-word-count div $total-word-count * 100) => format-number('0.00')"/>
+                <rect x="{$previous-x}" y="-300" width="{$current-x - $previous-x}" height="300"
+                    fill="{$beiges[current() mod 2 + 1]}">
+                    <title>
+                        <xsl:value-of select="
+                                concat('Chapter ', current(), '  ', $chapter-word-count, ' words (',
+                                $chapter-word-count-percentage, '%)')"/>
+                    </title>
+                </rect>
+                <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
+                <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="-300" stroke="black" stroke-width="1"
+                    stroke-linecap="square"/>
             </xsl:for-each>
         </svg>
     </xsl:template>
