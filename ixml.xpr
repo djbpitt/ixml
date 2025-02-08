@@ -6,6 +6,26 @@
             <serialized xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
+                        <String>key.editor.open.option.pane</String>
+                        <Boolean>false</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.editor.save.option.pane</String>
+                        <Boolean>false</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.xslt.saxon8.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>saxon.latest.config.file</String>
+                        <String>file:/opt/saxon/config.xml</String>
+                    </entry>
+                    <entry>
+                        <String>saxon.latest.use.config.file</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
                         <String>scenario.associations</String>
                         <scenarioAssociation-array>
                             <scenarioAssociation>
