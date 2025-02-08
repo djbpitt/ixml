@@ -64,11 +64,12 @@
     <!--   @param chapter-offset as integer                               -->
     <!--   returns double                                                 -->
     <!-- ================================================================ -->
-    <xsl:function name="djb:count-words" as="xs:integer">
+    <xsl:function name="djb:count-words" as="xs:integer" visibility="public">
         <xsl:param name="strings" as="xs:string*"/>
-        <xsl:sequence select="$strings ! normalize-space() ! tokenize(.) ! count(.) => sum()"/>
+        <xsl:sequence
+            select="$strings ! normalize-space() ! tokenize(., '\s+|—') => count() => sum()"/>
     </xsl:function>
-    <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double">
+    <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double" visibility="public">
         <xsl:param name="chapter-offset" as="xs:integer"/>
         <xsl:sequence
             select="((1 to $chapter-offset) ! $chapter-total-word-counts(.) => sum()) * 100 * $x-scale div $total-word-count"
@@ -127,7 +128,7 @@
                     stroke-width="1" stroke-linecap="square"/>
             </xsl:for-each>
             <!-- ======================================================== -->
-            <!-- -->
+            <!-- Dividing line                                            -->
             <!-- ======================================================== -->
         </svg>
     </xsl:template>
