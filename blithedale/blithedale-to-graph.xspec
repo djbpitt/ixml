@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
+    stylesheet="blithedale-to-graph.xsl">
+    <x:param name="chapter-total-word-counts" as="map(*)" select="map {1: 10, 2:12, 3:15}"/>
+    <x:param name="total-word-count" as="xs:integer" select="37"/>
+    <x:param name="x-scale" select="2"/>
+    <x:scenario label="Scenario for testing function count-words">
+        <x:call function="djb:count-words">
+            <x:param name="strings"
+                select="tokenize('This is a sample text'), tokenize('And this is another')"/>
+        </x:call>
+        <x:expect label="Should tokenize and count words" select="9"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario for testing function chapter-offset-to-x-pos">
+        <x:call function="djb:chapter-offset-to-x-pos">
+            <x:param name="chapter-offset" select="2"/>
+        </x:call>
+        <x:variable name="expected-result" select="(10 + 12) * 100 * 2 div 37"/>
+        <x:variable name="tolerance" select="0.0001"/>
+        <x:expect label="Should be accurate within 0.0001"
+            test="abs($x:result - $expected-result) &lt; $tolerance"/>
+    </x:scenario>
+</x:description>
