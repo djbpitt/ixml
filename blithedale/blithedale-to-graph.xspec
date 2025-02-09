@@ -2,15 +2,47 @@
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
     stylesheet="blithedale-to-graph.xsl">
+    <!-- ================================================================== -->
+    <!-- Thanks to Amanda Galtman                                           -->
+    <!-- https://github.com/galtm/xspectacles/issues/62#issuecomment-2646385567 -->
+    <!-- ================================================================== -->
+
+    <!-- ================================================================== -->
+    <!-- Import helper function                                             -->
+    <!-- ================================================================== -->
+    <x:helper stylesheet="blithedale-to-graph-helper.xsl"/>
+
+    <!-- ================================================================== -->
+    <!-- Global parameters, used to test djb:chapter-offset-to-x-pos        -->
+    <!-- See: https://medium.com/@xspectacles/overriding-global-xslt-variables-in-xspec-part1-d5c00bd1550d -->
+    <!-- To use non-global parameters within scenario see:                  -->
+    <!--   https://medium.com/@xspectacles/overriding-global-xslt-variables-in-xspec-part-2-31829081f982 -->
+    <!-- For packages see:                                                  -->
+    <!--   https://medium.com/@xspectacles/overriding-global-xslt-variables-in-xspec-part-3-545205cef963 -->
+    <!-- ================================================================== -->
     <x:param name="chapter-total-word-counts" as="map(*)" select="map {1: 10, 2:12, 3:15}"/>
     <x:param name="total-word-count" as="xs:integer" select="37"/>
     <x:param name="x-scale" select="2"/>
-    <x:scenario label="Scenario for testing function count-words">
-        <x:call function="djb:count-words">
-            <x:param name="strings"
-                select="tokenize('This is a sample text'), tokenize('And this is another')"/>
-        </x:call>
-        <x:expect label="Should tokenize and count words" select="9"/>
+
+    <!-- ================================================================== -->
+    <!-- Test scenarios                                                     -->
+    <!-- ================================================================== -->
+    <x:scenario label="Scenarios for testing function count-words">
+        <x:call function="djb:count-words"/>
+        <x:scenario label="with whitespace-normalized input">
+            <x:call>
+                <x:param name="strings"
+                    select="tokenize('This is a sample text'), tokenize('And this is another')"/>
+            </x:call>
+            <x:expect label="Should tokenize and count words" select="9"/>
+        </x:scenario>
+        <x:scenario label="with input that has edge spaces">
+            <x:call>
+                <x:param name="strings"
+                    select="tokenize('This is a sample text '), tokenize(' And this is another')"/>
+            </x:call>
+            <x:expect label="Should tokenize and count words" select="9"/>
+        </x:scenario>
     </x:scenario>
 
     <x:scenario label="Scenario for testing function chapter-offset-to-x-pos">
@@ -20,6 +52,7 @@
         <x:variable name="expected-result" select="(10 + 12) * 100 * 2 div 37"/>
         <x:variable name="tolerance" select="0.0001"/>
         <x:expect label="Should be accurate within 0.0001"
-            test="abs($x:result - $expected-result) &lt; $tolerance"/>
+            test="djb:compare-with-tolerance($expected-result, $x:result, $tolerance)"
+            select="map{'result': 'Success'}"/>
     </x:scenario>
 </x:description>

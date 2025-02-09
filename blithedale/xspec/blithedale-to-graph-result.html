@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>Test Report for /Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl (passed: 2 / pending: 0 / failed: 0 / total: 2)</title>
+      <title>Test Report for /Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl (passed: 3 / pending: 0 / failed: 0 / total: 3)</title>
       <style type="text/css">
 /****************************************************************************/
 /*  File:       test-report-colors-blackwhite.css                           */
@@ -454,7 +454,7 @@ span.scenario-totals {
       <h1>Test Report</h1>
       <p>Stylesheet: <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl">/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</a></p>
       <p>XSpec: <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xspec">/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xspec</a></p>
-      <p>Tested: 7 February 2025 at 21:12</p>
+      <p>Tested: 9 February 2025 at 17:42</p>
       <h2>Contents</h2>
       <table class="xspec">
          <colgroup>
@@ -467,19 +467,19 @@ span.scenario-totals {
          <thead>
             <tr>
                <th></th>
-               <th class="totals">passed: 2</th>
+               <th class="totals">passed: 3</th>
                <th class="totals">pending: 0</th>
                <th class="totals">failed: 0</th>
-               <th class="totals">total: 2</th>
+               <th class="totals">total: 3</th>
             </tr>
          </thead>
          <tbody>
             <tr class="successful">
-               <th><a href="#top_scenario1">Scenario for testing function count-words</a></th>
-               <th class="totals">1</th>
+               <th><a href="#top_scenario1">Scenarios for testing function count-words</a></th>
+               <th class="totals">2</th>
                <th class="totals">0</th>
                <th class="totals">0</th>
-               <th class="totals">1</th>
+               <th class="totals">2</th>
             </tr>
             <tr class="successful">
                <th><a href="#top_scenario2">Scenario for testing function chapter-offset-to-x-pos</a></th>
@@ -491,7 +491,7 @@ span.scenario-totals {
          </tbody>
       </table>
       <div id="top_scenario1">
-         <h2 class="successful">Scenario for testing function count-words<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <h2 class="successful">Scenarios for testing function count-words<span class="scenario-totals">passed: 2 / pending: 0 / failed: 0 / total: 2</span></h2>
          <table class="xspec" id="table_scenario1">
             <colgroup>
                <col style="width:75%" />
@@ -499,7 +499,19 @@ span.scenario-totals {
             </colgroup>
             <tbody>
                <tr class="successful">
-                  <th>Scenario for testing function count-words</th>
+                  <th>Scenarios for testing function count-words</th>
+                  <th>passed: 2 / pending: 0 / failed: 0 / total: 2</th>
+               </tr>
+               <tr class="successful">
+                  <th>with whitespace-normalized input</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Should tokenize and count words</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>with input that has edge spaces</th>
                   <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
                </tr>
                <tr class="successful">
