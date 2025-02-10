@@ -2,19 +2,18 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 exclude-result-prefixes="#all"
                 version="3.0">
-   <!-- the tested stylesheet -->
-   <xsl:import href="file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl"/>
    <!-- user-provided library module(s) -->
    <xsl:import href="file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph-helper.xsl"/>
    <!-- XSpec library modules providing tools -->
    <xsl:include href="file:/Users/djb/repos/xspec/src/common/runtime-utils.xsl"/>
+   <xsl:global-context-item use="absent"/>
    <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}stylesheet-uri"
                  as="Q{http://www.w3.org/2001/XMLSchema}anyURI">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</xsl:variable>
    <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}xspec-uri"
                  as="Q{http://www.w3.org/2001/XMLSchema}anyURI">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xspec</xsl:variable>
    <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}is-external"
                  as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                 select="false()"/>
+                 select="true()"/>
    <xsl:variable name="Q{urn:x-xspec:compile:impl}thread-aware"
                  as="Q{http://www.w3.org/2001/XMLSchema}boolean"
                  select="(system-property('Q{http://www.w3.org/1999/XSL/Transform}product-name') eq 'SAXON') and starts-with(system-property('Q{http://www.w3.org/1999/XSL/Transform}product-version'), 'EE ')"
@@ -27,23 +26,8 @@
                  as="Q{http://www.w3.org/2001/XMLSchema}integer"
                  select="1"
                  use-when="$Q{urn:x-xspec:compile:impl}thread-aware =&gt; not()"/>
-   <xsl:param xmlns:djb="http://www.obdurodon.org"
-              xmlns:x="http://www.jenitennison.com/xslt/xspec"
-              xmlns:xs="http://www.w3.org/2001/XMLSchema"
-              name="Q{}chapter-total-word-counts"
-              as="map(*)"
-              select="map {1: 10, 2:12, 3:15}"/>
-   <xsl:param xmlns:djb="http://www.obdurodon.org"
-              xmlns:x="http://www.jenitennison.com/xslt/xspec"
-              xmlns:xs="http://www.w3.org/2001/XMLSchema"
-              name="Q{}total-word-count"
-              as="xs:integer"
-              select="37"/>
-   <xsl:param xmlns:djb="http://www.obdurodon.org"
-              xmlns:x="http://www.jenitennison.com/xslt/xspec"
-              xmlns:xs="http://www.w3.org/2001/XMLSchema"
-              name="Q{}x-scale"
-              select="2"/>
+   <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}saxon-config"
+                 as="empty-sequence()"/>
    <!-- the main template to run the suite -->
    <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}main"
                  as="empty-sequence()">
@@ -62,13 +46,16 @@
             <xsl:attribute name="stylesheet" namespace="">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</xsl:attribute>
             <xsl:attribute name="date" namespace="" select="current-dateTime()"/>
             <!-- invoke each compiled top-level x:scenario -->
-            <xsl:for-each select="1 to 2">
+            <xsl:for-each select="1 to 3">
                <xsl:choose>
                   <xsl:when test=". eq 1">
                      <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}scenario1"/>
                   </xsl:when>
                   <xsl:when test=". eq 2">
                      <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}scenario2"/>
+                  </xsl:when>
+                  <xsl:when test=". eq 3">
+                     <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}scenario3"/>
                   </xsl:when>
                   <xsl:otherwise>
                      <xsl:message terminate="yes">ERROR: Unhandled scenario invocation</xsl:message>
@@ -136,12 +123,36 @@
             <xsl:variable xmlns:djb="http://www.obdurodon.org"
                           xmlns:x="http://www.jenitennison.com/xslt/xspec"
                           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                          name="Q{urn:x-xspec:compile:impl}param-d64e1"
+                          name="Q{urn:x-xspec:compile:impl}param-d62e1"
                           select="tokenize('This is a sample text'), tokenize('And this is another')"><!--$strings--></xsl:variable>
-            <xsl:sequence xmlns:djb="http://www.obdurodon.org"
-                          xmlns:x="http://www.jenitennison.com/xslt/xspec"
-                          xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                          select="Q{http://www.obdurodon.org}count-words($Q{urn:x-xspec:compile:impl}param-d64e1)"/>
+            <xsl:variable name="Q{urn:x-xspec:compile:impl}transform-options"
+                          as="map(Q{http://www.w3.org/2001/XMLSchema}string, item()*)">
+               <xsl:map>
+                  <xsl:map-entry key="'delivery-format'" select="'raw'"/>
+                  <xsl:map-entry key="'stylesheet-location'">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</xsl:map-entry>
+                  <xsl:if test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config =&gt; exists()">
+                     <xsl:choose>
+                        <xsl:when test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config instance of element(Q{http://saxon.sf.net/ns/configuration}configuration)"/>
+                        <xsl:when test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config instance of document-node(element(Q{http://saxon.sf.net/ns/configuration}configuration))"/>
+                        <xsl:otherwise>
+                           <xsl:message terminate="yes">ERROR: $Q{http://www.jenitennison.com/xslt/xspec}saxon-config does not appear to be a Saxon configuration</xsl:message>
+                        </xsl:otherwise>
+                     </xsl:choose>
+                     <xsl:map-entry key="'cache'" select="false()"/>
+                     <xsl:map-entry key="'vendor-options'">
+                        <xsl:map>
+                           <xsl:map-entry key="QName('http://saxon.sf.net/', 'configuration')"
+                                          select="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config"/>
+                        </xsl:map>
+                     </xsl:map-entry>
+                  </xsl:if>
+                  <xsl:map-entry key="'function-params'"
+                                 select="[$Q{urn:x-xspec:compile:impl}param-d62e1]"/>
+                  <xsl:map-entry key="'initial-function'"
+                                 select="QName('http://www.obdurodon.org', 'djb:count-words')"/>
+               </xsl:map>
+            </xsl:variable>
+            <xsl:sequence select="transform($Q{urn:x-xspec:compile:impl}transform-options)?output"/>
          </xsl:variable>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
             <xsl:with-param name="sequence"
@@ -165,11 +176,11 @@
       <xsl:variable xmlns:djb="http://www.obdurodon.org"
                     xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                    name="Q{urn:x-xspec:compile:impl}expect-d55e30"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e19"
                     select="9"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d55e30, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e19, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -182,7 +193,7 @@
             <xsl:text>Should tokenize and count words</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d55e30"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e19"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
@@ -213,12 +224,36 @@
             <xsl:variable xmlns:djb="http://www.obdurodon.org"
                           xmlns:x="http://www.jenitennison.com/xslt/xspec"
                           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                          name="Q{urn:x-xspec:compile:impl}param-d73e1"
+                          name="Q{urn:x-xspec:compile:impl}param-d71e1"
                           select="tokenize('This is a sample text '), tokenize(' And this is another')"><!--$strings--></xsl:variable>
-            <xsl:sequence xmlns:djb="http://www.obdurodon.org"
-                          xmlns:x="http://www.jenitennison.com/xslt/xspec"
-                          xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                          select="Q{http://www.obdurodon.org}count-words($Q{urn:x-xspec:compile:impl}param-d73e1)"/>
+            <xsl:variable name="Q{urn:x-xspec:compile:impl}transform-options"
+                          as="map(Q{http://www.w3.org/2001/XMLSchema}string, item()*)">
+               <xsl:map>
+                  <xsl:map-entry key="'delivery-format'" select="'raw'"/>
+                  <xsl:map-entry key="'stylesheet-location'">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</xsl:map-entry>
+                  <xsl:if test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config =&gt; exists()">
+                     <xsl:choose>
+                        <xsl:when test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config instance of element(Q{http://saxon.sf.net/ns/configuration}configuration)"/>
+                        <xsl:when test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config instance of document-node(element(Q{http://saxon.sf.net/ns/configuration}configuration))"/>
+                        <xsl:otherwise>
+                           <xsl:message terminate="yes">ERROR: $Q{http://www.jenitennison.com/xslt/xspec}saxon-config does not appear to be a Saxon configuration</xsl:message>
+                        </xsl:otherwise>
+                     </xsl:choose>
+                     <xsl:map-entry key="'cache'" select="false()"/>
+                     <xsl:map-entry key="'vendor-options'">
+                        <xsl:map>
+                           <xsl:map-entry key="QName('http://saxon.sf.net/', 'configuration')"
+                                          select="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config"/>
+                        </xsl:map>
+                     </xsl:map-entry>
+                  </xsl:if>
+                  <xsl:map-entry key="'function-params'"
+                                 select="[$Q{urn:x-xspec:compile:impl}param-d71e1]"/>
+                  <xsl:map-entry key="'initial-function'"
+                                 select="QName('http://www.obdurodon.org', 'djb:count-words')"/>
+               </xsl:map>
+            </xsl:variable>
+            <xsl:sequence select="transform($Q{urn:x-xspec:compile:impl}transform-options)?output"/>
          </xsl:variable>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
             <xsl:with-param name="sequence"
@@ -242,11 +277,11 @@
       <xsl:variable xmlns:djb="http://www.obdurodon.org"
                     xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                    name="Q{urn:x-xspec:compile:impl}expect-d55e34"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e23"
                     select="9"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d55e34, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e23, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -259,7 +294,7 @@
             <xsl:text>Should tokenize and count words</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d55e34"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e23"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
@@ -274,6 +309,23 @@
          <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
             <xsl:text>Scenario for testing function chapter-offset-to-x-pos</xsl:text>
          </xsl:element>
+         <xsl:variable xmlns:djb="http://www.obdurodon.org"
+                       xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                       name="Q{}chapter-total-word-counts"
+                       as="map(*)"
+                       select="map {1: 10, 2:12, 3:15}"/>
+         <xsl:variable xmlns:djb="http://www.obdurodon.org"
+                       xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                       name="Q{}total-word-count"
+                       as="xs:integer"
+                       select="37"/>
+         <xsl:variable xmlns:djb="http://www.obdurodon.org"
+                       xmlns:x="http://www.jenitennison.com/xslt/xspec"
+                       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                       name="Q{}x-scale"
+                       select="2"/>
          <xsl:element name="input-wrap" namespace="">
             <xsl:element name="x:call" namespace="http://www.jenitennison.com/xslt/xspec">
                <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
@@ -291,12 +343,44 @@
             <xsl:variable xmlns:djb="http://www.obdurodon.org"
                           xmlns:x="http://www.jenitennison.com/xslt/xspec"
                           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                          name="Q{urn:x-xspec:compile:impl}param-d82e1"
+                          name="Q{urn:x-xspec:compile:impl}param-d80e1"
                           select="2"><!--$chapter-offset--></xsl:variable>
-            <xsl:sequence xmlns:djb="http://www.obdurodon.org"
-                          xmlns:x="http://www.jenitennison.com/xslt/xspec"
-                          xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                          select="Q{http://www.obdurodon.org}chapter-offset-to-x-pos($Q{urn:x-xspec:compile:impl}param-d82e1)"/>
+            <xsl:variable name="Q{urn:x-xspec:compile:impl}transform-options"
+                          as="map(Q{http://www.w3.org/2001/XMLSchema}string, item()*)">
+               <xsl:map>
+                  <xsl:map-entry key="'delivery-format'" select="'raw'"/>
+                  <xsl:map-entry key="'stylesheet-location'">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</xsl:map-entry>
+                  <xsl:map-entry key="'stylesheet-params'">
+                     <xsl:map>
+                        <xsl:map-entry key="QName('', 'chapter-total-word-counts')"
+                                       select="$Q{}chapter-total-word-counts"/>
+                        <xsl:map-entry key="QName('', 'total-word-count')" select="$Q{}total-word-count"/>
+                        <xsl:map-entry key="QName('', 'x-scale')" select="$Q{}x-scale"/>
+                     </xsl:map>
+                  </xsl:map-entry>
+                  <xsl:if test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config =&gt; exists()">
+                     <xsl:choose>
+                        <xsl:when test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config instance of element(Q{http://saxon.sf.net/ns/configuration}configuration)"/>
+                        <xsl:when test="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config instance of document-node(element(Q{http://saxon.sf.net/ns/configuration}configuration))"/>
+                        <xsl:otherwise>
+                           <xsl:message terminate="yes">ERROR: $Q{http://www.jenitennison.com/xslt/xspec}saxon-config does not appear to be a Saxon configuration</xsl:message>
+                        </xsl:otherwise>
+                     </xsl:choose>
+                     <xsl:map-entry key="'cache'" select="false()"/>
+                     <xsl:map-entry key="'vendor-options'">
+                        <xsl:map>
+                           <xsl:map-entry key="QName('http://saxon.sf.net/', 'configuration')"
+                                          select="$Q{http://www.jenitennison.com/xslt/xspec}saxon-config"/>
+                        </xsl:map>
+                     </xsl:map-entry>
+                  </xsl:if>
+                  <xsl:map-entry key="'function-params'"
+                                 select="[$Q{urn:x-xspec:compile:impl}param-d80e1]"/>
+                  <xsl:map-entry key="'initial-function'"
+                                 select="QName('http://www.obdurodon.org', 'djb:chapter-offset-to-x-pos')"/>
+               </xsl:map>
+            </xsl:variable>
+            <xsl:sequence select="transform($Q{urn:x-xspec:compile:impl}transform-options)?output"/>
          </xsl:variable>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
             <xsl:with-param name="sequence"
@@ -317,6 +401,10 @@
          <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}scenario2-expect1">
             <xsl:with-param name="Q{http://www.jenitennison.com/xslt/xspec}result"
                             select="$Q{http://www.jenitennison.com/xslt/xspec}result"/>
+            <xsl:with-param name="Q{}chapter-total-word-counts"
+                            select="$Q{}chapter-total-word-counts"/>
+            <xsl:with-param name="Q{}total-word-count" select="$Q{}total-word-count"/>
+            <xsl:with-param name="Q{}x-scale" select="$Q{}x-scale"/>
             <xsl:with-param name="Q{}expected-result" select="$Q{}expected-result"/>
             <xsl:with-param name="Q{}tolerance" select="$Q{}tolerance"/>
          </xsl:call-template>
@@ -328,13 +416,16 @@
       <xsl:param name="Q{http://www.jenitennison.com/xslt/xspec}result"
                  as="item()*"
                  required="yes"/>
+      <xsl:param name="Q{}chapter-total-word-counts" as="item()*" required="yes"/>
+      <xsl:param name="Q{}total-word-count" as="item()*" required="yes"/>
+      <xsl:param name="Q{}x-scale" as="item()*" required="yes"/>
       <xsl:param name="Q{}expected-result" as="item()*" required="yes"/>
       <xsl:param name="Q{}tolerance" as="item()*" required="yes"/>
       <xsl:message>Should be accurate within 0.0001</xsl:message>
       <xsl:variable xmlns:djb="http://www.obdurodon.org"
                     xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                    name="Q{urn:x-xspec:compile:impl}expect-d55e40"
+                    name="Q{urn:x-xspec:compile:impl}expect-d53e32"
                     select="map{'result': 'Success'}"><!--expected result--></xsl:variable>
       <!-- wrap $x:result into a document node if possible -->
       <xsl:variable name="Q{urn:x-xspec:compile:impl}test-items" as="item()*">
@@ -379,7 +470,7 @@
                <xsl:message terminate="yes">ERROR in x:expect ('Scenario for testing function chapter-offset-to-x-pos Should be accurate within 0.0001'): Boolean @test must not be accompanied by @as, @href, @select, or child node.</xsl:message>
             </xsl:when>
             <xsl:otherwise>
-               <xsl:sequence select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d55e40, $Q{urn:x-xspec:compile:impl}test-result, '')"/>
+               <xsl:sequence select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d53e32, $Q{urn:x-xspec:compile:impl}test-result, '')"/>
             </xsl:otherwise>
          </xsl:choose>
       </xsl:variable>
@@ -408,9 +499,48 @@
             </xsl:call-template>
          </xsl:if>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d55e40"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d53e32"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}scenario3"
+                 as="element(Q{http://www.jenitennison.com/xslt/xspec}scenario)">
+      <xsl:context-item use="absent"/>
+      <xsl:message>PENDING: (Under development) Scenario for testing function word-parent-codes</xsl:message>
+      <xsl:element name="scenario" namespace="http://www.jenitennison.com/xslt/xspec">
+         <xsl:attribute name="id" namespace="">scenario3</xsl:attribute>
+         <xsl:attribute name="xspec" namespace="">file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xspec</xsl:attribute>
+         <xsl:attribute name="pending" namespace="">Under development</xsl:attribute>
+         <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
+            <xsl:text>Scenario for testing function word-parent-codes</xsl:text>
+         </xsl:element>
+         <xsl:element name="input-wrap" namespace="">
+            <xsl:element name="x:call" namespace="http://www.jenitennison.com/xslt/xspec">
+               <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+               <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
+               <xsl:attribute name="function" namespace="">djb:word-parent-codes</xsl:attribute>
+               <xsl:element name="x:param" namespace="http://www.jenitennison.com/xslt/xspec">
+                  <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
+                  <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
+                  <xsl:attribute name="name" namespace="">input</xsl:attribute>
+                  <xsl:attribute name="select" namespace="">1</xsl:attribute>
+               </xsl:element>
+            </xsl:element>
+         </xsl:element>
+         <xsl:call-template name="Q{http://www.jenitennison.com/xslt/xspec}scenario3-expect1"/>
+      </xsl:element>
+   </xsl:template>
+   <xsl:template name="Q{http://www.jenitennison.com/xslt/xspec}scenario3-expect1"
+                 as="element(Q{http://www.jenitennison.com/xslt/xspec}test)">
+      <xsl:context-item use="absent"/>
+      <xsl:message>PENDING: (Under development) stuff</xsl:message>
+      <xsl:element name="test" namespace="http://www.jenitennison.com/xslt/xspec">
+         <xsl:attribute name="id" namespace="">scenario3-expect1</xsl:attribute>
+         <xsl:attribute name="pending" namespace="">Under development</xsl:attribute>
+         <xsl:element name="label" namespace="http://www.jenitennison.com/xslt/xspec">
+            <xsl:text>stuff</xsl:text>
+         </xsl:element>
       </xsl:element>
    </xsl:template>
 </xsl:stylesheet>

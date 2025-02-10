@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>Test Report for /Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl (passed: 3 / pending: 0 / failed: 0 / total: 3)</title>
+      <title>Test Report for /Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl (passed: 3 / pending: 1 / failed: 0 / total: 4)</title>
       <style type="text/css">
 /****************************************************************************/
 /*  File:       test-report-colors-blackwhite.css                           */
 /* ------------------------------------------------------------------------ */
 
-/*
-Colors used, other than white:
-	#171717 gray 90%
-	#262626 gray 85%
-	#454545 gray 70%
-	#e6e6e6 gray 10%
-	#f0f0f0 gray  5%
-*/
-
 /* text and background colours */
 body {
-	background-color: white;
-	color: #171717;
+	--background-color: white;
+	--main-text-color: #171717; /* gray 90% */
+	--table-cell-text-color: #262626; /* gray 85% */
+	--deemphasis-color: #454545; /* gray 70% */
+	--diff-relevant-ws-color: #e6e6e6; /* gray 10% */
+	--link-hover-color: #f0f0f0; /* gray  5% */
+	background-color: var(--background-color);
+	color: var(--main-text-color);
 }
 
 h1 {
@@ -29,23 +26,23 @@ h2 {
 }
 
 a:link {
-	color: #171717;
+	color: var(--main-text-color);
 	background: transparent;
 }
 
 a:visited {
-	color: #454545;
+	color: var(--deemphasis-color);
 	background: transparent;
 }
 
 a:hover {
-	color: #f0f0f0;
-	background: #171717;
+	color: var(--link-hover-color);
+	background: var(--main-text-color);
 }
 
 a:active {
-	color: #171717;
-	background: white;
+	color: var(--main-text-color);
+	background: var(--background-color);
 }
 
 .same {
@@ -57,13 +54,13 @@ a:active {
 }
 
 .diff {
-	color: white;
-	background-color: #171717;
+	color: var(--background-color);
+	background-color: var(--main-text-color);
 	/* Underline is visible in Windows high-contrast mode,
 	 * where the white-on-black effect here is no different
 	 * from the surrounding text. */
 	text-decoration: underline;
-	text-decoration-color: #171717;
+	text-decoration-color: var(--main-text-color);
 }
 
 /*
@@ -74,80 +71,80 @@ a:active {
  * 1. Not in relevant part of diff: dark against light background */
 td > pre > .whitespace {
 	font-style: italic;
-	color: #171717;
+	color: var(--main-text-color);
 }
 
 /* 2. In relevant part of diff: override color
  * and instead use light against dark background */
 .diff.whitespace {
-	color: #e6e6e6;
+	color: var(--diff-relevant-ws-color);
 }
 
 .ellipsis {
-	color: #454545;
+	color: var(--deemphasis-color);
 }
 
 .xmlns.trivial {
-	color: #454545;
+	color: var(--deemphasis-color);
 	font-style: italic;
 }
 
 div > table > tbody > tr > th:first-child {
-	color: #454545;
+	color: var(--deemphasis-color);
 }
 
 /* 'failed: n' part of Contents */
 table > thead > tr > th:nth-child(4) {
-	color: white;
-	background-color: #171717;
+	color: var(--background-color);
+	background-color: var(--main-text-color);
 	padding: 2px;
 	/* Underline is visible in Windows high-contrast mode,
 	 * where the white-on-black effect here is no different
 	 * from the surrounding text. */
 	text-decoration: underline;
-	text-decoration-color: #171717;
+	text-decoration-color: var(--main-text-color);
 }
 
 .xspec tbody td {
-	color: #262626;
+	color: var(--table-cell-text-color);
 }
 
 .successful {
 }
 
 .pending {
-	color: #454545;
+	color: var(--deemphasis-color);
 }
 
 /* body makes this selector more specific than the one in test-report.css  */
 body *:target {
-	box-shadow: -0.5rem 0 0 0 #e6e6e6;
+	box-shadow: -0.5rem 0 0 0 var(--diff-relevant-ws-color);
 }
 
 /* code coverage report styles */
 .ignored,
 .comment,
 pre.xspecCoverage > .whitespace {
-	color: #454545;
-	background: white;
+	color: var(--deemphasis-color);
+	background: var(--background-color);
 }
 
 .unknown {
-	color: #454545;
-	background: white;
+	color: var(--deemphasis-color);
+	background: var(--background-color);
 }
 
 .hit {
 }
 
 .missed {
-	color: white;
-	background-color: #171717;
+	color: var(--background-color);
+	background-color: var(--main-text-color);
 	/* Underline is visible in Windows high-contrast mode,
 	 * where the white-on-black effect here is no different
 	 * from the surrounding text. */
 	text-decoration: underline;
-	text-decoration-color: #171717;
+	text-decoration-color: var(--main-text-color);
 }
 
 /****************************************************************************/
@@ -202,7 +199,6 @@ img {
 }
 
 pre {
-	padding-left: 5%;
 	margin-left: 5%;
 }
 
@@ -454,7 +450,7 @@ span.scenario-totals {
       <h1>Test Report</h1>
       <p>Stylesheet: <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl">/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xsl</a></p>
       <p>XSpec: <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xspec">/Users/djb/repos/ixml/blithedale/blithedale-to-graph.xspec</a></p>
-      <p>Tested: 9 February 2025 at 17:42</p>
+      <p>Tested: 10 February 2025 at 16:47</p>
       <h2>Contents</h2>
       <table class="xspec">
          <colgroup>
@@ -468,9 +464,9 @@ span.scenario-totals {
             <tr>
                <th></th>
                <th class="totals">passed: 3</th>
-               <th class="totals">pending: 0</th>
+               <th class="totals">pending: 1</th>
                <th class="totals">failed: 0</th>
-               <th class="totals">total: 3</th>
+               <th class="totals">total: 4</th>
             </tr>
          </thead>
          <tbody>
@@ -485,6 +481,13 @@ span.scenario-totals {
                <th><a href="#top_scenario2">Scenario for testing function chapter-offset-to-x-pos</a></th>
                <th class="totals">1</th>
                <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+            </tr>
+            <tr class="pending">
+               <th>(<strong>Under development</strong>) <a href="#top_scenario3">Scenario for testing function word-parent-codes</a></th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
                <th class="totals">0</th>
                <th class="totals">1</th>
             </tr>
@@ -536,6 +539,25 @@ span.scenario-totals {
                <tr class="successful">
                   <td>Should be accurate within 0.0001</td>
                   <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top_scenario3">
+         <h2 class="pending">(<strong>Under development</strong>) Scenario for testing function word-parent-codes<span class="scenario-totals">passed: 0 / pending: 1 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="table_scenario3">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="pending">
+                  <th>(<strong>Under development</strong>) Scenario for testing function word-parent-codes</th>
+                  <th>passed: 0 / pending: 1 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="pending">
+                  <td>(<strong>Under development</strong>) stuff</td>
+                  <td>Pending</td>
                </tr>
             </tbody>
          </table>

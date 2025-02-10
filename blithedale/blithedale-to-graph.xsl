@@ -11,7 +11,11 @@
     <xsl:use-package name="http://www.obdurodon.org/plot-lib" version="1.0"/>
 
     <!-- ================================================================ -->
-    <!-- Global variables                                                 -->
+    <!-- Global parameters                                                -->
+    <!--                                                                  -->
+    <!-- Configured as parameters, rather than as variables, because      -->
+    <!-- must run as external when using packages; see                    -->
+    <!-- https://medium.com/@xspectacles/overriding-global-xslt-variables-in-xspec-part1-d5c00bd1550d -->
     <!--                                                                  -->
     <!-- $b-debug : "b" = "blithedale" (plot package uses $debug)         -->
     <!-- $chapter-narrative-word-counts: map from chapter offset          -->
@@ -28,36 +32,36 @@
     <!-- $y-scale: vertical scaling factor as double                      -->
     <!-- ================================================================ -->
     <xsl:param name="b-debug" static="true" as="xs:boolean" select="false()"/>
-    <xsl:variable name="chapter-narrative-word-counts" as="map(*)">
+    <xsl:param name="chapter-narrative-word-counts" as="map(*)">
         <xsl:map>
             <xsl:for-each select="descendant::chapter-body">
                 <xsl:map-entry key="position()"
                     select="djb:count-words(current()/descendant::paragraph/text())"/>
             </xsl:for-each>
         </xsl:map>
-    </xsl:variable>
-    <xsl:variable name="chapter-speech-word-counts" as="map(*)">
+    </xsl:param>
+    <xsl:param name="chapter-speech-word-counts" as="map(*)">
         <xsl:map>
             <xsl:for-each select="descendant::chapter-body">
                 <xsl:map-entry key="position()"
                     select="djb:count-words(current()/descendant::q/text())"/>
             </xsl:for-each>
         </xsl:map>
-    </xsl:variable>
-    <xsl:variable name="chapter-total-word-counts" as="map(*)">
+    </xsl:param>
+    <xsl:param name="chapter-total-word-counts" as="map(*)">
         <xsl:map>
             <xsl:for-each select="descendant::chapter-body">
                 <xsl:map-entry key="position()" select="djb:count-words(descendant::text())"/>
             </xsl:for-each>
         </xsl:map>
-    </xsl:variable>
-    <xsl:variable name="total-word-count" as="xs:integer" select="
+    </xsl:param>
+    <xsl:param name="total-word-count" as="xs:integer" select="
             map:for-each($chapter-total-word-counts, function ($k, $v) {
                 $v
             }) => sum()"/>
-    <xsl:variable name="color-backgrounds" as="xs:string+" select="'#fffff3', '#dbeded'"/>
-    <xsl:variable name="x-scale" as="xs:double" select="10"/>
-    <xsl:variable name="y-scale" as="xs:double" select="3"/>
+    <xsl:param name="color-backgrounds" as="xs:string+" select="'#fffff3', '#dbeded'"/>
+    <xsl:param name="x-scale" as="xs:double" select="10"/>
+    <xsl:param name="y-scale" as="xs:double" select="3"/>
 
     <!-- ================================================================ -->
     <!-- Functions                                                        -->
