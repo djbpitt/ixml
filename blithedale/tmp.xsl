@@ -10,21 +10,25 @@
     <!-- Return 1 for paragraph word and 0 for quote word                 -->
     <!-- Input is all text node children of paragraphs and quotes         -->
     <!-- ================================================================ -->
-    <xsl:function name="djb:word-parent-codes" as="xs:integer+">
+    <xsl:function name="djb:word-parent-codes">
         <xsl:param name="input" as="text()+"/>
+        <xsl:variable name="parent-type-to-integer" as="map(*)" select="
+                map {
+                    'paragraph': 1,
+                    'q': 0
+                }"/>
         <xsl:variable name="parent-types" select="
                 $input !
-                (let $parent-code := if (name(..) eq 'paragraph') then
-                    1
-                else
-                    0
+                (let $parent-code := local-name(..) (: $parent-type-to-integer(local-name(..)) :)
                 return
-                    (tokenize(normalize-space(.), '\s|—') ! $parent-code))
+                    (tokenize(normalize-space(), '\s|—') ! [., string-length(.), $parent-code]))
                 "/>
-        <xsl:sequence select="$parent-types"/>
+        <xsl:sequence select="$parent-types ! (., '&#x0a;')"/>
     </xsl:function>
     <xsl:template match="/">
-        <xsl:variable name="text-nodes" select="//text()[parent::paragraph or parent::q]"/>
+        <xsl:variable name="text-nodes" as="text()+"
+            select="//text()[parent::paragraph or parent::q]"/>
+        <xsl:message select="count($text-nodes)"/>
         <xsl:sequence select="djb:word-parent-codes($text-nodes)"/>
     </xsl:template>
 </xsl:stylesheet>

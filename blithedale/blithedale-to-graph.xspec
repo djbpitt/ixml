@@ -55,4 +55,10 @@
             test="djb:compare-with-tolerance($expected-result, $x:result, $tolerance)"
             select="map{'result': 'Success'}"/>
     </x:scenario>
+    
+    <x:scenario label="Scenario for testing function word-parent-codes">
+        <x:call function="djb:word-parent-codes">
+            <x:param name="input" select=""/>
+        </x:call>
+    </x:scenario>
 </x:description>

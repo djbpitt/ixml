@@ -5,8 +5,15 @@
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns="http://www.w3.org/2000/svg"
     exclude-result-prefixes="#all" version="3.0">
     <!-- ================================================================ -->
+    <!-- Imports                                                          -->
+    <!-- ================================================================ -->
+    <xsl:use-package name="http://www.obdurodon.org/smoothing" version="1.0"/>
+    <xsl:use-package name="http://www.obdurodon.org/plot-lib" version="1.0"/>
+
+    <!-- ================================================================ -->
     <!-- Global variables                                                 -->
     <!--                                                                  -->
+    <!-- $b-debug : "b" = "blithedale" (plot package uses $debug)         -->
     <!-- $chapter-narrative-word-counts: map from chapter offset          -->
     <!--   (integer) to word-count (integer) of text-node children of     -->
     <!--   <paragraph>                                                    -->
@@ -20,7 +27,7 @@
     <!-- $x-scale: horizontal scaling factor as double                    -->
     <!-- $y-scale: vertical scaling factor as double                      -->
     <!-- ================================================================ -->
-    <xsl:param name="debug" static="true" as="xs:boolean" select="false()"/>
+    <xsl:param name="b-debug" static="true" as="xs:boolean" select="false()"/>
     <xsl:variable name="chapter-narrative-word-counts" as="map(*)">
         <xsl:map>
             <xsl:for-each select="descendant::chapter-body">
@@ -51,47 +58,76 @@
     <xsl:variable name="color-backgrounds" as="xs:string+" select="'#fffff3', '#dbeded'"/>
     <xsl:variable name="x-scale" as="xs:double" select="10"/>
     <xsl:variable name="y-scale" as="xs:double" select="3"/>
+
     <!-- ================================================================ -->
     <!-- Functions                                                        -->
     <!--                                                                  -->
-    <!-- count-words as integer                                           -->
-    <!--   sum word counts in sequence of strings                         -->
-    <!--   @param strings as sequence of strings                          -->
-    <!--     (e.g., text-node children of <paragraph> or <q>              -->
-    <!--   returns integer                                                -->
-    <!-- chapter-offset-to-x-pos as double                                -->
-    <!--   x position of right edge of chapter rectangle                  -->
-    <!--   @param chapter-offset as integer                               -->
-    <!--   returns double                                                 -->
+    <!-- count-words                                                      -->
+    <!-- chapter-offset-to-x-pos                                          -->
+    <!-- get-word-parent-codes                                            -->
     <!-- ================================================================ -->
     <xsl:function name="djb:count-words" as="xs:integer" visibility="public">
+        <!-- ============================================================ -->
+        <!-- Sum word counts in sequence of strings                       -->
+        <!-- @param strings as sequence of strings                        -->
+        <!--   (e.g., text-node children of <paragraph> or <q>)           -->
+        <!-- returns integer                                              -->
+        <!-- ============================================================ -->
         <xsl:param name="strings" as="xs:string*"/>
         <xsl:sequence
             select="$strings ! normalize-space() ! tokenize(., '\s+|—') => count() => sum()"/>
     </xsl:function>
     <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double" visibility="public">
+        <!-- ============================================================ -->
+        <!-- Compute x position of right edge of chapter rectangle        -->
+        <!--   @param chapter-offset as integer                           -->
+        <!--   returns double                                             -->
+        <!-- ============================================================ -->
         <xsl:param name="chapter-offset" as="xs:integer"/>
         <xsl:sequence
             select="((1 to $chapter-offset) ! $chapter-total-word-counts(.) => sum()) * 100 * $x-scale div $total-word-count"
         />
     </xsl:function>
+    <xsl:function name="djb:word-parent-codes" as="xs:integer+">
+        <!-- ============================================================ -->
+        <!-- Return 1 for paragraph word and 0 for quote word             -->
+        <!-- Input is all text node children of paragraphs and quotes     -->
+        <!-- Depends on global context to get parents of text nodes       -->
+        <!-- Must normalize-space, and not just split on \s+, to remove   -->
+        <!--   leading or trailing spaces                                 -->
+        <!-- ============================================================ -->
+        <xsl:param name="input" as="text()+"/>
+        <xsl:variable name="parent-type-to-integer" as="map(*)" select="
+                map {
+                    'paragraph': 1,
+                    'q': 0
+                }"/>
+        <xsl:variable name="parent-types" select="
+                $input !
+                (let $parent-code := $parent-type-to-integer(local-name(..))
+                return
+                    (tokenize(normalize-space(.), '\s|—') ! $parent-code))
+                "/>
+        <xsl:sequence select="$parent-types"/>
+    </xsl:function>
+
     <!-- ================================================================ -->
     <!-- Templates                                                        -->
     <!-- ================================================================ -->
     <xsl:template match="/">
-        <xsl:message use-when="$debug" select="
+        <xsl:message use-when="$b-debug" select="
                 'Narrative word counts: ',
                 serialize($chapter-narrative-word-counts, map {
                     'method': 'json',
                     'indent': true()
                 })"/>
-        <xsl:message use-when="$debug" select="
+        <xsl:message use-when="$b-debug" select="
                 'Quoted word counts: ',
                 serialize($chapter-speech-word-counts, map {
                     'method': 'json',
                     'indent': true()
                 })"/>
-        <xsl:message use-when="$debug" select="
+        <xsl:message use-when="$b-debug" select="
                 'Total word counts: ',
                 serialize($chapter-total-word-counts, map {
                     'method': 'json',
