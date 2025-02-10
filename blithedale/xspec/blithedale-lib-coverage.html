@@ -7,19 +7,16 @@
 /*  File:       test-report-colors-blackwhite.css                           */
 /* ------------------------------------------------------------------------ */
 
-/*
-Colors used, other than white:
-	#171717 gray 90%
-	#262626 gray 85%
-	#454545 gray 70%
-	#e6e6e6 gray 10%
-	#f0f0f0 gray  5%
-*/
-
 /* text and background colours */
 body {
-	background-color: white;
-	color: #171717;
+	--background-color: white;
+	--main-text-color: #171717; /* gray 90% */
+	--table-cell-text-color: #262626; /* gray 85% */
+	--deemphasis-color: #454545; /* gray 70% */
+	--diff-relevant-ws-color: #e6e6e6; /* gray 10% */
+	--link-hover-color: #f0f0f0; /* gray  5% */
+	background-color: var(--background-color);
+	color: var(--main-text-color);
 }
 
 h1 {
@@ -29,23 +26,23 @@ h2 {
 }
 
 a:link {
-	color: #171717;
+	color: var(--main-text-color);
 	background: transparent;
 }
 
 a:visited {
-	color: #454545;
+	color: var(--deemphasis-color);
 	background: transparent;
 }
 
 a:hover {
-	color: #f0f0f0;
-	background: #171717;
+	color: var(--link-hover-color);
+	background: var(--main-text-color);
 }
 
 a:active {
-	color: #171717;
-	background: white;
+	color: var(--main-text-color);
+	background: var(--background-color);
 }
 
 .same {
@@ -57,13 +54,13 @@ a:active {
 }
 
 .diff {
-	color: white;
-	background-color: #171717;
+	color: var(--background-color);
+	background-color: var(--main-text-color);
 	/* Underline is visible in Windows high-contrast mode,
 	 * where the white-on-black effect here is no different
 	 * from the surrounding text. */
 	text-decoration: underline;
-	text-decoration-color: #171717;
+	text-decoration-color: var(--main-text-color);
 }
 
 /*
@@ -74,80 +71,80 @@ a:active {
  * 1. Not in relevant part of diff: dark against light background */
 td > pre > .whitespace {
 	font-style: italic;
-	color: #171717;
+	color: var(--main-text-color);
 }
 
 /* 2. In relevant part of diff: override color
  * and instead use light against dark background */
 .diff.whitespace {
-	color: #e6e6e6;
+	color: var(--diff-relevant-ws-color);
 }
 
 .ellipsis {
-	color: #454545;
+	color: var(--deemphasis-color);
 }
 
 .xmlns.trivial {
-	color: #454545;
+	color: var(--deemphasis-color);
 	font-style: italic;
 }
 
 div > table > tbody > tr > th:first-child {
-	color: #454545;
+	color: var(--deemphasis-color);
 }
 
 /* 'failed: n' part of Contents */
 table > thead > tr > th:nth-child(4) {
-	color: white;
-	background-color: #171717;
+	color: var(--background-color);
+	background-color: var(--main-text-color);
 	padding: 2px;
 	/* Underline is visible in Windows high-contrast mode,
 	 * where the white-on-black effect here is no different
 	 * from the surrounding text. */
 	text-decoration: underline;
-	text-decoration-color: #171717;
+	text-decoration-color: var(--main-text-color);
 }
 
 .xspec tbody td {
-	color: #262626;
+	color: var(--table-cell-text-color);
 }
 
 .successful {
 }
 
 .pending {
-	color: #454545;
+	color: var(--deemphasis-color);
 }
 
 /* body makes this selector more specific than the one in test-report.css  */
 body *:target {
-	box-shadow: -0.5rem 0 0 0 #e6e6e6;
+	box-shadow: -0.5rem 0 0 0 var(--diff-relevant-ws-color);
 }
 
 /* code coverage report styles */
 .ignored,
 .comment,
 pre.xspecCoverage > .whitespace {
-	color: #454545;
-	background: white;
+	color: var(--deemphasis-color);
+	background: var(--background-color);
 }
 
 .unknown {
-	color: #454545;
-	background: white;
+	color: var(--deemphasis-color);
+	background: var(--background-color);
 }
 
 .hit {
 }
 
 .missed {
-	color: white;
-	background-color: #171717;
+	color: var(--background-color);
+	background-color: var(--main-text-color);
 	/* Underline is visible in Windows high-contrast mode,
 	 * where the white-on-black effect here is no different
 	 * from the surrounding text. */
 	text-decoration: underline;
-	text-decoration-color: #171717;
+	text-decoration-color: var(--main-text-color);
 }
 
 /****************************************************************************/
@@ -202,7 +199,6 @@ img {
 }
 
 pre {
-	padding-left: 5%;
 	margin-left: 5%;
 }
 
@@ -453,18 +449,18 @@ span.scenario-totals {
    <body>
       <h1>Test Coverage Report</h1>
       <p>Stylesheet:  <a href="file:/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl">/Users/djb/repos/ixml/blithedale/blithedale-lib.xsl</a></p>
-      <h2>module: /Users/djb/repos/ixml/blithedale/blithedale-lib.xsl; 61 lines</h2>
+      <h2>module: /Users/djb/repos/ixml/blithedale/blithedale-lib.xsl; 79 lines</h2>
       <pre class="xspecCoverage">01: <span class="ignored">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 02: <span class="ignored">&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"</span>
 03: <span class="ignored">  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"</span>
 04: <span class="ignored">  xmlns:math="http://www.w3.org/2005/xpath-functions/math" exclude-result-prefixes="xs math"</span>
 05: <span class="ignored">  version="3.0"&gt;</span>
-06: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
-07: <span class="comment">       Functions</span>
-08: <span class="comment">       ================================================================== --&gt;</span>
-09: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
-10: <span class="comment">       djb:title-case : convert uppercase title to titlecase</span>
-11: <span class="comment">       ================================================================== --&gt;</span>
+06: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+07: <span class="whitespace">  </span><span class="comment">&lt;!-- Functions                                                          --&gt;</span>
+08: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+09: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+10: <span class="whitespace">  </span><span class="comment">&lt;!-- djb:title-case : convert uppercase title to titlecase              --&gt;</span>
+11: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
 12: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:title-case" as="xs:string"&gt;</span>
 13: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
 14: <span class="whitespace">    </span><span class="hit">&lt;xsl:variable name="parts" as="xs:string+"&gt;</span>
@@ -479,41 +475,59 @@ span.scenario-totals {
 23: <span class="whitespace">    </span><span class="hit">&lt;/xsl:variable&gt;</span>
 24: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="string-join($parts) =&gt; djb:upper-case-first()"/&gt;</span>
 25: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
-26: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
-27: <span class="comment">       djb:title-case-token : lower-case single word token if function word,</span>
-28: <span class="comment">       otherwise title-case</span>
-29: <span class="comment">       ================================================================== --&gt;</span>
+26: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+27: <span class="whitespace">  </span><span class="comment">&lt;!-- djb:title-case-token : lower-case single word token if function    --&gt;</span>
+28: <span class="whitespace">  </span><span class="comment">&lt;!-- word, otherwise title-case; see https://titlecaseconverter.com     --&gt;</span>
+29: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
 30: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:title-case-token" as="xs:string"&gt;</span>
 31: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
 32: <span class="whitespace">    </span><span class="hit">&lt;xsl:variable name="function-words" as="xs:string+" select="</span>
 33: <span class="hit">        'A',</span>
 34: <span class="hit">        'AND',</span>
-35: <span class="hit">        'FROM',</span>
-36: <span class="hit">        'OF',</span>
-37: <span class="hit">        'THE',</span>
-38: <span class="hit">        'TO'"/&gt;</span>
-39: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="</span>
-40: <span class="hit">        if ($input = $function-words) then</span>
-41: <span class="hit">          lower-case($input)</span>
-42: <span class="hit">        else</span>
-43: <span class="hit">          concat(substring($input, 1, 1), lower-case(substring($input, 2)))</span>
-44: <span class="hit">        "/&gt;</span>
-45: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
-46: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
-47: <span class="comment">       djb:upper-case-first : upper-case first character in string</span>
-48: <span class="comment">       ================================================================== --&gt;</span>
-49: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:upper-case-first" as="xs:string"&gt;</span>
-50: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
-51: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="concat(upper-case(substring($input, 1, 1)), substring($input, 2))"/&gt;</span>
-52: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
-53: <span class="whitespace">  </span><span class="comment">&lt;!-- ==================================================================</span>
-54: <span class="comment">       djb:explore-string : explode string into sequence of single characters</span>
-55: <span class="comment">       ================================================================== --&gt;</span>
-56: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:explode-string" as="xs:string+"&gt;</span>
-57: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
-58: <span class="whitespace">    </span><span class="hit">&lt;xsl:sequence select="string-to-codepoints($input) ! codepoints-to-string(.)"/&gt;</span>
-59: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
-60: <span class="ignored">&lt;/xsl:stylesheet&gt;</span>
-61: </pre>
+35: <span class="hit">        'AS',</span>
+36: <span class="hit">        'AT',</span>
+37: <span class="hit">        'BUT',</span>
+38: <span class="hit">        'BY',</span>
+39: <span class="hit">        'FOR',</span>
+40: <span class="hit">        'FROM',</span>
+41: <span class="hit">        'IN',</span>
+42: <span class="hit">        'INTO',</span>
+43: <span class="hit">        'NOT',</span>
+44: <span class="hit">        'OF',</span>
+45: <span class="hit">        'OFF',</span>
+46: <span class="hit">        'ON',</span>
+47: <span class="hit">        'OR',</span>
+48: <span class="hit">        'OUT',</span>
+49: <span class="hit">        'SO',</span>
+50: <span class="hit">        'THE',</span>
+51: <span class="hit">        'TO',</span>
+52: <span class="hit">        'UNTO',</span>
+53: <span class="hit">        'UP',</span>
+54: <span class="hit">        'VIA',</span>
+55: <span class="hit">        'WITH',</span>
+56: <span class="hit">        'YET'"/&gt;</span>
+57: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="</span>
+58: <span class="hit">        if ($input = $function-words) then</span>
+59: <span class="hit">          lower-case($input)</span>
+60: <span class="hit">        else</span>
+61: <span class="hit">          concat(substring($input, 1, 1), lower-case(substring($input, 2)))</span>
+62: <span class="hit">        "/&gt;</span>
+63: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+64: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+65: <span class="whitespace">  </span><span class="comment">&lt;!-- djb:upper-case-first : upper-case first character in string        --&gt;</span>
+66: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+67: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:upper-case-first" as="xs:string"&gt;</span>
+68: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
+69: <span class="whitespace">    </span><span class="hit">&lt;xsl:value-of select="concat(upper-case(substring($input, 1, 1)), substring($input, 2))"/&gt;</span>
+70: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+71: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+72: <span class="whitespace">  </span><span class="comment">&lt;!-- djb:explode-string : map string to sequence of single characters   --&gt;</span>
+73: <span class="whitespace">  </span><span class="comment">&lt;!-- ================================================================== --&gt;</span>
+74: <span class="whitespace">  </span><span class="hit">&lt;xsl:function name="djb:explode-string" as="xs:string+"&gt;</span>
+75: <span class="whitespace">    </span><span class="hit">&lt;xsl:param name="input" as="xs:string"/&gt;</span>
+76: <span class="whitespace">    </span><span class="hit">&lt;xsl:sequence select="string-to-codepoints($input) ! codepoints-to-string(.)"/&gt;</span>
+77: <span class="whitespace">  </span><span class="hit">&lt;/xsl:function&gt;</span>
+78: <span class="ignored">&lt;/xsl:stylesheet&gt;</span>
+79: </pre>
    </body>
 </html>
