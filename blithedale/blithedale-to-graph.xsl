@@ -92,13 +92,14 @@
             select="((1 to $chapter-offset) ! $chapter-total-word-counts(.) => sum()) * 100 * $x-scale div $total-word-count"
         />
     </xsl:function>
-    <xsl:function name="djb:word-parent-codes" as="xs:integer+">
+    <xsl:function name="djb:word-parent-codes" as="xs:integer+" visibility="public">
         <!-- ============================================================ -->
         <!-- Return 1 for paragraph word and 0 for quote word             -->
         <!-- Input is all text node children of paragraphs and quotes     -->
         <!-- Depends on global context to get parents of text nodes       -->
         <!-- Must normalize-space, and not just split on \s+, to remove   -->
-        <!--   leading or trailing spaces                                 -->
+        <!--   leading or trailing spaces; must also trim em-dash-only    -->
+        <!--   tokens                                                     -->
         <!-- ============================================================ -->
         <xsl:param name="input" as="text()+"/>
         <xsl:variable name="parent-type-to-integer" as="map(*)" select="
@@ -110,7 +111,7 @@
                 $input !
                 (let $parent-code := $parent-type-to-integer(local-name(..))
                 return
-                    (tokenize(normalize-space(.), '\s|—') ! $parent-code))
+                    (tokenize(normalize-space(.), '\s|—')[string-length(.) gt 0 and . ne '—'] ! $parent-code))
                 "/>
         <xsl:sequence select="$parent-types"/>
     </xsl:function>
