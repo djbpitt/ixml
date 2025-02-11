@@ -87,6 +87,7 @@
         <!-- Compute x position of right edge of chapter rectangle        -->
         <!--   @param chapter-offset as integer                           -->
         <!--   returns double                                             -->
+        <!-- Based on percent of total words                              -->
         <!-- ============================================================ -->
         <xsl:param name="chapter-offset" as="xs:integer"/>
         <xsl:sequence
@@ -96,11 +97,9 @@
     <xsl:function name="djb:word-parent-codes" as="xs:integer+" visibility="public">
         <!-- ============================================================ -->
         <!-- Return 1 for paragraph word and 0 for quote word             -->
-        <!-- Input is all text node children of paragraphs and quotes     -->
+        <!--   @input as text()+ :  all text node children of             -->
+        <!--     paragraphs and quotes                                    -->
         <!-- Depends on global context to get parents of text nodes       -->
-        <!-- Must normalize-space, and not just split on \s+, to remove   -->
-        <!--   leading or trailing spaces; must also trim em-dash-only    -->
-        <!--   tokens                                                     -->
         <!-- ============================================================ -->
         <xsl:param name="input" as="text()+"/>
         <xsl:variable name="parent-type-to-integer" as="map(*)" select="
@@ -115,6 +114,20 @@
                     (tokenize(normalize-space(.), '\s|—')[string-length(.) gt 0 and . ne '—'] ! $parent-code))
                 "/>
         <xsl:sequence select="$parent-types"/>
+    </xsl:function>
+    <xsl:function name="djb:tokenize-text-node" as="xs:string+" visibility="public">
+        <!-- ============================================================ -->
+        <!-- TODO: Input should be text node; fix tests                   -->
+        <!-- ============================================================ -->
+        <!-- Tokenize on whitespace and em-dashes                         -->
+        <!--   @input as xs:string : string to tokenize                   -->
+        <!-- Must normalize-space, and not just split on \s+, to remove   -->
+        <!--   leading or trailing spaces; must also trim em-dash-only    -->
+        <!--   tokens                                                     -->
+        <!-- ============================================================ -->
+        <xsl:param name="input" as="xs:string"/>
+        <xsl:sequence
+            select="tokenize(normalize-space($input), '\s|—')[string-length(.) gt 0 and . ne '—']"/>
     </xsl:function>
 
     <!-- ================================================================ -->
@@ -141,13 +154,18 @@
                 })"/>
         <svg viewBox="-10 -{100 * $y-scale + 10} {100 * $x-scale + 20} {100 * $y-scale + 20}">
             <!-- ======================================================== -->
-            <!-- x axis, y axis, chapter rectangles and vertical lines    -->
+            <!-- x axis                                                   -->
             <!-- ======================================================== -->
             <line x1="0" y1="0" x2="{100 * $x-scale}" y2="0" stroke="black" stroke-width="1"
                 stroke-linecap="square"/>
-            <!-- y axis and vertical lines at chapter boundaries as percentages -->
+            <!-- ======================================================== -->
+            <!-- y axis                                                   -->
+            <!-- ======================================================== -->
             <line x1="0" y1="0" x2="0" y2="{-100 * $y-scale}" stroke="black" stroke-width="1"
                 stroke-linecap="square"/>
+            <!-- ======================================================== -->
+            <!-- chapter rectangles and vertical lines                    -->
+            <!-- ======================================================== -->
             <xsl:for-each select="map:keys($chapter-total-word-counts)">
                 <xsl:variable name="current-x" as="xs:double"
                     select="djb:chapter-offset-to-x-pos(current())"/>

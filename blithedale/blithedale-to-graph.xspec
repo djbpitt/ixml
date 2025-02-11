@@ -94,4 +94,20 @@
                 select="1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0"/>
         </x:scenario>
     </x:scenario>
+
+    <x:scenario label="Scenarios for testing function tokenize-text-node">
+        <x:call function="djb:tokenize-text-node"/>
+        <x:scenario label="with space characters at edges">
+            <x:call>
+                <x:param name="input" select="' said he softly, '"/>
+            </x:call>
+            <x:expect label="Sequence of three tokens" select="'said', 'he', 'softly,'"/>
+        </x:scenario>
+        <x:scenario label="with em-dashes at edges">
+            <x:call>
+                <x:param name="input" select="'For instance:—'"/>
+            </x:call>
+            <x:expect label="Sequence of two tokens, with no em-dash" select="'For', 'instance:'"/>
+        </x:scenario>
+    </x:scenario>
 </x:description>
