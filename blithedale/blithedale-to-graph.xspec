@@ -99,13 +99,13 @@
         <x:call function="djb:tokenize-text-node"/>
         <x:scenario label="with space characters at edges">
             <x:call>
-                <x:param name="input" select="' said he softly, '"/>
+                <x:param name="input" as="text()"> said he softly, </x:param>
             </x:call>
             <x:expect label="Sequence of three tokens" select="'said', 'he', 'softly,'"/>
         </x:scenario>
         <x:scenario label="with em-dashes at edges">
             <x:call>
-                <x:param name="input" select="'For instance:—'"/>
+                <x:param name="input" as="text()">For instance:—</x:param>
             </x:call>
             <x:expect label="Sequence of two tokens, with no em-dash" select="'For', 'instance:'"/>
         </x:scenario>

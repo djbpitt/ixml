@@ -1009,16 +1009,23 @@
                   <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
                   <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
                   <xsl:attribute name="name" namespace="">input</xsl:attribute>
-                  <xsl:attribute name="select" namespace="">' said he softly, '</xsl:attribute>
+                  <xsl:attribute name="as" namespace="">text()</xsl:attribute>
+                  <xsl:text> said he softly, </xsl:text>
                </xsl:element>
             </xsl:element>
          </xsl:element>
          <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}result" as="item()*">
+            <xsl:variable name="Q{urn:x-xspec:compile:impl}param-d132e1-doc" as="document-node()">
+               <xsl:document>
+                  <xsl:text> said he softly, </xsl:text>
+               </xsl:document>
+            </xsl:variable>
             <xsl:variable xmlns:djb="http://www.obdurodon.org"
                           xmlns:x="http://www.jenitennison.com/xslt/xspec"
                           xmlns:xs="http://www.w3.org/2001/XMLSchema"
                           name="Q{urn:x-xspec:compile:impl}param-d132e1"
-                          select="' said he softly, '"><!--$input--></xsl:variable>
+                          as="text()"
+                          select="$Q{urn:x-xspec:compile:impl}param-d132e1-doc ! ( node() )"><!--$input--></xsl:variable>
             <xsl:variable name="Q{urn:x-xspec:compile:impl}transform-options"
                           as="map(Q{http://www.w3.org/2001/XMLSchema}string, item()*)">
                <xsl:map>
@@ -1070,11 +1077,11 @@
       <xsl:variable xmlns:djb="http://www.obdurodon.org"
                     xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                    name="Q{urn:x-xspec:compile:impl}expect-d54e77"
+                    name="Q{urn:x-xspec:compile:impl}expect-d54e78"
                     select="'said', 'he', 'softly,'"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d54e77, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d54e78, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -1087,7 +1094,7 @@
             <xsl:text>Sequence of three tokens</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d54e77"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d54e78"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>
@@ -1110,16 +1117,23 @@
                   <xsl:namespace name="djb">http://www.obdurodon.org</xsl:namespace>
                   <xsl:namespace name="xs">http://www.w3.org/2001/XMLSchema</xsl:namespace>
                   <xsl:attribute name="name" namespace="">input</xsl:attribute>
-                  <xsl:attribute name="select" namespace="">'For instance:—'</xsl:attribute>
+                  <xsl:attribute name="as" namespace="">text()</xsl:attribute>
+                  <xsl:text>For instance:—</xsl:text>
                </xsl:element>
             </xsl:element>
          </xsl:element>
          <xsl:variable name="Q{http://www.jenitennison.com/xslt/xspec}result" as="item()*">
+            <xsl:variable name="Q{urn:x-xspec:compile:impl}param-d141e1-doc" as="document-node()">
+               <xsl:document>
+                  <xsl:text>For instance:—</xsl:text>
+               </xsl:document>
+            </xsl:variable>
             <xsl:variable xmlns:djb="http://www.obdurodon.org"
                           xmlns:x="http://www.jenitennison.com/xslt/xspec"
                           xmlns:xs="http://www.w3.org/2001/XMLSchema"
                           name="Q{urn:x-xspec:compile:impl}param-d141e1"
-                          select="'For instance:—'"><!--$input--></xsl:variable>
+                          as="text()"
+                          select="$Q{urn:x-xspec:compile:impl}param-d141e1-doc ! ( node() )"><!--$input--></xsl:variable>
             <xsl:variable name="Q{urn:x-xspec:compile:impl}transform-options"
                           as="map(Q{http://www.w3.org/2001/XMLSchema}string, item()*)">
                <xsl:map>
@@ -1171,11 +1185,11 @@
       <xsl:variable xmlns:djb="http://www.obdurodon.org"
                     xmlns:x="http://www.jenitennison.com/xslt/xspec"
                     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                    name="Q{urn:x-xspec:compile:impl}expect-d54e81"
+                    name="Q{urn:x-xspec:compile:impl}expect-d54e83"
                     select="'For', 'instance:'"><!--expected result--></xsl:variable>
       <xsl:variable name="Q{urn:x-xspec:compile:impl}successful"
                     as="Q{http://www.w3.org/2001/XMLSchema}boolean"
-                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d54e81, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
+                    select="Q{urn:x-xspec:common:deep-equal}deep-equal($Q{urn:x-xspec:compile:impl}expect-d54e83, $Q{http://www.jenitennison.com/xslt/xspec}result, '')"/>
       <xsl:if test="not($Q{urn:x-xspec:compile:impl}successful)">
          <xsl:message>      FAILED</xsl:message>
       </xsl:if>
@@ -1188,7 +1202,7 @@
             <xsl:text>Sequence of two tokens, with no em-dash</xsl:text>
          </xsl:element>
          <xsl:call-template name="Q{urn:x-xspec:common:report-sequence}report-sequence">
-            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d54e81"/>
+            <xsl:with-param name="sequence" select="$Q{urn:x-xspec:compile:impl}expect-d54e83"/>
             <xsl:with-param name="report-name" select="'expect'"/>
          </xsl:call-template>
       </xsl:element>

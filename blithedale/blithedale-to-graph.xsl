@@ -117,15 +117,13 @@
     </xsl:function>
     <xsl:function name="djb:tokenize-text-node" as="xs:string+" visibility="public">
         <!-- ============================================================ -->
-        <!-- TODO: Input should be text node; fix tests                   -->
-        <!-- ============================================================ -->
         <!-- Tokenize on whitespace and em-dashes                         -->
-        <!--   @input as xs:string : string to tokenize                   -->
-        <!-- Must normalize-space, and not just split on \s+, to remove   -->
-        <!--   leading or trailing spaces; must also trim em-dash-only    -->
-        <!--   tokens                                                     -->
+        <!--   @input as text() : text node to tokenize                   -->
+        <!-- Automatically atomized. Must normalize-space, and not just   -->
+        <!--   split on \s+, to remove leading or trailing spaces; must   -->
+        <!--   also trim em-dash-only tokens                              -->
         <!-- ============================================================ -->
-        <xsl:param name="input" as="xs:string"/>
+        <xsl:param name="input" as="text()"/>
         <xsl:sequence
             select="tokenize(normalize-space($input), '\s|—')[string-length(.) gt 0 and . ne '—']"/>
     </xsl:function>
