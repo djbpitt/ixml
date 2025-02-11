@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:djb="http://www.obdurodon.org"
     xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:math="http://www.w3.org/2005/xpath-functions/math" xmlns="http://www.w3.org/2000/svg"
     exclude-result-prefixes="#all" version="3.0">
     <!-- ================================================================ -->
@@ -167,6 +168,15 @@
                 <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
                 <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
                     stroke-width="1" stroke-linecap="square"/>
+            </xsl:for-each>
+            <xsl:variable name="parent-codes" as="xs:integer+"
+                select="//chapter-body/descendant::text() => djb:word-parent-codes()"/>
+            <xsl:variable name="parent-codes-as-array" as="array(xs:integer)"
+                select="array {$parent-codes}"/>
+            <xsl:for-each select="1 to array:size($parent-codes-as-array) - 100">
+                <xsl:variable name="y-pos"
+                    select="array:subarray($parent-codes-as-array, current(), 100) => avg()"/>
+                <circle cx="{current()}" cy="-{$y-pos * $y-scale * 100}" r="1"/>
             </xsl:for-each>
             <!-- ======================================================== -->
             <!-- Dividing line                                            -->
