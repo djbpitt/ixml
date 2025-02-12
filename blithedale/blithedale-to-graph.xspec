@@ -83,6 +83,14 @@
                 1,
                 1"/>
         </x:scenario>
+        <x:scenario label="also with whitespace between quotations">
+            <x:variable name="test-text" as="element(doc)"><doc><paragraph><q>subject,</q>
+                        <q>clairvoyant,</q> or <q>medium,</q></paragraph></doc></x:variable>
+            <x:call>
+                <x:param name="input" select="$test-text/descendant::text()"/>
+            </x:call>
+            <x:expect label="Sequence of 1 (paragraph) and 0 (q) values" select="0, 0, 1, 0"/>
+        </x:scenario>
         <x:scenario label="with em-dashes at edges">
             <x:variable name="test-text" as="element(doc)"><doc><paragraph>For instance:—<q>Which
                             man among you,</q> quoth he, <q>is the best judge of

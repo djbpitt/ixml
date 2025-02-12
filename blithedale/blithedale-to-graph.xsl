@@ -85,8 +85,8 @@
     <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double" visibility="public">
         <!-- ============================================================ -->
         <!-- Compute x position of right edge of chapter rectangle        -->
-        <!--   @param chapter-offset as integer                           -->
-        <!--   returns double                                             -->
+        <!-- @param chapter-offset as integer                             -->
+        <!-- returns double                                               -->
         <!-- Based on percent of total words                              -->
         <!-- ============================================================ -->
         <xsl:param name="chapter-offset" as="xs:integer"/>
@@ -96,9 +96,11 @@
     </xsl:function>
     <xsl:function name="djb:word-parent-codes" as="xs:integer+" visibility="public">
         <!-- ============================================================ -->
-        <!-- Return 1 for paragraph word and 0 for quote word             -->
-        <!--   @input as text()+ :  all text node children of             -->
-        <!--     paragraphs and quotes                                    -->
+        <!-- Annotate each word according to parent element type          -->
+        <!--   (1 for paragraph and 0 for quote)                          -->
+        <!-- @input as text()+ :  all text node children of               -->
+        <!--   paragraphs and quotes                                      -->
+        <!-- returns xs:integer+ (only 0 or 1)                            -->
         <!-- Depends on global context to get parents of text nodes       -->
         <!-- ============================================================ -->
         <xsl:param name="input" as="text()+"/>
@@ -111,19 +113,21 @@
                 $input !
                 (let $parent-code := $parent-type-to-integer(local-name(..))
                 return
-                    (tokenize(normalize-space(.), '\s|—')[string-length(.) gt 0 and . ne '—'] ! $parent-code))
+                    (djb:tokenize-text-node(.) ! $parent-code))
                 "/>
         <xsl:sequence select="$parent-types"/>
     </xsl:function>
-    <xsl:function name="djb:tokenize-text-node" as="xs:string+" visibility="public">
+    <xsl:function name="djb:tokenize-text-node" as="xs:string*" visibility="public">
         <!-- ============================================================ -->
         <!-- Tokenize on whitespace and em-dashes                         -->
-        <!--   @input as text() : text node to tokenize                   -->
+        <!-- @input as text() : text node to tokenize                     -->
+        <!-- returns xs:string* (zero if input is just — or whitespace)   -->
         <!-- Automatically atomized. Must normalize-space, and not just   -->
         <!--   split on \s+, to remove leading or trailing spaces; must   -->
         <!--   also trim em-dash-only tokens                              -->
         <!-- ============================================================ -->
         <xsl:param name="input" as="text()"/>
+        <!--<xsl:message select="'Text node: ', string-join($input[position() lt 11], '&#x0a;')"/>-->
         <xsl:sequence
             select="tokenize(normalize-space($input), '\s|—')[string-length(.) gt 0 and . ne '—']"/>
     </xsl:function>
