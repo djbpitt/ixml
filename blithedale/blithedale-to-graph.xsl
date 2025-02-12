@@ -185,9 +185,10 @@
                     </title>
                 </rect>
                 <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
-                <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
+                <line x1="{$x-pos}" y1="20" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
                     stroke-width=".5"/>
             </xsl:for-each>
+            <line x1="0" y1="20" x2="0" y2="{-100 * $y-scale}" stroke="black" stroke-width=".5"/>
             <!-- ======================================================== -->
             <!-- Curve (paragraph - 1, q = 0)                             -->
             <!-- ======================================================== -->
@@ -206,6 +207,7 @@
             <!-- ======================================================== -->
             <!-- Transparent rectangles to support tooltips must be drawn -->
             <!-- after colored chapter backgrounds and curve              -->
+            <!-- Add chapter numbers below                                -->
             <!-- ======================================================== -->
             <xsl:for-each select="map:keys($chapter-total-word-counts)">
                 <xsl:variable name="current-x" as="xs:double"
@@ -247,9 +249,10 @@
                                 )"/>
                     </title>
                 </rect>
-                <!--                <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
-                <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
-                    stroke-width=".5"/>-->
+                <text x="{$current-x - ($current-x - $previous-x) div 2}" y="13"
+                    text-anchor="middle" font-size="small">
+                    <xsl:value-of select="current()"/>
+                </text>
             </xsl:for-each>
             <!-- ======================================================== -->
             <!-- Bounding rectangle instead of axes                       -->
