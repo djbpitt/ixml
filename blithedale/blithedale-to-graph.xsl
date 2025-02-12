@@ -60,6 +60,15 @@
             map:for-each($chapter-total-word-counts, function ($k, $v) {
                 $v
             }) => sum()"/>
+    <xsl:param name="total-narrative-word-count" as="xs:integer" select="
+            map:for-each($chapter-narrative-word-counts, function ($k, $v) {
+                $v
+            }) => sum()"/>
+    <xsl:param name="total-speech-word-count" as="xs:integer" select="
+            map:for-each($chapter-speech-word-counts, function ($k, $v) {
+                $v
+            })
+            => sum()"/>
     <xsl:param name="color-backgrounds" as="xs:string+" select="'#fffff3', '#dbeded'"/>
     <xsl:param name="x-scale" as="xs:double" select="10"/>
     <xsl:param name="y-scale" as="xs:double" select="1"/>
@@ -156,7 +165,7 @@
                 })"/>
         <svg viewBox="-10 -{100 * $y-scale + 10} {100 * $x-scale + 20} {100 * $y-scale + 20}">
             <!-- ======================================================== -->
-            <!-- chapter background colored rectangles with borders       -->
+            <!-- Colored chapter background rectangles with dividers      -->
             <!-- ======================================================== -->
             <xsl:for-each select="map:keys($chapter-total-word-counts)">
                 <xsl:variable name="current-x" as="xs:double"
@@ -207,12 +216,35 @@
                     select="$chapter-total-word-counts(current())"/>
                 <xsl:variable name="chapter-word-count-percentage" as="xs:string"
                     select="($chapter-word-count div $total-word-count * 100) => format-number('0.00')"/>
+                <xsl:variable name="chapter-narrative-word-count" as="xs:integer"
+                    select="$chapter-narrative-word-counts(current())"/>
+                <xsl:variable name="chapter-narrative-word-count-percentage" as="xs:string"
+                    select="($chapter-narrative-word-count div $chapter-word-count * 100) => format-number('0.00')"/>
+                <xsl:variable name="chapter-speech-word-count" as="xs:integer"
+                    select="$chapter-speech-word-counts(current())"/>
+                <xsl:variable name="chapter-speech-word-count-percentage" as="xs:string"
+                    select="($chapter-speech-word-count div $chapter-word-count * 100) => format-number('0.00')"/>
                 <rect x="{$previous-x}" y="{-100 * $y-scale}" width="{$current-x - $previous-x}"
                     height="{100 * $y-scale}" fill="transparent" stroke="none">
                     <title>
                         <xsl:value-of select="
-                                concat('Chapter ', current(), ':  ', $chapter-word-count, ' words (',
-                                $chapter-word-count-percentage, '%)')"/>
+                                concat(
+                                'Chapter ',
+                                current(),
+                                ': ',
+                                $chapter-word-count,
+                                ' words (',
+                                $chapter-word-count-percentage,
+                                '% of novel)&#x0a;Narrative words: ',
+                                $chapter-narrative-word-count,
+                                ' (',
+                                $chapter-narrative-word-count-percentage,
+                                '% of chapter)&#x0a;Quoted words: ',
+                                $chapter-speech-word-count,
+                                ' (',
+                                $chapter-speech-word-count-percentage,
+                                '% of chapter)'
+                                )"/>
                     </title>
                 </rect>
                 <!--                <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
@@ -220,8 +252,8 @@
                     stroke-width=".5"/>-->
             </xsl:for-each>
             <!-- ======================================================== -->
-            <!-- bounding rectangle instead of axes                       -->
-            <!-- draw last to control z-order                             -->
+            <!-- Bounding rectangle instead of axes                       -->
+            <!-- Draw last to control z-order                             -->
             <!-- ======================================================== -->
             <rect x="0" y="-{100 * $y-scale}" width="{100 * $x-scale}" height="{100 * $y-scale}"
                 fill="none" stroke="black" stroke-width=".5"/>
