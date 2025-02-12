@@ -71,7 +71,7 @@
     <!-- chapter-offset-to-x-pos                                          -->
     <!-- get-word-parent-codes                                            -->
     <!-- ================================================================ -->
-    <xsl:function name="djb:count-words" as="xs:integer" visibility="public">
+    <xsl:function name="djb:count-words" as="xs:integer" visibility="final">
         <!-- ============================================================ -->
         <!-- Sum word counts in sequence of strings                       -->
         <!-- @param strings as sequence of strings                        -->
@@ -82,7 +82,7 @@
         <xsl:sequence
             select="$strings ! normalize-space() ! tokenize(., '\s+|—') => count() => sum()"/>
     </xsl:function>
-    <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double" visibility="public">
+    <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double" visibility="final">
         <!-- ============================================================ -->
         <!-- Compute x position of right edge of chapter rectangle        -->
         <!-- @param chapter-offset as integer                             -->
@@ -94,7 +94,7 @@
             select="((1 to $chapter-offset) ! $chapter-total-word-counts(.) => sum()) * 100 * $x-scale div $total-word-count"
         />
     </xsl:function>
-    <xsl:function name="djb:word-parent-codes" as="xs:integer+" visibility="public">
+    <xsl:function name="djb:word-parent-codes" as="xs:integer+" visibility="final">
         <!-- ============================================================ -->
         <!-- Annotate each word according to parent element type          -->
         <!--   (1 for paragraph and 0 for quote)                          -->
@@ -117,7 +117,7 @@
                 "/>
         <xsl:sequence select="$parent-types"/>
     </xsl:function>
-    <xsl:function name="djb:tokenize-text-node" as="xs:string*" visibility="public">
+    <xsl:function name="djb:tokenize-text-node" as="xs:string*" visibility="final">
         <!-- ============================================================ -->
         <!-- Tokenize on whitespace and em-dashes                         -->
         <!-- @input as text() : text node to tokenize                     -->
