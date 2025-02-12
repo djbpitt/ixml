@@ -62,7 +62,7 @@
             }) => sum()"/>
     <xsl:param name="color-backgrounds" as="xs:string+" select="'#fffff3', '#dbeded'"/>
     <xsl:param name="x-scale" as="xs:double" select="10"/>
-    <xsl:param name="y-scale" as="xs:double" select="3"/>
+    <xsl:param name="y-scale" as="xs:double" select="1"/>
 
     <!-- ================================================================ -->
     <!-- Functions                                                        -->
@@ -156,17 +156,7 @@
                 })"/>
         <svg viewBox="-10 -{100 * $y-scale + 10} {100 * $x-scale + 20} {100 * $y-scale + 20}">
             <!-- ======================================================== -->
-            <!-- x axis                                                   -->
-            <!-- ======================================================== -->
-            <line x1="0" y1="0" x2="{100 * $x-scale}" y2="0" stroke="black" stroke-width="1"
-                stroke-linecap="square"/>
-            <!-- ======================================================== -->
-            <!-- y axis                                                   -->
-            <!-- ======================================================== -->
-            <line x1="0" y1="0" x2="0" y2="{-100 * $y-scale}" stroke="black" stroke-width="1"
-                stroke-linecap="square"/>
-            <!-- ======================================================== -->
-            <!-- chapter rectangles and vertical lines                    -->
+            <!-- chapter background colored rectangles with borders       -->
             <!-- ======================================================== -->
             <xsl:for-each select="map:keys($chapter-total-word-counts)">
                 <xsl:variable name="current-x" as="xs:double"
@@ -187,20 +177,54 @@
                 </rect>
                 <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
                 <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
-                    stroke-width="1" stroke-linecap="square"/>
-            </xsl:for-each>
-            <xsl:variable name="parent-codes" as="xs:integer+"
-                select="//chapter-body/descendant::text() => djb:word-parent-codes()"/>
-            <xsl:variable name="parent-codes-as-array" as="array(xs:integer)"
-                select="array {$parent-codes}"/>
-            <xsl:for-each select="1 to array:size($parent-codes-as-array) - 100">
-                <xsl:variable name="y-pos"
-                    select="array:subarray($parent-codes-as-array, current(), 100) => avg()"/>
-                <circle cx="{current()}" cy="-{$y-pos * $y-scale * 100}" r="1"/>
+                    stroke-width=".5"/>
             </xsl:for-each>
             <!-- ======================================================== -->
-            <!-- Dividing line                                            -->
+            <!-- Curve (paragraph - 1, q = 0)                             -->
             <!-- ======================================================== -->
+            <xsl:variable name="parent-codes-array" as="array(xs:integer)"
+                select="array {//chapter-body/descendant::text() => djb:word-parent-codes()}"/>
+            <xsl:variable name="x-pos-array" as="array(xs:integer)"
+                select="array {1 to array:size($parent-codes-array)}"/>
+            <xsl:variable name="in-points" as="xs:string+" select="
+                    array:for-each-pair($x-pos-array, $parent-codes-array, function ($x, $y) {
+                        string-join(($x * $x-scale * 100 div $total-word-count, -1 * $y * 100 * $y-scale), ',')
+                    })"/>
+            <xsl:variable name="out-points" as="xs:string+"
+                select="djb:get-weighted-points($in-points, 'gaussian', 201, 35)"/>
+            <polyline points="0,0 {string-join($out-points, ' ')} {100 * $x-scale},0"
+                stroke="purple" stroke-width=".25" fill="purple" fill-opacity=".2"/>
+            <!-- ======================================================== -->
+            <!-- Transparent rectangles to support tooltips must be drawn -->
+            <!-- after colored chapter backgrounds and curve              -->
+            <!-- ======================================================== -->
+            <xsl:for-each select="map:keys($chapter-total-word-counts)">
+                <xsl:variable name="current-x" as="xs:double"
+                    select="djb:chapter-offset-to-x-pos(current())"/>
+                <xsl:variable name="previous-x" as="xs:double"
+                    select="djb:chapter-offset-to-x-pos(current() - 1)"/>
+                <xsl:variable name="chapter-word-count" as="xs:integer"
+                    select="$chapter-total-word-counts(current())"/>
+                <xsl:variable name="chapter-word-count-percentage" as="xs:string"
+                    select="($chapter-word-count div $total-word-count * 100) => format-number('0.00')"/>
+                <rect x="{$previous-x}" y="{-100 * $y-scale}" width="{$current-x - $previous-x}"
+                    height="{100 * $y-scale}" fill="transparent" stroke="none">
+                    <title>
+                        <xsl:value-of select="
+                                concat('Chapter ', current(), ':  ', $chapter-word-count, ' words (',
+                                $chapter-word-count-percentage, '%)')"/>
+                    </title>
+                </rect>
+                <!--                <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
+                <line x1="{$x-pos}" y1="0" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
+                    stroke-width=".5"/>-->
+            </xsl:for-each>
+            <!-- ======================================================== -->
+            <!-- bounding rectangle instead of axes                       -->
+            <!-- draw last to control z-order                             -->
+            <!-- ======================================================== -->
+            <rect x="0" y="-{100 * $y-scale}" width="{100 * $x-scale}" height="{100 * $y-scale}"
+                fill="none" stroke="black" stroke-width=".5"/>
         </svg>
     </xsl:template>
 </xsl:stylesheet>
