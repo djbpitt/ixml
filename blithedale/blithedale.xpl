@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" exclude-inline-prefixes="#all"
-    xmlns:c="http://www.w3.org/ns/xproc-step" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:ex="extensions" version="3.0">
+    name="blithedale" xmlns:c="http://www.w3.org/ns/xproc-step"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ex="extensions" version="3.0">
     <!-- ================================================================ -->
     <!--Fetch remote plain-text input                                     -->
     <!-- ================================================================ -->
@@ -78,7 +78,7 @@
     <!-- Remove @ixml:status,                                             -->
     <!--   create typographic dashes and single quotes                    -->
     <!-- ================================================================ -->
-    <p:xslt>
+    <p:xslt name="finalize-xml">
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
     </p:xslt>
     <p:identity use-when="$debug" message="Removed @ixml:status, fix dashes and single quotes"/>
@@ -92,7 +92,7 @@
     </p:validate-with-relax-ng>
     <p:identity use-when="$debug" message="Verified final xml against schema"/>
     <!-- ================================================================ -->
-    <!-- Save XML (only during debug)                                     -->
+    <!-- Save xml (only during debug)                                     -->
     <!-- ================================================================ -->
     <p:store use-when="$debug" href="blithedale.xml" message="Saved final XML (debug only)"/>
     <!-- ================================================================ -->
@@ -101,9 +101,9 @@
     <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-to-reading-view.xsl"/>
     </p:xslt>
-    <p:identity message="Created xhtml reading view"/>
+    <p:identity use-when="$debug" message="Created xhtml reading view"/>
     <!-- ================================================================ -->
-    <!-- Save reading view                                                -->
+    <!-- Save html reading view                                           -->
     <!-- ================================================================ -->
     <p:store href="blithedale.xhtml" serialization="map {
         'method':'xhtml', 
@@ -113,8 +113,22 @@
         'indent':true()}"/>
     <p:identity use-when="$debug" message="Saved xhtml reading view to blithedale.xhtml"/>
     <!-- ================================================================ -->
-    <!-- Create and graph of speech ~ narration                           -->
+    <!-- Create graph of speech ~ narration                               -->
     <!-- ================================================================ -->
-    <!-- TODO
-         Create and store SVG output                                      -->
+    <p:xslt>
+        <p:with-input port="source">
+            <p:pipe step="finalize-xml" port="result"/>
+        </p:with-input>
+        <p:with-input port="stylesheet" href="blithedale-to-graph.xsl"/>
+    </p:xslt>
+    <p:identity use-when="$debug" message="Created svg for narration/speech distribution"/>
+    <!-- ================================================================ -->
+    <!-- Save svg graph of speech ~ narration                             -->
+    <!-- ================================================================ -->
+    <p:store href="blithedale-narration-speech.svg" serialization="map {
+        'method': 'xml',
+        'omit-xml-declaration': true(),
+        'indent': true()
+        }"/>
+    <p:identity use-when="$debug" message="Saved svg for narration/speech distribution"/>
 </p:declare-step>
