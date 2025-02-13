@@ -5,6 +5,9 @@
     version="3.0">
     <xsl:mode on-no-match="shallow-copy"/>
     <xsl:template match="country">
+        <!-- ============================================================ -->
+        <!-- Split up multiple countries, adding wrapper                  -->
+        <!-- ============================================================ -->
         <countries>
             <xsl:for-each select="translate(., '&quot;', '') => tokenize(', ')">
                 <country>
@@ -14,8 +17,12 @@
         </countries>
     </xsl:template>
     <xsl:template match="runtime">
+        <!-- ============================================================ -->
+        <!-- values are either "xxx min", where xxx is digits, or "N/A"   -->
+        <!-- remove " min", leaving just digits; leave "N/A" as is        -->
+        <!-- ============================================================ -->
         <xsl:copy>
-            <xsl:value-of select="substring-before(., ' min')"/>
+            <xsl:value-of select="replace(., ' min', '')"/>
         </xsl:copy>
     </xsl:template>
 </xsl:stylesheet>
