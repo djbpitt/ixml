@@ -64,14 +64,9 @@
     <p:identity use-when="$debug" message="Tagged front matter and toc, fixed title case"/>
     <!-- ================================================================ -->
     <!--  Add @id values to chapter titles in body and remove roman       -->
-    <!--  This is one way to add an attribute to a sequence of elements;  -->
-    <!--  <p:label-elements> would also work (or with xslt)               -->
     <!-- ==============================================================   -->
-    <p:viewport match="body/chapter">
-        <p:add-attribute attribute-name="id"
-            attribute-value="{concat('body-chapter-', format-integer(p:iteration-position(), 'I'))}"
-        />
-    </p:viewport>
+    <p:label-elements match="body/chapter" attribute="id"
+        label="concat('body-chapter-', chapter-header/roman)"/>
     <p:delete match="roman"/>
     <p:identity use-when="$debug" message="Added @id to body chapters, removed Roman numerals"/>
     <!-- ================================================================ -->
