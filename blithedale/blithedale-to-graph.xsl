@@ -69,9 +69,8 @@
                 $v
             })
             => sum()"/>
-    <xsl:param name="color-backgrounds" as="xs:string+" select="'#fffff3', '#dbeded'"/>
     <xsl:param name="x-scale" as="xs:double" select="10"/>
-    <xsl:param name="y-scale" as="xs:double" select="1"/>
+    <xsl:param name="y-scale" as="xs:double" select=".5"/>
 
     <!-- ================================================================ -->
     <!-- Functions                                                        -->
@@ -177,7 +176,7 @@
                 <xsl:variable name="chapter-word-count-percentage" as="xs:string"
                     select="($chapter-word-count div $total-word-count * 100) => format-number('0.00')"/>
                 <rect x="{$previous-x}" y="{-100 * $y-scale}" width="{$current-x - $previous-x}"
-                    height="{100 * $y-scale}" fill="{$color-backgrounds[current() mod 2 + 1]}">
+                    height="{100 * $y-scale}" fill="#fffff3">
                     <title>
                         <xsl:value-of select="
                                 concat('Chapter ', current(), ':  ', $chapter-word-count, ' words (',
@@ -185,10 +184,10 @@
                     </title>
                 </rect>
                 <xsl:variable name="x-pos" as="xs:double" select="$current-x"/>
-                <line x1="{$x-pos}" y1="20" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="black"
+                <line x1="{$x-pos}" y1="20" x2="{$x-pos}" y2="{-100 * $y-scale}" stroke="silver"
                     stroke-width=".5"/>
             </xsl:for-each>
-            <line x1="0" y1="20" x2="0" y2="{-100 * $y-scale}" stroke="black" stroke-width=".5"/>
+            <line x1="0" y1="20" x2="0" y2="{-100 * $y-scale}" stroke="silver" stroke-width=".5"/>
             <!-- ======================================================== -->
             <!-- Curve (paragraph - 1, q = 0)                             -->
             <!-- ======================================================== -->
@@ -249,8 +248,8 @@
                                 )"/>
                     </title>
                 </rect>
-                <text x="{$current-x - ($current-x - $previous-x) div 2}" y="13"
-                    text-anchor="middle" font-size="small">
+                <text x="{$current-x - ($current-x - $previous-x) div 2}" y="11"
+                    text-anchor="middle" font-size="35%">
                     <xsl:value-of select="current()"/>
                 </text>
             </xsl:for-each>
