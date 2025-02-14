@@ -130,14 +130,15 @@
         <!-- Tokenize on whitespace and em-dashes                         -->
         <!-- @input as text() : text node to tokenize                     -->
         <!-- returns xs:string* (zero if input is just — or whitespace)   -->
-        <!-- Automatically atomized. Must normalize-space, and not just   -->
-        <!--   split on \s+, to remove leading or trailing spaces; must   -->
-        <!--   also trim em-dash-only tokens                              -->
+        <!-- Automatically atomized. Replace em-dash with space, then     -->
+        <!--   normalize space, then tokenize on whitespace (which now    -->
+        <!--   both original whitespace and original em-dash).            -->
         <!-- ============================================================ -->
         <xsl:param name="input" as="text()"/>
         <!--<xsl:message select="'Text node: ', string-join($input[position() lt 11], '&#x0a;')"/>-->
         <xsl:sequence
-            select="tokenize(normalize-space($input), '\s|—')[string-length(.) gt 0 and . ne '—']"/>
+            select="translate($input, '—', '') ! normalize-space() ! tokenize(.)[string-length(.) gt 0]"
+        />
     </xsl:function>
 
     <!-- ================================================================ -->
