@@ -1,6 +1,0 @@
-p: line+.
-line: (word; roman)+, -newline.
-roman: ["IVXCLDM"]+.
-word: ([L]; [P]; space)+.
--newline: -#a.
--space: " ".
