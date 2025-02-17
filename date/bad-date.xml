@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Trailing space in month should raise schematron error -->
-<date>
-    <day>4</day>
-    <month>November </month>
-    <year>2021</year>
-</date>
