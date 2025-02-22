@@ -1,3 +1,4 @@
-line: roman++space.
+line: roman++space, newline?.
 roman: ["IVXCLDM"]+.
 -space: " ".
+-newline: -#d?, -#a.
