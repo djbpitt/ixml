@@ -5,13 +5,13 @@
   version="3.0">
   <!-- ================================================================== -->
   <!-- Read plain text input from remote location                         -->
-  <!-- ================================================================== -->  
+  <!-- ================================================================== -->
   <p:input port="source" primary="true" content-types="text/plain"
     href="https://raw.githubusercontent.com/djbpitt/ixml/refs/heads/main/sonnets/sonnets.txt"
     sequence="false"/>
   <!-- ================================================================== -->
   <!-- Serialize output as HTML 5 with XML syntax                         -->
-  <!-- ================================================================== -->  
+  <!-- ================================================================== -->
   <p:output port="result" serialization="map {
     'method' : 'xhtml',
     'html-version': 5,
@@ -27,7 +27,7 @@
       <p:document href="sonnets.ixml" content-type="text/plain"/>
     </p:with-input>
   </p:invisible-xml>
-  <!-- ================================================================== -->  
+  <!-- ================================================================== -->
   <!-- Transform to HTML 5 with XML syntax                                -->
   <!-- ================================================================== -->
   <p:xslt>
