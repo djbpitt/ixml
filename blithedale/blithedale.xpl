@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <p:declare-step xmlns:p="http://www.w3.org/ns/xproc" exclude-inline-prefixes="#all"
     name="blithedale" xmlns:c="http://www.w3.org/ns/xproc-step"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ex="extensions" version="3.0">
+    xmlns:cx="http://xmlcalabash.com/ns/extensions" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ex="extensions" version="3.0">
+    <!-- ================================================================ -->
+    <!-- Static $debug parameter controls output of progress messages     -->
+    <!-- ================================================================ -->
+    <p:option name="debug" as="xs:boolean" static="true" select="false()"/>
     <!-- ================================================================ -->
     <!--Fetch remote plain-text input                                     -->
     <!-- ================================================================ -->
-    <p:option name="debug" as="xs:boolean" static="true" select="false()"/>
     <p:input port="source" primary="true" content-types="text/plain"
         href="https://www.gutenberg.org/files/2081/2081.txt" sequence="false"/>
     <!-- ================================================================ -->
@@ -14,6 +18,7 @@
     <p:output port="result" primary="true" sequence="true">
         <p:empty/>
     </p:output>
+    <p:identity use-when="$debug" message="Connected to input and output"/>
     <!-- ================================================================ -->
     <!-- Remove BOM if present                                            -->
     <!-- ================================================================ -->
@@ -28,7 +33,7 @@
     <!-- ================================================================ -->
     <!--  Add structural markup with ixml                                 -->
     <!-- ================================================================ -->
-    <p:invisible-xml>
+    <p:invisible-xml cx:processor="markup-blitz">
         <p:with-input port="grammar">
             <p:document href="blithedale.ixml" content-type="text/plain"/>
         </p:with-input>
@@ -73,19 +78,19 @@
     <!-- Remove @ixml:status,                                             -->
     <!--   create typographic dashes and single quotes                    -->
     <!-- ================================================================ -->
-    <p:xslt name="finalize-xml">
+    <p:xslt>
         <p:with-input port="stylesheet" href="blithedale-cleanup-xml.xsl"/>
     </p:xslt>
     <p:identity use-when="$debug" message="Removed @ixml:status, fix dashes and single quotes"/>
     <!-- ================================================================ -->
     <!-- Verify that xml matches intended schema                          -->
     <!-- ================================================================ -->
-    <p:validate-with-relax-ng>
+    <p:validate-with-relax-ng name="finalize-xml">
         <p:with-input port="schema">
             <p:document href="blithedale.rnc" content-type="text/plain"/>
         </p:with-input>
     </p:validate-with-relax-ng>
-    <p:identity use-when="$debug" message="Verified final xml against schema"/>
+    <p:identity use-when="$debug" message="Verified final xml against Relax NG schema"/>
     <!-- ================================================================ -->
     <!-- Save xml (only during debug)                                     -->
     <!-- ================================================================ -->
