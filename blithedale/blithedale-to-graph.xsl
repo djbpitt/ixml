@@ -82,7 +82,7 @@
     <xsl:function name="djb:count-words" as="xs:integer" visibility="final">
         <!-- ============================================================ -->
         <!-- Sum word counts in sequence of strings                       -->
-        <!-- @param strings as sequence of strings                        -->
+        <!-- @param $strings as sequence of strings                       -->
         <!--   (e.g., text-node children of <paragraph> or <q>)           -->
         <!-- returns integer                                              -->
         <!-- ============================================================ -->
@@ -93,7 +93,7 @@
     <xsl:function name="djb:chapter-offset-to-x-pos" as="xs:double" visibility="final">
         <!-- ============================================================ -->
         <!-- Compute x position of right edge of chapter rectangle        -->
-        <!-- @param chapter-offset as integer                             -->
+        <!-- @param $chapter-offset as integer                            -->
         <!-- returns double                                               -->
         <!-- Based on percent of total words                              -->
         <!-- ============================================================ -->
@@ -106,7 +106,7 @@
         <!-- ============================================================ -->
         <!-- Annotate each word according to parent element type          -->
         <!--   (1 for paragraph and 0 for quote)                          -->
-        <!-- @input as text()+ :  all text node children of               -->
+        <!-- @param $input as text()+ :  all text node children of        -->
         <!--   paragraphs and quotes                                      -->
         <!-- returns xs:integer+ (only 0 or 1)                            -->
         <!-- Depends on global context to get parents of text nodes       -->
@@ -128,14 +128,13 @@
     <xsl:function name="djb:tokenize-text-node" as="xs:string*" visibility="final">
         <!-- ============================================================ -->
         <!-- Tokenize on whitespace and em-dashes                         -->
-        <!-- @input as text() : text node to tokenize                     -->
+        <!-- @param $input as text() : text node to tokenize              -->
         <!-- returns xs:string* (zero if input is just — or whitespace)   -->
         <!-- Automatically atomized. Replace em-dash with space, then     -->
         <!--   normalize space, then tokenize on whitespace (which now    -->
         <!--   both original whitespace and original em-dash).            -->
         <!-- ============================================================ -->
         <xsl:param name="input" as="text()"/>
-        <!--<xsl:message select="'Text node: ', string-join($input[position() lt 11], '&#x0a;')"/>-->
         <xsl:sequence
             select="translate($input, '—', '') ! normalize-space() ! tokenize(.)[string-length(.) gt 0]"
         />
