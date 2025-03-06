@@ -1,0 +1,9 @@
+films = film++newline, newline?.
+film = title, tab, year, tab, country, tab, runtime.
+-tab = -#9.
+-quote = -#22.
+-newline = (-#d?, #a).
+title = quote?, ~[#22; #9;#d;#a]+, quote?.
+year = ~[#9;#d;#a]+.
+country = ~[#9;#d;#a]+.
+runtime = ~[#9;#d;#a]+.

@@ -1,0 +1,39 @@
+:root {
+  background-color: silver;
+}
+table {
+  border-collapse: collapse;
+  position: relative;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+table,
+thead,
+tbody,
+tr,
+th,
+td {
+  border: 1px black solid;
+}
+thead > tr > th {
+  background-color: beige;
+  position: sticky;
+}
+.odd {
+  background-color: #e1f0fa; /* pale blue */
+}
+.even {
+  background-color: #f7e0e3; /* pale pink */
+}
+th,
+td {
+  padding: .25em .5em;
+}
+ul {
+  margin: 0;
+  padding-left: .5em;
+  list-style-type: none;
+}

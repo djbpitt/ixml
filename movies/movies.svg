@@ -1,0 +1,1386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="-10, -150 910 160"
+     xmlns="http://www.w3.org/2000/svg">
+   <style type="text/css">
+        :root {
+          background-color: #ffe4b4;
+        }</style>
+   <rect x="0"
+         y="-74.51351351351352"
+         width="10"
+         height="74.51351351351352"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1930
+Avg runtime: 75 min
+Number of films: 37</title>
+   </rect>
+   <text x="5"
+         y="-79.51351351351352"
+         text-anchor="middle"
+         font-size="40%">75</text>
+   <text x="5"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1930</text>
+   <rect x="10"
+         y="-79.31481481481481"
+         width="10"
+         height="79.31481481481481"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1931
+Avg runtime: 79 min
+Number of films: 54</title>
+   </rect>
+   <text x="15"
+         y="-84.31481481481481"
+         text-anchor="middle"
+         font-size="40%">79</text>
+   <rect x="20"
+         y="-71.2235294117647"
+         width="10"
+         height="71.2235294117647"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1932
+Avg runtime: 71 min
+Number of films: 85</title>
+   </rect>
+   <text x="25"
+         y="-76.2235294117647"
+         text-anchor="middle"
+         font-size="40%">71</text>
+   <rect x="30"
+         y="-72.02127659574468"
+         width="10"
+         height="72.02127659574468"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1933
+Avg runtime: 72 min
+Number of films: 94</title>
+   </rect>
+   <text x="35"
+         y="-77.02127659574468"
+         text-anchor="middle"
+         font-size="40%">72</text>
+   <rect x="40"
+         y="-72.67777777777778"
+         width="10"
+         height="72.67777777777778"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1934
+Avg runtime: 73 min
+Number of films: 90</title>
+   </rect>
+   <text x="45"
+         y="-77.67777777777778"
+         text-anchor="middle"
+         font-size="40%">73</text>
+   <rect x="50"
+         y="-75.92233009708738"
+         width="10"
+         height="75.92233009708738"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1935
+Avg runtime: 76 min
+Number of films: 103</title>
+   </rect>
+   <text x="55"
+         y="-80.92233009708738"
+         text-anchor="middle"
+         font-size="40%">76</text>
+   <rect x="60"
+         y="-76.52"
+         width="10"
+         height="76.52"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1936
+Avg runtime: 77 min
+Number of films: 100</title>
+   </rect>
+   <text x="65"
+         y="-81.52"
+         text-anchor="middle"
+         font-size="40%">77</text>
+   <rect x="70"
+         y="-76.15116279069767"
+         width="10"
+         height="76.15116279069767"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1937
+Avg runtime: 76 min
+Number of films: 86</title>
+   </rect>
+   <text x="75"
+         y="-81.15116279069767"
+         text-anchor="middle"
+         font-size="40%">76</text>
+   <rect x="80"
+         y="-77.46478873239437"
+         width="10"
+         height="77.46478873239437"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1938
+Avg runtime: 77 min
+Number of films: 71</title>
+   </rect>
+   <text x="85"
+         y="-82.46478873239437"
+         text-anchor="middle"
+         font-size="40%">77</text>
+   <rect x="90"
+         y="-85.17708333333333"
+         width="10"
+         height="85.17708333333333"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1939
+Avg runtime: 85 min
+Number of films: 96</title>
+   </rect>
+   <text x="95"
+         y="-90.17708333333333"
+         text-anchor="middle"
+         font-size="40%">85</text>
+   <rect x="100"
+         y="-88.38144329896907"
+         width="10"
+         height="88.38144329896907"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1940
+Avg runtime: 88 min
+Number of films: 97</title>
+   </rect>
+   <text x="105"
+         y="-93.38144329896907"
+         text-anchor="middle"
+         font-size="40%">88</text>
+   <text x="105"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1940</text>
+   <rect x="110"
+         y="-85.32407407407408"
+         width="10"
+         height="85.32407407407408"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1941
+Avg runtime: 85 min
+Number of films: 108</title>
+   </rect>
+   <text x="115"
+         y="-90.32407407407408"
+         text-anchor="middle"
+         font-size="40%">85</text>
+   <rect x="120"
+         y="-81.8019801980198"
+         width="10"
+         height="81.8019801980198"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1942
+Avg runtime: 82 min
+Number of films: 101</title>
+   </rect>
+   <text x="125"
+         y="-86.8019801980198"
+         text-anchor="middle"
+         font-size="40%">82</text>
+   <rect x="130"
+         y="-89.21052631578948"
+         width="10"
+         height="89.21052631578948"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1943
+Avg runtime: 89 min
+Number of films: 95</title>
+   </rect>
+   <text x="135"
+         y="-94.21052631578948"
+         text-anchor="middle"
+         font-size="40%">89</text>
+   <rect x="140"
+         y="-92.40425531914893"
+         width="10"
+         height="92.40425531914893"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1944
+Avg runtime: 92 min
+Number of films: 94</title>
+   </rect>
+   <text x="145"
+         y="-97.40425531914893"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="150"
+         y="-89.43956043956044"
+         width="10"
+         height="89.43956043956044"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1945
+Avg runtime: 89 min
+Number of films: 91</title>
+   </rect>
+   <text x="155"
+         y="-94.43956043956044"
+         text-anchor="middle"
+         font-size="40%">89</text>
+   <rect x="160"
+         y="-87.98823529411764"
+         width="10"
+         height="87.98823529411764"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1946
+Avg runtime: 88 min
+Number of films: 85</title>
+   </rect>
+   <text x="165"
+         y="-92.98823529411764"
+         text-anchor="middle"
+         font-size="40%">88</text>
+   <rect x="170"
+         y="-93.73076923076923"
+         width="10"
+         height="93.73076923076923"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1947
+Avg runtime: 94 min
+Number of films: 104</title>
+   </rect>
+   <text x="175"
+         y="-98.73076923076923"
+         text-anchor="middle"
+         font-size="40%">94</text>
+   <rect x="180"
+         y="-93.69354838709677"
+         width="10"
+         height="93.69354838709677"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1948
+Avg runtime: 94 min
+Number of films: 124</title>
+   </rect>
+   <text x="185"
+         y="-98.69354838709677"
+         text-anchor="middle"
+         font-size="40%">94</text>
+   <rect x="190"
+         y="-90.625"
+         width="10"
+         height="90.625"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1949
+Avg runtime: 91 min
+Number of films: 112</title>
+   </rect>
+   <text x="195"
+         y="-95.625"
+         text-anchor="middle"
+         font-size="40%">91</text>
+   <rect x="200"
+         y="-87.84962406015038"
+         width="10"
+         height="87.84962406015038"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1950
+Avg runtime: 88 min
+Number of films: 133</title>
+   </rect>
+   <text x="205"
+         y="-92.84962406015038"
+         text-anchor="middle"
+         font-size="40%">88</text>
+   <text x="205"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1950</text>
+   <rect x="210"
+         y="-87.60714285714286"
+         width="10"
+         height="87.60714285714286"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1951
+Avg runtime: 88 min
+Number of films: 112</title>
+   </rect>
+   <text x="215"
+         y="-92.60714285714286"
+         text-anchor="middle"
+         font-size="40%">88</text>
+   <rect x="220"
+         y="-88.6"
+         width="10"
+         height="88.6"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1952
+Avg runtime: 89 min
+Number of films: 105</title>
+   </rect>
+   <text x="225"
+         y="-93.6"
+         text-anchor="middle"
+         font-size="40%">89</text>
+   <rect x="230"
+         y="-85.66923076923077"
+         width="10"
+         height="85.66923076923077"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1953
+Avg runtime: 86 min
+Number of films: 130</title>
+   </rect>
+   <text x="235"
+         y="-90.66923076923077"
+         text-anchor="middle"
+         font-size="40%">86</text>
+   <rect x="240"
+         y="-92.29807692307692"
+         width="10"
+         height="92.29807692307692"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1954
+Avg runtime: 92 min
+Number of films: 104</title>
+   </rect>
+   <text x="245"
+         y="-97.29807692307692"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="250"
+         y="-95.43283582089552"
+         width="10"
+         height="95.43283582089552"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1955
+Avg runtime: 95 min
+Number of films: 134</title>
+   </rect>
+   <text x="255"
+         y="-100.43283582089552"
+         text-anchor="middle"
+         font-size="40%">95</text>
+   <rect x="260"
+         y="-96.21428571428571"
+         width="10"
+         height="96.21428571428571"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1956
+Avg runtime: 96 min
+Number of films: 126</title>
+   </rect>
+   <text x="265"
+         y="-101.21428571428571"
+         text-anchor="middle"
+         font-size="40%">96</text>
+   <rect x="270"
+         y="-92.68345323741008"
+         width="10"
+         height="92.68345323741008"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1957
+Avg runtime: 93 min
+Number of films: 139</title>
+   </rect>
+   <text x="275"
+         y="-97.68345323741008"
+         text-anchor="middle"
+         font-size="40%">93</text>
+   <rect x="280"
+         y="-96.77876106194691"
+         width="10"
+         height="96.77876106194691"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1958
+Avg runtime: 97 min
+Number of films: 113</title>
+   </rect>
+   <text x="285"
+         y="-101.77876106194691"
+         text-anchor="middle"
+         font-size="40%">97</text>
+   <rect x="290"
+         y="-98.09345794392523"
+         width="10"
+         height="98.09345794392523"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1959
+Avg runtime: 98 min
+Number of films: 107</title>
+   </rect>
+   <text x="295"
+         y="-103.09345794392523"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="300"
+         y="-104.20408163265306"
+         width="10"
+         height="104.20408163265306"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1960
+Avg runtime: 104 min
+Number of films: 98</title>
+   </rect>
+   <text x="305"
+         y="-109.20408163265306"
+         text-anchor="middle"
+         font-size="40%">104</text>
+   <text x="305"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1960</text>
+   <rect x="310"
+         y="-101.76842105263158"
+         width="10"
+         height="101.76842105263158"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1961
+Avg runtime: 102 min
+Number of films: 95</title>
+   </rect>
+   <text x="315"
+         y="-106.76842105263158"
+         text-anchor="middle"
+         font-size="40%">102</text>
+   <rect x="320"
+         y="-104.2"
+         width="10"
+         height="104.2"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1962
+Avg runtime: 104 min
+Number of films: 105</title>
+   </rect>
+   <text x="325"
+         y="-109.2"
+         text-anchor="middle"
+         font-size="40%">104</text>
+   <rect x="330"
+         y="-102.61290322580645"
+         width="10"
+         height="102.61290322580645"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1963
+Avg runtime: 103 min
+Number of films: 93</title>
+   </rect>
+   <text x="335"
+         y="-107.61290322580645"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <rect x="340"
+         y="-101.27358490566037"
+         width="10"
+         height="101.27358490566037"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1964
+Avg runtime: 101 min
+Number of films: 106</title>
+   </rect>
+   <text x="345"
+         y="-106.27358490566037"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="350"
+         y="-104.1743119266055"
+         width="10"
+         height="104.1743119266055"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1965
+Avg runtime: 104 min
+Number of films: 109</title>
+   </rect>
+   <text x="355"
+         y="-109.1743119266055"
+         text-anchor="middle"
+         font-size="40%">104</text>
+   <rect x="360"
+         y="-100.67241379310344"
+         width="10"
+         height="100.67241379310344"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1966
+Avg runtime: 101 min
+Number of films: 116</title>
+   </rect>
+   <text x="365"
+         y="-105.67241379310344"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="370"
+         y="-102.54838709677419"
+         width="10"
+         height="102.54838709677419"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1967
+Avg runtime: 103 min
+Number of films: 124</title>
+   </rect>
+   <text x="375"
+         y="-107.54838709677419"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <rect x="380"
+         y="-102.59836065573771"
+         width="10"
+         height="102.59836065573771"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1968
+Avg runtime: 103 min
+Number of films: 122</title>
+   </rect>
+   <text x="385"
+         y="-107.59836065573771"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <rect x="390"
+         y="-102.86792452830188"
+         width="10"
+         height="102.86792452830188"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1969
+Avg runtime: 103 min
+Number of films: 106</title>
+   </rect>
+   <text x="395"
+         y="-107.86792452830188"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <rect x="400"
+         y="-102.75187969924812"
+         width="10"
+         height="102.75187969924812"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1970
+Avg runtime: 103 min
+Number of films: 133</title>
+   </rect>
+   <text x="405"
+         y="-107.75187969924812"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <text x="405"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1970</text>
+   <rect x="410"
+         y="-98.19607843137256"
+         width="10"
+         height="98.19607843137256"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1971
+Avg runtime: 98 min
+Number of films: 153</title>
+   </rect>
+   <text x="415"
+         y="-103.19607843137256"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="420"
+         y="-97.94656488549619"
+         width="10"
+         height="97.94656488549619"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1972
+Avg runtime: 98 min
+Number of films: 131</title>
+   </rect>
+   <text x="425"
+         y="-102.94656488549619"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="430"
+         y="-100.51094890510949"
+         width="10"
+         height="100.51094890510949"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1973
+Avg runtime: 101 min
+Number of films: 137</title>
+   </rect>
+   <text x="435"
+         y="-105.51094890510949"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="440"
+         y="-97.89147286821705"
+         width="10"
+         height="97.89147286821705"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1974
+Avg runtime: 98 min
+Number of films: 129</title>
+   </rect>
+   <text x="445"
+         y="-102.89147286821705"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="450"
+         y="-101.24369747899159"
+         width="10"
+         height="101.24369747899159"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1975
+Avg runtime: 101 min
+Number of films: 119</title>
+   </rect>
+   <text x="455"
+         y="-106.24369747899159"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="460"
+         y="-102.568"
+         width="10"
+         height="102.568"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1976
+Avg runtime: 103 min
+Number of films: 125</title>
+   </rect>
+   <text x="465"
+         y="-107.568"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <rect x="470"
+         y="-101.89915966386555"
+         width="10"
+         height="101.89915966386555"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1977
+Avg runtime: 102 min
+Number of films: 119</title>
+   </rect>
+   <text x="475"
+         y="-106.89915966386555"
+         text-anchor="middle"
+         font-size="40%">102</text>
+   <rect x="480"
+         y="-98.73154362416108"
+         width="10"
+         height="98.73154362416108"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1978
+Avg runtime: 99 min
+Number of films: 149</title>
+   </rect>
+   <text x="485"
+         y="-103.73154362416108"
+         text-anchor="middle"
+         font-size="40%">99</text>
+   <rect x="490"
+         y="-102.50375939849624"
+         width="10"
+         height="102.50375939849624"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1979
+Avg runtime: 103 min
+Number of films: 133</title>
+   </rect>
+   <text x="495"
+         y="-107.50375939849624"
+         text-anchor="middle"
+         font-size="40%">103</text>
+   <rect x="500"
+         y="-105.40972222222223"
+         width="10"
+         height="105.40972222222223"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1980
+Avg runtime: 105 min
+Number of films: 144</title>
+   </rect>
+   <text x="505"
+         y="-110.40972222222223"
+         text-anchor="middle"
+         font-size="40%">105</text>
+   <text x="505"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1980</text>
+   <rect x="510"
+         y="-100.56849315068493"
+         width="10"
+         height="100.56849315068493"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1981
+Avg runtime: 101 min
+Number of films: 146</title>
+   </rect>
+   <text x="515"
+         y="-105.56849315068493"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="520"
+         y="-100.7448275862069"
+         width="10"
+         height="100.7448275862069"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1982
+Avg runtime: 101 min
+Number of films: 145</title>
+   </rect>
+   <text x="525"
+         y="-105.7448275862069"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="530"
+         y="-97.02027027027027"
+         width="10"
+         height="97.02027027027027"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1983
+Avg runtime: 97 min
+Number of films: 148</title>
+   </rect>
+   <text x="535"
+         y="-102.02027027027027"
+         text-anchor="middle"
+         font-size="40%">97</text>
+   <rect x="540"
+         y="-98.22033898305085"
+         width="10"
+         height="98.22033898305085"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1984
+Avg runtime: 98 min
+Number of films: 177</title>
+   </rect>
+   <text x="545"
+         y="-103.22033898305085"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="550"
+         y="-100.27272727272727"
+         width="10"
+         height="100.27272727272727"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1985
+Avg runtime: 100 min
+Number of films: 187</title>
+   </rect>
+   <text x="555"
+         y="-105.27272727272727"
+         text-anchor="middle"
+         font-size="40%">100</text>
+   <rect x="560"
+         y="-99.35233160621762"
+         width="10"
+         height="99.35233160621762"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1986
+Avg runtime: 99 min
+Number of films: 193</title>
+   </rect>
+   <text x="565"
+         y="-104.35233160621762"
+         text-anchor="middle"
+         font-size="40%">99</text>
+   <rect x="570"
+         y="-97.26470588235294"
+         width="10"
+         height="97.26470588235294"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1987
+Avg runtime: 97 min
+Number of films: 238</title>
+   </rect>
+   <text x="575"
+         y="-102.26470588235294"
+         text-anchor="middle"
+         font-size="40%">97</text>
+   <rect x="580"
+         y="-97.1231343283582"
+         width="10"
+         height="97.1231343283582"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1988
+Avg runtime: 97 min
+Number of films: 268</title>
+   </rect>
+   <text x="585"
+         y="-102.1231343283582"
+         text-anchor="middle"
+         font-size="40%">97</text>
+   <rect x="590"
+         y="-98.3056768558952"
+         width="10"
+         height="98.3056768558952"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1989
+Avg runtime: 98 min
+Number of films: 229</title>
+   </rect>
+   <text x="595"
+         y="-103.3056768558952"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="600"
+         y="-98.62139917695474"
+         width="10"
+         height="98.62139917695474"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1990
+Avg runtime: 99 min
+Number of films: 243</title>
+   </rect>
+   <text x="605"
+         y="-103.62139917695474"
+         text-anchor="middle"
+         font-size="40%">99</text>
+   <text x="605"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">1990</text>
+   <rect x="610"
+         y="-98.4820717131474"
+         width="10"
+         height="98.4820717131474"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1991
+Avg runtime: 98 min
+Number of films: 251</title>
+   </rect>
+   <text x="615"
+         y="-103.4820717131474"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="620"
+         y="-99.49159663865547"
+         width="10"
+         height="99.49159663865547"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1992
+Avg runtime: 99 min
+Number of films: 238</title>
+   </rect>
+   <text x="625"
+         y="-104.49159663865547"
+         text-anchor="middle"
+         font-size="40%">99</text>
+   <rect x="630"
+         y="-102.49818181818182"
+         width="10"
+         height="102.49818181818182"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1993
+Avg runtime: 102 min
+Number of films: 275</title>
+   </rect>
+   <text x="635"
+         y="-107.49818181818182"
+         text-anchor="middle"
+         font-size="40%">102</text>
+   <rect x="640"
+         y="-98.91304347826087"
+         width="10"
+         height="98.91304347826087"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1994
+Avg runtime: 99 min
+Number of films: 276</title>
+   </rect>
+   <text x="645"
+         y="-103.91304347826087"
+         text-anchor="middle"
+         font-size="40%">99</text>
+   <rect x="650"
+         y="-98.01315789473684"
+         width="10"
+         height="98.01315789473684"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1995
+Avg runtime: 98 min
+Number of films: 304</title>
+   </rect>
+   <text x="655"
+         y="-103.01315789473684"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="660"
+         y="-100.73291925465838"
+         width="10"
+         height="100.73291925465838"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1996
+Avg runtime: 101 min
+Number of films: 322</title>
+   </rect>
+   <text x="665"
+         y="-105.73291925465838"
+         text-anchor="middle"
+         font-size="40%">101</text>
+   <rect x="670"
+         y="-99.65395894428153"
+         width="10"
+         height="99.65395894428153"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1997
+Avg runtime: 100 min
+Number of films: 341</title>
+   </rect>
+   <text x="675"
+         y="-104.65395894428153"
+         text-anchor="middle"
+         font-size="40%">100</text>
+   <rect x="680"
+         y="-98.25066666666666"
+         width="10"
+         height="98.25066666666666"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1998
+Avg runtime: 98 min
+Number of films: 375</title>
+   </rect>
+   <text x="685"
+         y="-103.25066666666666"
+         text-anchor="middle"
+         font-size="40%">98</text>
+   <rect x="690"
+         y="-97.43298969072166"
+         width="10"
+         height="97.43298969072166"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 1999
+Avg runtime: 97 min
+Number of films: 388</title>
+   </rect>
+   <text x="695"
+         y="-102.43298969072166"
+         text-anchor="middle"
+         font-size="40%">97</text>
+   <rect x="700"
+         y="-95.89021479713604"
+         width="10"
+         height="95.89021479713604"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2000
+Avg runtime: 96 min
+Number of films: 419</title>
+   </rect>
+   <text x="705"
+         y="-100.89021479713604"
+         text-anchor="middle"
+         font-size="40%">96</text>
+   <text x="705"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">2000</text>
+   <rect x="710"
+         y="-92.08810572687224"
+         width="10"
+         height="92.08810572687224"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2001
+Avg runtime: 92 min
+Number of films: 454</title>
+   </rect>
+   <text x="715"
+         y="-97.08810572687224"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="720"
+         y="-94.0551330798479"
+         width="10"
+         height="94.0551330798479"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2002
+Avg runtime: 94 min
+Number of films: 526</title>
+   </rect>
+   <text x="725"
+         y="-99.0551330798479"
+         text-anchor="middle"
+         font-size="40%">94</text>
+   <rect x="730"
+         y="-92.38011695906432"
+         width="10"
+         height="92.38011695906432"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2003
+Avg runtime: 92 min
+Number of films: 513</title>
+   </rect>
+   <text x="735"
+         y="-97.38011695906432"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="740"
+         y="-92.195079086116"
+         width="10"
+         height="92.195079086116"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2004
+Avg runtime: 92 min
+Number of films: 569</title>
+   </rect>
+   <text x="745"
+         y="-97.195079086116"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="750"
+         y="-93.35054773082942"
+         width="10"
+         height="93.35054773082942"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2005
+Avg runtime: 93 min
+Number of films: 639</title>
+   </rect>
+   <text x="755"
+         y="-98.35054773082942"
+         text-anchor="middle"
+         font-size="40%">93</text>
+   <rect x="760"
+         y="-94.63165075034107"
+         width="10"
+         height="94.63165075034107"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2006
+Avg runtime: 95 min
+Number of films: 733</title>
+   </rect>
+   <text x="765"
+         y="-99.63165075034107"
+         text-anchor="middle"
+         font-size="40%">95</text>
+   <rect x="770"
+         y="-93.11892583120205"
+         width="10"
+         height="93.11892583120205"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2007
+Avg runtime: 93 min
+Number of films: 782</title>
+   </rect>
+   <text x="775"
+         y="-98.11892583120205"
+         text-anchor="middle"
+         font-size="40%">93</text>
+   <rect x="780"
+         y="-93.66589861751152"
+         width="10"
+         height="93.66589861751152"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2008
+Avg runtime: 94 min
+Number of films: 868</title>
+   </rect>
+   <text x="785"
+         y="-98.66589861751152"
+         text-anchor="middle"
+         font-size="40%">94</text>
+   <rect x="790"
+         y="-92.1470588235294"
+         width="10"
+         height="92.1470588235294"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2009
+Avg runtime: 92 min
+Number of films: 918</title>
+   </rect>
+   <text x="795"
+         y="-97.1470588235294"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="800"
+         y="-91.43262411347517"
+         width="10"
+         height="91.43262411347517"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2010
+Avg runtime: 91 min
+Number of films: 846</title>
+   </rect>
+   <text x="805"
+         y="-96.43262411347517"
+         text-anchor="middle"
+         font-size="40%">91</text>
+   <text x="805"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">2010</text>
+   <rect x="810"
+         y="-90.5765575501584"
+         width="10"
+         height="90.5765575501584"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2011
+Avg runtime: 91 min
+Number of films: 947</title>
+   </rect>
+   <text x="815"
+         y="-95.5765575501584"
+         text-anchor="middle"
+         font-size="40%">91</text>
+   <rect x="820"
+         y="-90.98626104023552"
+         width="10"
+         height="90.98626104023552"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2012
+Avg runtime: 91 min
+Number of films: 1019</title>
+   </rect>
+   <text x="825"
+         y="-95.98626104023552"
+         text-anchor="middle"
+         font-size="40%">91</text>
+   <rect x="830"
+         y="-92.57193292144748"
+         width="10"
+         height="92.57193292144748"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2013
+Avg runtime: 93 min
+Number of films: 1133</title>
+   </rect>
+   <text x="835"
+         y="-97.57193292144748"
+         text-anchor="middle"
+         font-size="40%">93</text>
+   <rect x="840"
+         y="-92.22780569514238"
+         width="10"
+         height="92.22780569514238"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2014
+Avg runtime: 92 min
+Number of films: 1194</title>
+   </rect>
+   <text x="845"
+         y="-97.22780569514238"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="850"
+         y="-91.5017730496454"
+         width="10"
+         height="91.5017730496454"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2015
+Avg runtime: 92 min
+Number of films: 1128</title>
+   </rect>
+   <text x="855"
+         y="-96.5017730496454"
+         text-anchor="middle"
+         font-size="40%">92</text>
+   <rect x="860"
+         y="-93.19571045576407"
+         width="10"
+         height="93.19571045576407"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2016
+Avg runtime: 93 min
+Number of films: 1119</title>
+   </rect>
+   <text x="865"
+         y="-98.19571045576407"
+         text-anchor="middle"
+         font-size="40%">93</text>
+   <rect x="870"
+         y="-90.68856447688565"
+         width="10"
+         height="90.68856447688565"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2017
+Avg runtime: 91 min
+Number of films: 411</title>
+   </rect>
+   <text x="875"
+         y="-95.68856447688565"
+         text-anchor="middle"
+         font-size="40%">91</text>
+   <rect x="880"
+         y="-107.57142857142857"
+         width="10"
+         height="107.57142857142857"
+         fill="lightblue"
+         stroke="black"
+         stroke-width="1">
+      <title>Year: 2018
+Avg runtime: 108 min
+Number of films: 7</title>
+   </rect>
+   <text x="885"
+         y="-112.57142857142857"
+         text-anchor="middle"
+         font-size="40%">108</text>
+   <text x="885"
+         y="15"
+         text-anchor="middle"
+         font-size="60%">2018</text>
+   <text x="455"
+         y="35"
+         text-anchor="middle">Average runtime by year</text>
+</svg>
