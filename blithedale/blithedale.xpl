@@ -85,12 +85,13 @@
     <!-- ================================================================ -->
     <!-- Verify that xml matches intended schema                          -->
     <!-- ================================================================ -->
-    <p:validate-with-relax-ng name="finalize-xml">
+    <p:validate-with-relax-ng>
         <p:with-input port="schema">
             <p:document href="blithedale.rnc" content-type="text/plain"/>
         </p:with-input>
     </p:validate-with-relax-ng>
     <p:identity use-when="$debug" message="Verified final xml against Relax NG schema"/>
+    <p:identity name="finalize-xml"/>
     <!-- ================================================================ -->
     <!-- Save xml (only during debug)                                     -->
     <!-- ================================================================ -->
