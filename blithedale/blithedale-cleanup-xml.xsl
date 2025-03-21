@@ -7,7 +7,7 @@
     <!-- Templates                                                        -->
     <!-- Must use old-style identity template to remove unusued ixml ns   -->
     <!-- ================================================================ -->
-    <xsl:template match="node() | @*">
+    <xsl:template match="/ | * | @*">
         <xsl:copy copy-namespaces="no">
             <xsl:apply-templates select="node() | @* except @ixml:*"/>
         </xsl:copy>
